@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import {
   Grid,
   Navbar,
@@ -11,7 +11,7 @@ import {
   Jumbotron,
   Button
 } from 'react-bootstrap';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -21,16 +21,16 @@ class App extends Component {
         <Navbar inverse collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Turtles WA</a>
+              <a href="/">Turtles WA</a>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <NavItem eventKey={1} href="#">
+              <NavItem eventKey={1} href="/">
                 Link
               </NavItem>
-              <NavItem eventKey={2} href="#">
+              <NavItem eventKey={2} href="/">
                 Link
               </NavItem>
               <NavDropdown
@@ -46,10 +46,10 @@ class App extends Component {
               </NavDropdown>
             </Nav>
             <Nav pullRight>
-              <NavItem eventKey={1} href="#">
+              <NavItem eventKey={1} href="/">
                 Link Right
               </NavItem>
-              <NavItem eventKey={2} href="#">
+              <NavItem eventKey={2} href="/">
                 Link Right
               </NavItem>
             </Nav>
