@@ -79,7 +79,17 @@ class Projects extends Component {
     } else if (sdisStatus === 'error') {
       data = (
         <div className="info error">
-          Error while loading projects. Try again later.
+          Please install the following browser extension to view SDIS projects:
+          <p>
+            <Link to="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/">
+              Firefox
+            </Link>
+          </p>
+          <p>
+            <Link to="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en">
+              Chrome
+            </Link>
+          </p>
         </div>
       );
     }
