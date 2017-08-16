@@ -1,17 +1,7 @@
 // @flow
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import {
-  Col,
-  Grid,
-  Jumbotron,
-  MenuItem,
-  Navbar,
-  Nav,
-  NavItem,
-  NavDropdown,
-  Row
-} from 'react-bootstrap';
+// import { BrowserRouter } from "react-router-dom";
+import { Col, Row } from 'react-bootstrap';
 // import logo from './logo.svg';
 import './App.css';
 import Navigation from './Navigation';

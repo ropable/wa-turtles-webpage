@@ -1,23 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import {
-  Button,
-  Col,
-  Glyphicon,
-  Grid,
-  Image,
-  Jumbotron,
-  ListGroup,
-  ListGroupItem,
-  MenuItem,
-  Navbar,
-  Nav,
-  NavItem,
-  NavDropdown,
-  Panel,
-  Row,
-  Well
-} from 'react-bootstrap';
+import { Col, Image, Row, Well } from 'react-bootstrap';
 // import "./Datasets.css";
 
 class Projects extends Component {
