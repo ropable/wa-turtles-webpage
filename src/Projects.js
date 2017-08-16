@@ -1,6 +1,5 @@
 // @flow
 import React, { Component } from 'react';
-import striptags from 'striptags';
 import {
   Button,
   Col,
@@ -82,9 +81,9 @@ class Projects extends Component {
                   <Col xs={12} md={8}>
                     <h3>
                       {pro.year}-{leftPad(pro.number, '0', 3)}{' '}
-                      {striptags(pro.title)}
+                      {pro.title.replace(/<\/?[a-z][a-z0-9]*[^<>]*>/gi, '')}
                     </h3>
-                    {striptags(pro.tagline)}
+                    {pro.tagline.replace(/<\/?[a-z][a-z0-9]*[^<>]*>/gi, '')}
                   </Col>
                 </Row>
               </Well>
