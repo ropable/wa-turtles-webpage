@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
+/* Full screen background image */
+body {
+  background-image: url('./green_hatchling.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 .App {
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -32,4 +39,14 @@
 
 .dsnotes {
   font-size: normal;
+}
+
+.navbar-default {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.navbar-default .navbar-brand {
+  color: black;
 }

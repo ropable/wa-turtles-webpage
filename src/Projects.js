@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Button, Col, Image, Row, Well } from 'react-bootstrap';
+import { Alert, Button, Col, Image, Row, Well } from 'react-bootstrap';
 // import "./Datasets.css";
 
 class Projects extends Component {
@@ -78,7 +78,9 @@ class Projects extends Component {
       data = <div className="info loading">Loading projects...</div>;
     } else if (sdisStatus === 'error') {
       data = (
-        <div className="info error">
+        <Alert bsStyle="danger">
+          <strong>Error loading data.</strong>
+          <br />
           Please install the following browser extension to view SDIS projects:
           <Button
             bsStyle="link"
@@ -92,12 +94,21 @@ class Projects extends Component {
           >
             Chrome
           </Button>
-        </div>
+        </Alert>
       );
     }
     return (
       <div>
-        {data}
+        <Row>
+          <Col xs={12} md={8} mdOffset={2}>
+            This is an example list of projects maintained in SDIS.
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={8} mdOffset={2}>
+            {data}
+          </Col>
+        </Row>
       </div>
     );
   }

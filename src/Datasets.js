@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 import {
+  Alert,
   Button,
   Col,
   Glyphicon,
@@ -99,14 +100,27 @@ class Datasets extends Component {
       data = <div className="info loading">Loading public datasets...</div>;
     } else if (ckanStatus === 'error') {
       data = (
-        <div className="info error">
-          Error while loading public datasets. Try again later.
-        </div>
+        <Alert bsStyle="danger">
+          <strong>Error loading data.</strong>
+          <br />
+          Something went wrong when fetching data from the data catalogue.
+        </Alert>
       );
     }
     return (
       <div>
-        {data}
+        <Row>
+          <Col xs={12} md={8} mdOffset={2}>
+            This is an example list of datasets listed on the data catalogue.
+            This could be a list of research information sheets, or some example
+            datasets.
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={8} mdOffset={2}>
+            {data}
+          </Col>
+        </Row>
       </div>
     );
   }
