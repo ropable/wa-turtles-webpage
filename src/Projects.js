@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Col, Image, Link, Row, Well } from 'react-bootstrap';
+import { Button, Col, Image, Row, Well } from 'react-bootstrap';
 // import "./Datasets.css";
 
 class Projects extends Component {
@@ -80,16 +80,18 @@ class Projects extends Component {
       data = (
         <div className="info error">
           Please install the following browser extension to view SDIS projects:
-          <p>
-            <Link to="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/">
-              Firefox
-            </Link>
-          </p>
-          <p>
-            <Link to="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en">
-              Chrome
-            </Link>
-          </p>
+          <Button
+            bsStyle="link"
+            href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/"
+          >
+            Firefox
+          </Button>
+          <Button
+            bsStyle="link"
+            href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
+          >
+            Chrome
+          </Button>
         </div>
       );
     }
