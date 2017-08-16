@@ -12,10 +12,3 @@ it('renders without crashing', () => {
 it('renders without crashing', () => {
   shallow(<App />);
 });
-
-it('renders welcome message', () => {
-  const wrapper = shallow(<App />);
-  const welcome = <h1>Turtles WA</h1>;
-  //expect(wrapper.contains(welcome)).toEqual(true);
-  expect(wrapper).toContainReact(welcome); // jest-enzyme
-});

@@ -4,13 +4,10 @@ Prototype of a web page for WA Turtles.
 
 # Maintainer docs
 
-* Clone repo
-* npm install
-* npm run build
+* clone repo
+* npm run deploy
 * serve -C -p PORT -s build &
-
-Reverse proxy PORT.
-
+* reverse proxy PORT
 
 # Developer docs
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
