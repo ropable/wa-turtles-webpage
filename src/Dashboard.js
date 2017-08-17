@@ -18,8 +18,8 @@ class Dashboard extends Component {
           <Row>
             <Col
               xs={12}
-              md={4}
-              mdOffset={0}
+              lg={4}
+              lgOffset={0}
               className="push500"
               xsHidden
               mdHidden

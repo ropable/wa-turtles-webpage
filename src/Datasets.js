@@ -13,7 +13,6 @@ import {
   Row,
   Well
 } from 'react-bootstrap';
-// import "./Datasets.css";
 
 class Datasets extends Component {
   constructor(props) {
@@ -108,11 +107,17 @@ class Datasets extends Component {
       );
     } else if (ckanStatus === 'error') {
       data = (
-        <Alert bsStyle="danger">
-          <strong>Error loading data.</strong>
-          <br />
-          Something went wrong when fetching data from the data catalogue.
-        </Alert>
+        <Grid>
+          <Row>
+            <Col xs={12} md={12}>
+              <Alert bsStyle="danger">
+                <strong>Error loading data.</strong>
+                <br />
+                Something went wrong when fetching data from the data catalogue.
+              </Alert>
+            </Col>
+          </Row>
+        </Grid>
       );
     }
     return (
