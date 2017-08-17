@@ -6,6 +6,7 @@ import {
   Button,
   Col,
   Glyphicon,
+  Grid,
   ListGroup,
   ListGroupItem,
   Panel,
@@ -49,7 +50,7 @@ class Datasets extends Component {
       });
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this._get_datasets();
   }
 
@@ -59,8 +60,7 @@ class Datasets extends Component {
 
     if (ckanStatus === 'loaded') {
       data = (
-        <div>
-          <h2>Datasets</h2>
+        <Grid>
           {datasets.map(function(ds) {
             return (
               <Well key={ds.id}>
@@ -94,10 +94,18 @@ class Datasets extends Component {
               </Well>
             );
           })}
-        </div>
+        </Grid>
       );
     } else if (ckanStatus === 'loading') {
-      data = <div className="info loading">Loading public datasets...</div>;
+      data = (
+        <Grid>
+          <Row>
+            <Col xs={12} md={12}>
+              <Alert bsStyle="info">Loading datasets...</Alert>
+            </Col>
+          </Row>
+        </Grid>
+      );
     } else if (ckanStatus === 'error') {
       data = (
         <Alert bsStyle="danger">
@@ -109,18 +117,18 @@ class Datasets extends Component {
     }
     return (
       <div>
-        <Row>
-          <Col xs={12} md={8} mdOffset={2}>
-            This is an example list of datasets listed on the data catalogue.
-            This could be a list of research information sheets, or some example
-            datasets.
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={8} mdOffset={2}>
-            {data}
-          </Col>
-        </Row>
+        <Grid>
+          <Row>
+            <Col xs={12} md={12}>
+              <Alert bsStyle="info">
+                This is an example list of datasets listed on the data
+                catalogue. This could be a list of research information sheets,
+                or some example datasets.
+              </Alert>
+            </Col>
+          </Row>
+        </Grid>
+        {data}
       </div>
     );
   }

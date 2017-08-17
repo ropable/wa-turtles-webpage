@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Image, Navbar, Nav, NavItem } from 'react-bootstrap';
+import logo from './turtle-logo.jpg';
 
 class Navigation extends Component {
   render() {
@@ -11,7 +12,13 @@ class Navigation extends Component {
         <Navbar collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Turtles WA</Link>
+              <Link to="/">
+                <Image
+                  src={logo}
+                  className="logo"
+                  alt="North West Shelf Flatbacks"
+                />
+              </Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>

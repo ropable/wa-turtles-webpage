@@ -1,20 +1,35 @@
 // @flow
 import React, { Component } from 'react';
-import { Grid, Jumbotron, Well, Row, Col } from 'react-bootstrap';
+import { Grid, Well, Row, Col } from 'react-bootstrap';
 
 class Dashboard extends Component {
   render() {
     return (
-      <div>
+      <Grid>
         <Row>
-          <Col xs={6} md={3} mdOffset={6}>
+          <Col xs={12} md={4} mdOffset={0}>
             <Well>
-              <p>Shiny stuff to spark interest: map, image carousel, videos</p>
-              <p>Call to action: choose audience group</p>
+              <h1>Explore</h1>
+              <p>"what's to know"</p>
+              <p>General public, schools, tourists</p>
+            </Well>
+          </Col>
+          <Col xs={12} md={4}>
+            <Well>
+              <h1>Learn</h1>
+              <p>"I seek info on..."</p>
+              <p>Committees, industry, researchers, students</p>
+            </Well>
+          </Col>
+          <Col xs={12} md={4}>
+            <Well>
+              <h1>Interact</h1>
+              <p>"I provide and consume data"</p>
+              <p>Volunteers, industry, researchers</p>
             </Well>
           </Col>
         </Row>
-      </div>
+      </Grid>
     );
   }
 }

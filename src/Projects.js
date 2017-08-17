@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Alert, Button, Col, Image, Row, Well } from 'react-bootstrap';
+import { Alert, Button, Col, Grid, Image, Row, Well } from 'react-bootstrap';
 // import "./Datasets.css";
 
 class Projects extends Component {
@@ -48,8 +48,7 @@ class Projects extends Component {
     if (sdisStatus === 'loaded') {
       var leftPad = (s, c, n) => c.repeat(n - s.length) + s;
       data = (
-        <div>
-          <h2>Projects</h2>
+        <Grid>
           {projects.map(function(pro) {
             return (
               <Well key={pro.id.toString()}>
@@ -72,43 +71,58 @@ class Projects extends Component {
               </Well>
             );
           })}
-        </div>
+        </Grid>
       );
     } else if (sdisStatus === 'loading') {
-      data = <div className="info loading">Loading projects...</div>;
+      data = (
+        <Grid>
+          <Row>
+            <Col xs={12} md={12}>
+              <Alert bsStyle="info">Loading projects...</Alert>
+            </Col>
+          </Row>
+        </Grid>
+      );
     } else if (sdisStatus === 'error') {
       data = (
-        <Alert bsStyle="danger">
-          <strong>Error loading data.</strong>
-          <br />
-          Please install the following browser extension to view SDIS projects:
-          <Button
-            bsStyle="link"
-            href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/"
-          >
-            Firefox
-          </Button>
-          <Button
-            bsStyle="link"
-            href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
-          >
-            Chrome
-          </Button>
-        </Alert>
+        <Grid>
+          <Row>
+            <Col xs={12} md={12}>
+              <Alert bsStyle="danger">
+                <strong>Error loading data.</strong>
+                <br />
+                Please install the following browser extension to view SDIS
+                projects:
+                <Button
+                  bsStyle="link"
+                  href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/"
+                >
+                  Firefox
+                </Button>
+                <Button
+                  bsStyle="link"
+                  href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
+                >
+                  Chrome
+                </Button>
+              </Alert>
+            </Col>
+          </Row>
+        </Grid>
       );
     }
     return (
       <div>
-        <Row>
-          <Col xs={12} md={8} mdOffset={2}>
-            This is an example list of projects maintained in SDIS.
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={8} mdOffset={2}>
-            {data}
-          </Col>
-        </Row>
+        <Grid>
+          <Row>
+            <Col xs={12} md={12}>
+              <Alert bsStyle="info">
+                This is an example list of projects maintained in SDIS.
+              </Alert>
+            </Col>
+          </Row>
+        </Grid>
+        {data}
       </div>
     );
   }
