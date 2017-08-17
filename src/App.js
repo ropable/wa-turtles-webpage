@@ -17,7 +17,6 @@ class App extends Component {
           <Route exact path="/" component={Dashboard} />
           <Route path="/datasets" component={Datasets} />
           <Route path="/projects" component={Projects} />
-          <div className="push" />
           <Footer />
         </div>
       </BrowserRouter>

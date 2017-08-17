@@ -9,7 +9,7 @@ class Navigation extends Component {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect>
+        <Navbar collapseOnSelect fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">

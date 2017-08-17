@@ -33,31 +33,44 @@
   }
 }
 
-html,
-body {
+html {
   height: 100%;
 }
 
-/* Wrapper for page content to push down footer */
-.push {
-  height: inherit;
-  min-height: 100% !important;
-}
-
-#root {
-  height: auto;
-  min-height: 100%;
+body {
+  height: 100%;
   background-image: url('./green_hatchling.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
+/* Wrapper for page content to push down footer */
+.push300 {
+  height: 300px;
+}
 
-.navbar {
-  position: relative;
+.push500 {
+  height: 500px;
+}
+
+#root {
+  height: 100%;
+  min-height: 100%;
+}
+
+#wrap {
+  height: 100%;
+  min-height: 100%;
+  /*margin-top: 50px;*/
+  margin-bottom: 50px;
+}
+
+.content {
+  margin-top: 70px;
 }
 
 .navbar-brand {
-  padding: 0;
+  padding-left: 15px;
+  padding-top: 0px;
 }
 
 /* Transparent Navbar */
@@ -67,25 +80,10 @@ body {
   box-shadow: none;
 }
 
-/* Navbar brand */
-.navbar-default .navbar-brand {
-  color: black;
-}
-
 /* Transparent Well */
 .well {
   background-color: #fff;
   opacity: 0.85;
-}
-
-/* Fixed height footer */
-.footer {
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 40px;
-  background-color: #f5f5f5;
 }
 
 /* Hspace between Footer items*/
