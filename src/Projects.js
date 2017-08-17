@@ -112,7 +112,7 @@ class Projects extends Component {
       );
     }
     return (
-      <div>
+      <div className="content">
         <Grid>
           <Row>
             <Col xs={12} md={12}>
