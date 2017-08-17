@@ -20,7 +20,7 @@ class Dashboard extends Component {
               xs={12}
               md={4}
               mdOffset={0}
-              // className="push500"
+              className="push500"
               xsHidden
               mdHidden
             />
