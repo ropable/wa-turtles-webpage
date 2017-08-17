@@ -1,9 +1,17 @@
 // @flow
 import React, { Component } from 'react';
 import { Grid, Well, Row, Col } from 'react-bootstrap';
+import YouTube from 'react-youtube';
 
 class Dashboard extends Component {
   render() {
+    const opts = {
+      height: 'auto',
+      width: '100%',
+      playerVars: {
+        autoplay: 0
+      }
+    };
     return (
       <Grid>
         <Row>
@@ -11,6 +19,7 @@ class Dashboard extends Component {
             <Well>
               <h1>Explore</h1>
               <p>"what's to know"</p>
+              <YouTube videoId="XbCWIZ3wlQA" opts={opts} />
               <p>General public, schools, tourists</p>
             </Well>
           </Col>
