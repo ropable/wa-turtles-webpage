@@ -56,10 +56,12 @@ class Datasets extends Component {
   render() {
     const { datasets, ckanStatus } = this.state;
     let data = null;
+    let message = '';
+    let bsStyle = 'info';
 
     if (ckanStatus === 'loaded') {
       data = (
-        <Grid>
+        <div>
           {datasets.map(function(ds) {
             return (
               <Well key={ds.id}>
@@ -93,47 +95,26 @@ class Datasets extends Component {
               </Well>
             );
           })}
-        </Grid>
+        </div>
       );
     } else if (ckanStatus === 'loading') {
-      data = (
-        <Grid>
-          <Row>
-            <Col xs={12} md={12}>
-              <Alert bsStyle="info">Loading datasets...</Alert>
-            </Col>
-          </Row>
-        </Grid>
-      );
+      message = <span>"Loading projects..."</span>;
     } else if (ckanStatus === 'error') {
-      data = (
-        <Grid>
-          <Row>
-            <Col xs={12} md={12}>
-              <Alert bsStyle="danger">
-                <strong>Error loading data.</strong>
-                <br />
-                Something went wrong when fetching data from the data catalogue.
-              </Alert>
-            </Col>
-          </Row>
-        </Grid>
-      );
+      bsStyle = 'danger';
+      message = <span>Error loading data, try again later.</span>;
     }
     return (
       <div className="content">
         <Grid>
           <Row>
             <Col xs={12} md={12}>
-              <Alert bsStyle="info">
-                This is an example list of datasets listed on the data
-                catalogue. This could be a list of research information sheets,
-                or some example datasets.
+              <Alert bsStyle={bsStyle}>
+                {message}
               </Alert>
             </Col>
           </Row>
+          {data}
         </Grid>
-        {data}
       </div>
     );
   }

@@ -50,8 +50,11 @@ class Projects extends Component {
   render() {
     const { projects, sdisStatus, filterText } = this.state;
     let data = [];
+    let message = '';
+    let bsStyle = 'info';
 
     if (sdisStatus === 'loaded') {
+      let rows = [];
       projects
         .filter(
           project =>
@@ -64,57 +67,10 @@ class Projects extends Component {
               : project
         )
         .forEach(project => {
-          data.push(<ProjectRow project={project} key={project.id} />);
+          rows.push(<ProjectRow project={project} key={project.id} />);
         });
-    } else if (sdisStatus === 'loading') {
-      data = (
-        <Grid>
-          <Row>
-            <Col xs={12} md={12}>
-              <Alert bsStyle="info">Loading projects...</Alert>
-            </Col>
-          </Row>
-        </Grid>
-      );
-    } else if (sdisStatus === 'error') {
-      data = (
-        <Grid>
-          <Row>
-            <Col xs={12} md={12}>
-              <Alert bsStyle="danger">
-                <strong>Error loading data.</strong>
-                <br />
-                Please install the following browser extension to view SDIS
-                projects:
-                <Button
-                  bsStyle="link"
-                  href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/"
-                >
-                  Firefox
-                </Button>
-                <Button
-                  bsStyle="link"
-                  href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
-                >
-                  Chrome
-                </Button>
-              </Alert>
-            </Col>
-          </Row>
-        </Grid>
-      );
-    }
-    return (
-      <div className="content">
-        <Grid>
-          <Row>
-            <Col xs={12} md={12}>
-              <Alert bsStyle="info">
-                This is an example list of projects maintained in SDIS.
-              </Alert>
-            </Col>
-          </Row>
-
+      data =
+        (
           <Row>
             <Col xs={12} md={12}>
               <SearchBar
@@ -123,9 +79,41 @@ class Projects extends Component {
               />
             </Col>
           </Row>
+        ) + rows;
+    } else if (sdisStatus === 'loading') {
+      message = <span>"Loading projects..."</span>;
+    } else if (sdisStatus === 'error') {
+      bsStyle = 'danger';
+      message = (
+        <span>
+          Please install the following browser extension to view SDIS projects:
+          <Button
+            bsStyle="link"
+            href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/"
+          >
+            Firefox
+          </Button>
+          <Button
+            bsStyle="link"
+            href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
+          >
+            Chrome
+          </Button>
+        </span>
+      );
+    }
+    return (
+      <div className="content">
+        <Grid>
+          <Row>
+            <Col xs={12} md={12}>
+              <Alert bsStyle={bsStyle}>
+                {message}
+              </Alert>
+            </Col>
+          </Row>
+          {data}
         </Grid>
-
-        {data}
       </div>
     );
   }
