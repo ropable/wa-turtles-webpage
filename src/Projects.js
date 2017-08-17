@@ -1,15 +1,21 @@
 // @flow
 import React, { Component } from 'react';
-import { Alert, Button, Col, Grid, Image, Row, Well } from 'react-bootstrap';
-// import "./Datasets.css";
+import { Alert, Button, Col, Grid, Row } from 'react-bootstrap';
+import ProjectRow from './ProjectRow';
+import SearchBar from './SearchBar';
 
 class Projects extends Component {
   constructor(props) {
     super(props);
     this.state = {
       projects: null,
-      sdisStatus: 'loading'
+      sdisStatus: 'loading',
+      filterText: ''
     };
+    this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
+  }
+  handleFilterTextInput(filterText) {
+    this.setState({ filterText: filterText });
   }
 
   _get_projects = projects => {
@@ -37,42 +43,29 @@ class Projects extends Component {
       });
   };
 
-  componentDidMount() {
+  componentWillMount() {
     this._get_projects();
   }
 
   render() {
-    const { projects, sdisStatus } = this.state;
-    let data = null;
+    const { projects, sdisStatus, filterText } = this.state;
+    let data = [];
 
     if (sdisStatus === 'loaded') {
-      var leftPad = (s, c, n) => c.repeat(n - s.length) + s;
-      data = (
-        <Grid>
-          {projects.map(function(pro) {
-            return (
-              <Well key={pro.id.toString()}>
-                <Row>
-                  <Col xsHidden md={4}>
-                    <Image
-                      src={'https://sdis.dpaw.wa.gov.au/media/' + pro.image}
-                      responsive
-                      rounded
-                    />
-                  </Col>
-                  <Col xs={12} md={8}>
-                    <h3>
-                      {pro.year}-{leftPad(pro.number, '0', 3)}{' '}
-                      {pro.title.replace(/<\/?[a-z][a-z0-9]*[^<>]*>/gi, '')}
-                    </h3>
-                    {pro.tagline.replace(/<\/?[a-z][a-z0-9]*[^<>]*>/gi, '')}
-                  </Col>
-                </Row>
-              </Well>
-            );
-          })}
-        </Grid>
-      );
+      projects
+        .filter(
+          project =>
+            filterText
+              ? project.title.toLowerCase().indexOf(filterText.toLowerCase()) >
+                  -1 ||
+                project.tagline
+                  .toLowerCase()
+                  .indexOf(filterText.toLowerCase()) > -1
+              : project
+        )
+        .forEach(project => {
+          data.push(<ProjectRow project={project} key={project.id} />);
+        });
     } else if (sdisStatus === 'loading') {
       data = (
         <Grid>
@@ -121,7 +114,17 @@ class Projects extends Component {
               </Alert>
             </Col>
           </Row>
+
+          <Row>
+            <Col xs={12} md={12}>
+              <SearchBar
+                filterText={this.state.filterText}
+                onFilterTextInput={this.handleFilterTextInput}
+              />
+            </Col>
+          </Row>
         </Grid>
+
         {data}
       </div>
     );

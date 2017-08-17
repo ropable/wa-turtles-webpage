@@ -1,6 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+// import { applyMiddleware, createStore, compose } from "redux";
+// import { offline } from "redux-offline";
+// import offlineConfig from "redux-offline/lib/defaults";
+
 import './App.css';
 import Navigation from './Navigation';
 import Dashboard from './Dashboard';
