@@ -6,7 +6,12 @@ import Dashboard from './Dashboard';
 
 it('renders welcome message', () => {
   const wrapper = shallow(<Dashboard />);
-  const welcome = <h1>Explore</h1>;
+  const welcome = (
+    <h1>
+      Explore &nbsp;
+      <small>and discover</small>
+    </h1>
+  );
   //expect(wrapper.contains(welcome)).toEqual(true);
   expect(wrapper).toContainReact(welcome); // jest-enzyme
 });

@@ -13,34 +13,50 @@ class Dashboard extends Component {
       }
     };
     return (
-      <Grid>
-        <div className="push500" xsHidden />
-
-        <Row>
-          <Col xs={12} md={4} mdOffset={0}>
-            <Well>
-              <h1>Explore</h1>
-              <p>"what's to know"</p>
-              <YouTube videoId="XbCWIZ3wlQA" opts={opts} />
-              <p>General public, schools, tourists</p>
-            </Well>
-          </Col>
-          <Col xs={12} md={4}>
-            <Well>
-              <h1>Learn</h1>
-              <p>"I seek info on..."</p>
-              <p>Committees, industry, researchers, students</p>
-            </Well>
-          </Col>
-          <Col xs={12} md={4}>
-            <Well>
-              <h1>Interact</h1>
-              <p>"I provide and consume data"</p>
-              <p>Volunteers, industry, researchers</p>
-            </Well>
-          </Col>
-        </Row>
-      </Grid>
+      <div className="content">
+        <Grid>
+          <Row>
+            <Col
+              xs={12}
+              md={4}
+              mdOffset={0}
+              // className="push500"
+              xsHidden
+              mdHidden
+            />
+          </Row>
+          <Row>
+            <Col xs={12} md={4} mdOffset={0}>
+              <Well>
+                <h1>
+                  Explore &nbsp;
+                  <small>and discover</small>
+                </h1>
+                <YouTube videoId="XbCWIZ3wlQA" opts={opts} />
+                <p>General public, schools, tourists</p>
+              </Well>
+            </Col>
+            <Col xs={12} md={4}>
+              <Well>
+                <h1>
+                  Learn &nbsp;
+                  <small>seek information</small>
+                </h1>
+                <p>Committees, industry, researchers, students</p>
+              </Well>
+            </Col>
+            <Col xs={12} md={4}>
+              <Well>
+                <h1>
+                  Interact &nbsp;
+                  <small>work with turtles</small>
+                </h1>
+                <p>Volunteers, industry, researchers</p>
+              </Well>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }
