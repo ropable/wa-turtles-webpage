@@ -62,8 +62,21 @@ body {
   opacity: 0.85;
 }
 
+.whitebg {
+  background-image: none;
+  background-color: #fff;
+  opacity: 1;
+}
+
 /* Footer */
 .credit {
   color: #fff;
   margin-right: 10px;
+}
+
+/* Leaflet */
+.leaflet-container {
+  height: 200px;
+  width: 100%;
+  margin: 0 auto;
 }

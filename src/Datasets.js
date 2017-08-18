@@ -1,18 +1,7 @@
 // @flow
 import React, { Component } from 'react';
-import ReactMarkdown from 'react-markdown';
-import {
-  Alert,
-  Button,
-  Col,
-  Glyphicon,
-  Grid,
-  ListGroup,
-  ListGroupItem,
-  Panel,
-  Row,
-  Well
-} from 'react-bootstrap';
+import { Alert, Col, Grid, Row } from 'react-bootstrap';
+import DatasetRow from './DatasetRow';
 
 class Datasets extends Component {
   constructor(props) {
@@ -27,7 +16,8 @@ class Datasets extends Component {
     const main = this;
     main.setState({ ckanStatus: 'loading' });
     var ckanApiUrl = 'https://data.dpaw.wa.gov.au/api/3/action/';
-    var url = ckanApiUrl + 'package_search?q=tags:public';
+    var url =
+      ckanApiUrl + 'package_search?q=groups:habitat-sampling-initiative';
 
     fetch(url)
       .then(function(response) {
@@ -55,68 +45,42 @@ class Datasets extends Component {
 
   render() {
     const { datasets, ckanStatus } = this.state;
-    let data = null;
-    let message = '';
-    let bsStyle = 'info';
 
     if (ckanStatus === 'loaded') {
-      data = (
-        <div>
-          {datasets.map(function(ds) {
-            return (
-              <Well key={ds.id}>
-                <Row>
-                  <Col xs={12} md={12}>
-                    <h3>
-                      {ds.title}
-                    </h3>
-                    <ReactMarkdown source={ds.notes} />
-
-                    <Panel collapsible header="Show resources">
-                      <ListGroup fill>
-                        {ds.resources.map(function(r) {
-                          return (
-                            <ListGroupItem key={r.id}>
-                              <Button bsStyle="link" href={r.url}>
-                                <Glyphicon glyph="download" />&nbsp;
-                                {r.name} ({r.format})
-                              </Button>
-                              <ReactMarkdown
-                                source={r.description}
-                                containerTagName="span"
-                              />
-                            </ListGroupItem>
-                          );
-                        })}
-                      </ListGroup>
-                    </Panel>
-                  </Col>
-                </Row>
-              </Well>
-            );
-          })}
+      return (
+        <div className="content">
+          <Grid>
+            {datasets.map(function(ds) {
+              return <DatasetRow dataset={ds} key={ds.id} />;
+            })}
+          </Grid>
         </div>
       );
     } else if (ckanStatus === 'loading') {
-      message = <span>"Loading datasets..."</span>;
+      return (
+        <div className="content">
+          <Grid>
+            <Row>
+              <Col xs={12} md={12}>
+                <Alert bsStyle="info">Loading data...</Alert>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+      );
     } else if (ckanStatus === 'error') {
-      bsStyle = 'danger';
-      message = 'Error loading data, try again later.';
+      return (
+        <div className="content">
+          <Grid>
+            <Row>
+              <Col xs={12} md={12}>
+                <Alert bsStyle="info">Error loading data.</Alert>
+              </Col>
+            </Row>
+          </Grid>
+        </div>
+      );
     }
-    return (
-      <div className="content">
-        <Grid>
-          <Row>
-            <Col xs={12} md={12}>
-              <Alert bsStyle={bsStyle}>
-                {message}
-              </Alert>
-            </Col>
-          </Row>
-          {data}
-        </Grid>
-      </div>
-    );
   }
 }
 

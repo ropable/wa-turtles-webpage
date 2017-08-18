@@ -1,9 +1,8 @@
 // @flow
 import React, { Component } from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Alert, Col, Grid, Row } from 'react-bootstrap';
 import ProjectRow from './ProjectRow';
 import SearchBar from './SearchBar';
-import AlertRow from './AlertRow';
 
 class Projects extends Component {
   constructor(props) {
@@ -86,7 +85,11 @@ class Projects extends Component {
       return (
         <div className="content">
           <Grid>
-            <AlertRow bsStyle="info" message="Loading projects..." />
+            <Row>
+              <Col xs={12} md={12}>
+                <Alert bsStyle="info">Loading data...</Alert>
+              </Col>
+            </Row>
           </Grid>
         </div>
       );
@@ -94,10 +97,11 @@ class Projects extends Component {
       return (
         <div className="content">
           <Grid>
-            <AlertRow
-              bsStyle="danger"
-              message="Error loading data, try again later."
-            />
+            <Row>
+              <Col xs={12} md={12}>
+                <Alert bsStyle="info">Error loading data.</Alert>
+              </Col>
+            </Row>
           </Grid>
         </div>
       );

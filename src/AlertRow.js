@@ -5,10 +5,8 @@ import { Alert, Col, Row } from 'react-bootstrap';
 class AlertRow extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      bsStyle: 'info',
-      message: ''
-    };
+    this.bsStyle = 'info';
+    this.message = '';
   }
 
   render() {

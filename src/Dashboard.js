@@ -9,14 +9,7 @@ class Dashboard extends Component {
       <div className="content">
         <Grid>
           <Row>
-            <Col
-              xs={12}
-              lg={4}
-              lgOffset={0}
-              className="push500"
-              xsHidden
-              mdHidden
-            />
+            <Col xs={12} lg={4} className="push500" xsHidden mdHidden />
           </Row>
           <Row>
             <Col xs={12} md={4} mdOffset={0}>
