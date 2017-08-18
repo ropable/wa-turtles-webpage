@@ -1,17 +1,10 @@
 // @flow
 import React, { Component } from 'react';
 import { Grid, Well, Row, Col } from 'react-bootstrap';
-import YouTube from 'react-youtube';
+import TurtleYoutube from './TurtleYoutube';
 
 class Dashboard extends Component {
   render() {
-    const opts = {
-      height: 'auto',
-      width: '100%',
-      playerVars: {
-        autoplay: 0
-      }
-    };
     return (
       <div className="content">
         <Grid>
@@ -28,29 +21,20 @@ class Dashboard extends Component {
           <Row>
             <Col xs={12} md={4} mdOffset={0}>
               <Well>
-                <h1>
-                  Explore &nbsp;
-                  <small>and discover</small>
-                </h1>
-                <YouTube videoId="XbCWIZ3wlQA" opts={opts} />
+                <h1>Explore</h1>
                 <p>General public, schools, tourists</p>
+                <TurtleYoutube />
               </Well>
             </Col>
             <Col xs={12} md={4}>
               <Well>
-                <h1>
-                  Learn &nbsp;
-                  <small>seek information</small>
-                </h1>
+                <h1>Learn</h1>
                 <p>Committees, industry, researchers, students</p>
               </Well>
             </Col>
             <Col xs={12} md={4}>
               <Well>
-                <h1>
-                  Interact &nbsp;
-                  <small>work with turtles</small>
-                </h1>
+                <h1>Interact</h1>
                 <p>Volunteers, industry, researchers</p>
               </Well>
             </Col>
