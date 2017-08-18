@@ -1,40 +1,45 @@
 // @flow
 import React, { Component } from 'react';
-import { Col, Row, Well } from 'react-bootstrap';
-// import "./Datasets.css";
+import { Button, Col, Thumbnail } from 'react-bootstrap';
+import logo from './green_hatchling.jpg';
 
 class ProjectRow extends Component {
   render() {
+    let imgsrc = this.props.project.image
+      ? 'https://sdis.dpaw.wa.gov.au/media/' + this.props.project.image
+      : logo;
     var leftPad = (s, c, n) => c.repeat(n - s.length) + s;
     return (
-      <Well>
-        <Row>
-          <Col xs={12} md={12}>
-            <h3>
-              {this.props.project.year}-{leftPad(
-                this.props.project.number,
-                '0',
-                3
-              )}{' '}
-              {this.props.project.title.replace(
-                /<\/?[a-z][a-z0-9]*[^<>]*>/gi,
-                ''
-              )}
-            </h3>
+      <Col xs={6} md={4}>
+        <Thumbnail
+          src={imgsrc}
+          alt={this.props.project.year - this.props.project.number}
+        >
+          <h4>
+            {this.props.project.year}-{leftPad(
+              this.props.project.number,
+              '0',
+              3
+            )}{' '}
+            {this.props.project.title.replace(
+              /<\/?[a-z][a-z0-9]*[^<>]*>/gi,
+              ''
+            )}
+          </h4>
+          <p>
             {this.props.project.tagline.replace(
               /<\/?[a-z][a-z0-9]*[^<>]*>/gi,
               ''
             )}
-          </Col>
-        </Row>
-      </Well>
+          </p>
+          <p>
+            <Button bsStyle="primary">View in SDIS</Button>&nbsp;
+            <Button bsStyle="default">Do other things</Button>
+          </p>
+        </Thumbnail>
+      </Col>
     );
   }
 }
 
 export default ProjectRow;
-// <Col xsHidden md={4}>
-// <Image src={"https://sdis.dpaw.wa.gov.au/media/" + this.props.project.image} responsive rounded />
-// </Col>
-// <Col xs={12} md={8}>
-// </Col>

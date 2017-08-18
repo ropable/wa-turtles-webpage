@@ -1,8 +1,9 @@
 // @flow
 import React, { Component } from 'react';
-import { Alert, Button, Col, Grid, Row } from 'react-bootstrap';
+import { Col, Grid, Row } from 'react-bootstrap';
 import ProjectRow from './ProjectRow';
 import SearchBar from './SearchBar';
+import AlertRow from './AlertRow';
 
 class Projects extends Component {
   constructor(props) {
@@ -49,9 +50,6 @@ class Projects extends Component {
 
   render() {
     const { projects, sdisStatus, filterText } = this.state;
-    let data = [];
-    let message = '';
-    let bsStyle = 'info';
 
     if (sdisStatus === 'loaded') {
       let rows = [];
@@ -69,53 +67,41 @@ class Projects extends Component {
         .forEach(project => {
           rows.push(<ProjectRow project={project} key={project.id} />);
         });
-      data =
-        (
-          <Row>
-            <Col xs={12} md={12}>
-              <SearchBar
-                filterText={this.state.filterText}
-                onFilterTextInput={this.handleFilterTextInput}
-              />
-            </Col>
-          </Row>
-        ) + rows;
+      return (
+        <div className="content">
+          <Grid>
+            <Row>
+              <Col xs={12} md={12}>
+                <SearchBar
+                  filterText={this.state.filterText}
+                  onFilterTextInput={this.handleFilterTextInput}
+                />
+              </Col>
+            </Row>
+            {rows}
+          </Grid>
+        </div>
+      );
     } else if (sdisStatus === 'loading') {
-      message = <span>"Loading projects..."</span>;
+      return (
+        <div className="content">
+          <Grid>
+            <AlertRow bsStyle="info" message="Loading projects..." />
+          </Grid>
+        </div>
+      );
     } else if (sdisStatus === 'error') {
-      bsStyle = 'danger';
-      message = (
-        <span>
-          Please install the following browser extension to view SDIS projects:
-          <Button
-            bsStyle="link"
-            href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/"
-          >
-            Firefox
-          </Button>
-          <Button
-            bsStyle="link"
-            href="https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en"
-          >
-            Chrome
-          </Button>
-        </span>
+      return (
+        <div className="content">
+          <Grid>
+            <AlertRow
+              bsStyle="danger"
+              message="Error loading data, try again later."
+            />
+          </Grid>
+        </div>
       );
     }
-    return (
-      <div className="content">
-        <Grid>
-          <Row>
-            <Col xs={12} md={12}>
-              <Alert bsStyle={bsStyle}>
-                {message}
-              </Alert>
-            </Col>
-          </Row>
-          {data}
-        </Grid>
-      </div>
-    );
   }
 }
 

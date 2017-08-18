@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Navbar } from 'react-bootstrap';
 import dbcalogo from './dbca_logo.svg';
-import ghlogo from './gh.webp';
+import ghlogo from './gh32.png';
 
 class Footer extends Component {
   render() {
