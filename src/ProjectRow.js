@@ -26,7 +26,7 @@ class ProjectRow extends Component {
     );
 
     return (
-      <Col xs={6} md={4}>
+      <Col xs={12} md={6} lg={4}>
         <Thumbnail src={imgsrc} alt={alttext}>
           <h4>
             {project_title}

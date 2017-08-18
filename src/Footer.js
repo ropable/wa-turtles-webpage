@@ -19,13 +19,11 @@ class Footer extends Component {
               />
             </Link>
           </span>
-
           <span className="text-muted credit">
             <Link to="https://github.com/parksandwildlife/wa-turtles-webpage">
               <Image src={ghlogo} alt="GitHub" />
             </Link>
           </span>
-
           <span className="text-muted credit">
             <Link to="https://travis-ci.org/parksandwildlife/wa-turtles-webpage">
               <Image
