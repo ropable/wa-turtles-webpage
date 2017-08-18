@@ -19,16 +19,16 @@ class SearchBar extends Component {
       <Grid>
         <Row>
           <Col xs={12} md={6}>
-            <p>
-              <form>
+            <form>
+              <p>
                 <input
                   type="text"
                   placeholder="Search title or tagline..."
                   value={this.props.filterText}
                   onChange={this.handleFilterTextInputChange}
                 />
-              </form>
-            </p>
+              </p>
+            </form>
           </Col>
         </Row>
       </Grid>

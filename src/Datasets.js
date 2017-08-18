@@ -98,10 +98,10 @@ class Datasets extends Component {
         </div>
       );
     } else if (ckanStatus === 'loading') {
-      message = <span>"Loading projects..."</span>;
+      message = <span>"Loading datasets..."</span>;
     } else if (ckanStatus === 'error') {
       bsStyle = 'danger';
-      message = <span>Error loading data, try again later.</span>;
+      message = 'Error loading data, try again later.';
     }
     return (
       <div className="content">
