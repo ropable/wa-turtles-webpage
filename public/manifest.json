@@ -1,11 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Flatbacks WA",
+  "name": "North West Shelf Flatbacks WA",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "192x192",
       "type": "image/png"
+    },
+    {
+      "src": "icon512.ico",
+      "sizes": "512x512",
+      "type": "image/webp"
     }
   ],
   "start_url": "./index.html",
