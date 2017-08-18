@@ -1,6 +1,6 @@
 {
   "name": "turtle-webpage",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.7",
@@ -28,10 +28,7 @@
     "redux-offline": "^2.0.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
