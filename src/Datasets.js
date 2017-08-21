@@ -1,23 +1,34 @@
 // @flow
-import React, { Component } from 'react';
-import { Alert, Col, Grid, Row } from 'react-bootstrap';
+import * as React from 'react';
+import { Grid } from 'react-bootstrap';
 import DatasetRow from './DatasetRow';
+import AlertRow from './AlertRow';
 
-class Datasets extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      datasets: null,
-      ckanStatus: 'loading'
-    };
-  }
+type Props = {
+  ckanApiUrl: string
+};
+
+type State = {
+  datasets: React.ChildrenArray<string>,
+  ckanStatus: string
+};
+
+class Datasets extends React.Component<Props, State> {
+  static defaultProps = {
+    ckanApiUrl: 'https://data.dpaw.wa.gov.au/api/3/action/'
+  };
+
+  state = {
+    datasets: [],
+    ckanStatus: 'loading'
+  };
 
   _get_datasets = datasets => {
     const main = this;
     main.setState({ ckanStatus: 'loading' });
-    var ckanApiUrl = 'https://data.dpaw.wa.gov.au/api/3/action/';
     var url =
-      ckanApiUrl + 'package_search?q=groups:habitat-sampling-initiative';
+      main.props.ckanApiUrl +
+      'package_search?q=groups:habitat-sampling-initiative';
 
     fetch(url)
       .then(function(response) {
@@ -39,7 +50,7 @@ class Datasets extends Component {
       });
   };
 
-  componentWillMount() {
+  componentDidMount() {
     this._get_datasets();
   }
 
@@ -57,29 +68,9 @@ class Datasets extends Component {
         </div>
       );
     } else if (ckanStatus === 'loading') {
-      return (
-        <div className="content">
-          <Grid>
-            <Row>
-              <Col xs={12} md={12}>
-                <Alert bsStyle="info">Loading data...</Alert>
-              </Col>
-            </Row>
-          </Grid>
-        </div>
-      );
+      return <AlertRow />;
     } else if (ckanStatus === 'error') {
-      return (
-        <div className="content">
-          <Grid>
-            <Row>
-              <Col xs={12} md={12}>
-                <Alert bsStyle="info">Error loading data.</Alert>
-              </Col>
-            </Row>
-          </Grid>
-        </div>
-      );
+      return <AlertRow bsStyle="danger" message="Error loading data." />;
     }
   }
 }

@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 // import { applyMiddleware, createStore, compose } from "redux";
 // import { offline } from "redux-offline";
@@ -12,7 +12,7 @@ import Datasets from './Datasets';
 import Projects from './Projects';
 import Footer from './Footer';
 
-class App extends Component {
+class App extends React.Component<{}> {
   render() {
     return (
       <BrowserRouter>

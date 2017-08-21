@@ -1,8 +1,8 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import YouTube from 'react-youtube';
 
-class TurtleYoutube extends Component {
+class TurtleYoutube extends React.Component<{}> {
   render() {
     const opts = {
       height: 'auto',

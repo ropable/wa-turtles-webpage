@@ -5,7 +5,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "enzyme": "^2.9.1",
-    "flow-bin": "^0.52.0",
+    "flow-bin": "^0.53.1",
     "husky": "^0.14.3",
     "jest-enzyme": "^3.7.0",
     "leaflet": "^1.2.0",
@@ -13,6 +13,7 @@
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.0.2",
     "prettier": "^1.5.3",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.2",
     "react-dom": "^15.6.1",
@@ -28,7 +29,10 @@
     "redux-offline": "^2.0.0"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
@@ -44,6 +48,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "prop-types": "^15.5.10",
     "sw-precache": "^5.2.0",
     "sw-precache-webpack-plugin": "^0.11.4"
   }

@@ -1,23 +1,31 @@
 // @flow
-import React, { Component } from 'react';
-import { Alert, Col, Row } from 'react-bootstrap';
+import * as React from 'react';
+import { Alert, Col, Grid, Row } from 'react-bootstrap';
 
-class AlertRow extends Component {
-  constructor(props) {
-    super(props);
-    this.bsStyle = 'info';
-    this.message = '';
-  }
+type Props = {
+  bsStyle: string,
+  message: string
+};
+
+class AlertRow extends React.Component<Props> {
+  static defaultProps = {
+    bsStyle: 'info',
+    message: 'Loading data, hang tight...'
+  };
 
   render() {
     return (
-      <Row>
-        <Col xs={12} md={12}>
-          <Alert bsStyle={this.bsStyle}>
-            {this.message}
-          </Alert>
-        </Col>
-      </Row>
+      <div className="content">
+        <Grid>
+          <Row>
+            <Col xs={12} md={12}>
+              <Alert bsStyle={this.props.bsStyle}>
+                {this.props.message}
+              </Alert>
+            </Col>
+          </Row>
+        </Grid>
+      </div>
     );
   }
 }

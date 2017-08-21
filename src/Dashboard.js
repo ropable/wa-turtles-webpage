@@ -1,9 +1,9 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Grid, Well, Row, Col } from 'react-bootstrap';
 import TurtleYoutube from './TurtleYoutube';
 
-class Dashboard extends Component {
+class Dashboard extends React.Component<{}> {
   render() {
     return (
       <div className="content">

@@ -1,4 +1,7 @@
 [ignore]
+.*/node_modules/react-event-listener/.*
+.*/node_modules/redux-offline/.*
+.*/node_modules/radium/.*
 
 [include]
 

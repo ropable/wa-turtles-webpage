@@ -6,11 +6,12 @@ import logo from './green_hatchling.jpg';
 class ProjectRow extends Component {
   render() {
     const pro = this.props.project;
-    const sdisUrl = 'https://sdis.dpaw.wa.gov.au';
-    let imgsrc = pro.image ? sdisUrl + '/media/' + pro.image : logo;
-    function markDangerous(cantBelieveItsNotHtml) {
-      return { __html: cantBelieveItsNotHtml };
-    }
+    const imgsrc = pro.image
+      ? this.props.sdisUrl + '/media/' + pro.image
+      : logo;
+    const wrapHTML = htmlString => {
+      return { __html: htmlString };
+    };
 
     return (
       <Col xs={12} md={6} lg={4}>
@@ -25,12 +26,12 @@ class ProjectRow extends Component {
             <Glyphicon glyph="user" /> {pro.team_list_plain}
           </p>
           <Panel collapsible header={pro.tagline_plain}>
-            <span dangerouslySetInnerHTML={markDangerous(pro.comments)} />
+            <span dangerouslySetInnerHTML={wrapHTML(pro.comments)} />
           </Panel>
           <Button
             bsStyle="primary"
             bsSize="xsmall"
-            href={sdisUrl + pro.absolute_url}
+            href={this.props.sdisUrl + pro.absolute_url}
           >
             View in SDIS
           </Button>&nbsp;

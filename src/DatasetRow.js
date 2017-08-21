@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import Leaflet from 'leaflet';
 import { Map, TileLayer, GeoJSON } from 'react-leaflet';
@@ -9,21 +9,34 @@ import ResourceRow from './ResourceRow';
 Leaflet.Icon.Default.imagePath =
   '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/images/';
 
-class DatasetRow extends Component {
-  constructor() {
-    super();
-    this.state = {
-      lat: -25,
-      lng: 125,
-      zoom: 3
-    };
-  }
+type Props = {
+  dataset: array,
+  attr: string,
+  mapurl: string
+};
+
+type State = {
+  lat: number,
+  lng: number,
+  zoom: number
+};
+
+class DatasetRow extends React.Component<Props, State> {
+  static defaultProps = {
+    attr: 'Tiles &copy; Esri &mdash; Source: Esri et al.',
+    mapurl:
+      'http://server.arcgisonline.com/ArcGIS/rest/services/' +
+      'World_Imagery/MapServer/tile/{z}/{y}/{x}'
+  };
+
+  state = {
+    lat: -25,
+    lng: 125,
+    zoom: 3
+  };
 
   render() {
     let ds = this.props.dataset;
-    let attr = 'Tiles &copy; Esri &mdash; Source: Esri et al.';
-    let mapurl =
-      'http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
     const position = [this.state.lat, this.state.lng];
     let geojson_geometry = ds.spatial
       ? JSON.parse(ds.spatial)
@@ -46,7 +59,7 @@ class DatasetRow extends Component {
       <Col xs={12} md={6} lg={4}>
         <Well className="whitebg">
           <Map center={position} zoom={this.state.zoom}>
-            <TileLayer attribution={attr} url={mapurl} />
+            <TileLayer attribution={this.props.attr} url={this.props.mapurl} />
             <GeoJSON ref={ds.id} data={geojson_geometry} />
           </Map>
 

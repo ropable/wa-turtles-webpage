@@ -1,8 +1,12 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 
-class SearchBar extends Component {
+type Props = {
+  filterText: string
+};
+
+class SearchBar extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(
@@ -10,7 +14,11 @@ class SearchBar extends Component {
     );
   }
 
-  handleFilterTextInputChange(e) {
+  static defaultProps = {
+    filterString: ''
+  };
+
+  handleFilterTextInputChange(e: SyntheticInputEvent<>) {
     this.props.onFilterTextInput(e.target.value);
   }
 

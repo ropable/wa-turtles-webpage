@@ -1,9 +1,13 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Button, Glyphicon, ListGroupItem } from 'react-bootstrap';
 
-class ResourceRow extends Component {
+type Props = {
+  resource: React.ChildrenArray<string>
+};
+
+class ResourceRow extends React.Component<Props> {
   render() {
     let r = this.props.resource;
     return (
