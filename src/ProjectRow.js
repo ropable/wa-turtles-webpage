@@ -1,6 +1,6 @@
 // @flow
 import React, { Component } from 'react';
-import { Button, Col, Glyphicon, Panel, Row, Thumbnail } from 'react-bootstrap';
+import { Button, Col, Glyphicon, Panel, Thumbnail } from 'react-bootstrap';
 import logo from './green_hatchling.jpg';
 
 class ProjectRow extends Component {
