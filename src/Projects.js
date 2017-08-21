@@ -56,9 +56,10 @@ class Projects extends Component {
         .filter(
           project =>
             filterText
-              ? project.title.toLowerCase().indexOf(filterText.toLowerCase()) >
-                  -1 ||
-                project.tagline
+              ? project.title_plain
+                  .toLowerCase()
+                  .indexOf(filterText.toLowerCase()) > -1 ||
+                project.tagline_plain
                   .toLowerCase()
                   .indexOf(filterText.toLowerCase()) > -1
               : project

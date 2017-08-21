@@ -1,43 +1,39 @@
 // @flow
 import React, { Component } from 'react';
-import { Button, Col, Thumbnail } from 'react-bootstrap';
+import { Button, Col, Glyphicon, Panel, Row, Thumbnail } from 'react-bootstrap';
 import logo from './green_hatchling.jpg';
 
 class ProjectRow extends Component {
   render() {
-    var leftPad = (s, c, n) => c.repeat(n - s.length) + s;
-
-    let imgsrc = this.props.project.image
-      ? 'https://sdis.dpaw.wa.gov.au/media/' + this.props.project.image
-      : logo;
-    let alttext =
-      this.props.project.year.toString() +
-      '-' +
-      this.props.project.number.toString();
-    let project_title =
-      this.props.project.year.toString() +
-      '-' +
-      leftPad(this.props.project.number, '0', 3) +
-      ' ' +
-      this.props.project.title.replace(/<\/?[a-z][a-z0-9]*[^<>]*>/gi, '');
-    let project_tagline = this.props.project.tagline.replace(
-      /<\/?[a-z][a-z0-9]*[^<>]*>/gi,
-      ''
-    );
+    const pro = this.props.project;
+    const sdisUrl = 'https://sdis.dpaw.wa.gov.au';
+    let imgsrc = pro.image ? sdisUrl + '/media/' + pro.image : logo;
 
     return (
       <Col xs={12} md={6} lg={4}>
-        <Thumbnail src={imgsrc} alt={alttext}>
-          <h4>
-            {project_title}
-          </h4>
+        <Thumbnail src={imgsrc} alt={pro.project_type_year_number_plain}>
+          <h4>{pro.title_plain}</h4>
           <p>
-            {project_tagline}
+            <Glyphicon glyph="qrcode" />&nbsp;{pro.project_type_year_number_plain}
+            <br />
+            <Glyphicon glyph="wrench" />&nbsp;{pro.status_display}
+            <br />
+            <Glyphicon glyph="comment" />&nbsp;{pro.tagline_plain}
+            <br />
+            <Glyphicon glyph="user" />&nbsp;{pro.team_list_plain}
+            <br />
+            <Glyphicon glyph="home" />&nbsp;{pro.program}
           </p>
-          <p>
-            <Button bsStyle="primary">View in SDIS</Button>&nbsp;
-            <Button bsStyle="default">Do other things</Button>
-          </p>
+          <Panel collapsible header="Details">
+            <span dangerouslySetInnerHTML={pro.comments} />
+          </Panel>
+          <Button
+            bsStyle="primary"
+            bsSize="xsmall"
+            href={sdisUrl + pro.absolute_url}
+          >
+            View in SDIS
+          </Button>&nbsp;
         </Thumbnail>
       </Col>
     );
