@@ -20,9 +20,9 @@ class ProjectRow extends Component {
             <Glyphicon glyph="wrench" /> {pro.project_type_year_number_plain}{' '}
             {pro.status_display}
             <br />
-            <Glyphicon glyph="user" /> {pro.team_list_plain}
-            <br />
             <Glyphicon glyph="home" /> {pro.program}
+            <br />
+            <Glyphicon glyph="user" /> {pro.team_list_plain}
           </p>
           <Panel collapsible header={pro.tagline_plain}>
             <span dangerouslySetInnerHTML={markDangerous(pro.comments)} />

@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { Link } from 'react-router-dom';
 import Leaflet from 'leaflet';
 import { Map, TileLayer, GeoJSON } from 'react-leaflet';
 import { Col, Glyphicon, ListGroup, Panel, Well } from 'react-bootstrap';
@@ -55,17 +54,14 @@ class DatasetRow extends Component {
             {ds.title}
           </h4>
           <p>
-            <Glyphicon glyph="home" />&nbsp;{ds.organization.title}
+            <Glyphicon glyph="home" /> {ds.organization.title}
             <br />
-            <Glyphicon glyph="edit" />&nbsp;<Link to={ds.author_email}>
-              {ds.author}
-            </Link>
+            <Glyphicon glyph="edit" /> <a href={ds.author_email}>{ds.author}</a>
             <br />
-            <Glyphicon glyph="wrench" />&nbsp;<Link to={ds.maintainer_email}>
-              {ds.maintainer}
-            </Link>
+            <Glyphicon glyph="wrench" />{' '}
+            <a href={ds.maintainer_email}>{ds.maintainer}</a>
             <br />
-            <Glyphicon glyph="copyright-mark" />&nbsp;{ds.license_id}
+            <Glyphicon glyph="copyright-mark" /> {ds.license_id}
             <br />
             {ds.tags.map(function(tag) {
               return (
