@@ -3,6 +3,9 @@
 Prototype of a web page for WA Turtles.
 
 # Maintainer docs
+Internal project documentation is behind DBCA staff login at the
+[DBCA wiki](https://confluence.dpaw.wa.gov.au/display/MSIM/DBCA+homepage+integration).
+
 
 * clone repo
 * npm run deploy
