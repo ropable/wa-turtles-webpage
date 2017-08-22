@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Col, Grid, Row } from 'react-bootstrap';
 import ProjectRow from './ProjectRow';
 import SearchBar from './SearchBar';
-import AlertRow from './AlertRow';
+import AlertRow from '../AlertRow/AlertRow';
 
 type Props = {
   sdisUrl: string

@@ -1,0 +1,10 @@
+/* Content spacing */
+.push500 {
+  margin-top: 50%;
+}
+
+/* Transparent Well */
+.well {
+  background-color: #fff;
+  opacity: 0.85;
+}

@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react';
 import { Grid, Well, Row, Col } from 'react-bootstrap';
-import TurtleYoutube from './TurtleYoutube';
+import TurtleYoutube from '../TurtleYoutube/TurtleYoutube';
+import './Dashboard.css';
 
-class Dashboard extends React.Component<{}> {
+export default class Dashboard extends React.Component<{}> {
   render() {
     return (
       <div className="content">
@@ -37,5 +38,3 @@ class Dashboard extends React.Component<{}> {
     );
   }
 }
-
-export default Dashboard;

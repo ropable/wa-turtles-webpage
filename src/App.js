@@ -6,13 +6,13 @@ import { BrowserRouter, Route } from 'react-router-dom';
 // import offlineConfig from "redux-offline/lib/defaults";
 
 import './App.css';
-import Navigation from './Navigation';
-import Dashboard from './Dashboard';
-import Datasets from './Datasets';
-import Projects from './Projects';
-import Footer from './Footer';
+import Navigation from './Navigation/Navigation';
+import Dashboard from './Dashboard/Dashboard';
+import Datasets from './Datasets/Datasets';
+import Projects from './Projects/Projects';
+import Footer from './Footer/Footer';
 
-class App extends React.Component<{}> {
+export default class App extends React.Component<{}> {
   render() {
     return (
       <BrowserRouter>
@@ -27,5 +27,3 @@ class App extends React.Component<{}> {
     );
   }
 }
-
-export default App;

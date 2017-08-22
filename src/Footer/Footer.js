@@ -2,8 +2,9 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Navbar } from 'react-bootstrap';
-import dbcalogo from './dbca_logo.svg';
-import ghlogo from './gh32.png';
+import './Footer.css';
+import dbcalogo from '../img/dbca_logo.svg';
+import ghlogo from '../img/gh32.png';
 
 export default class Footer extends React.Component<{}> {
   render() {

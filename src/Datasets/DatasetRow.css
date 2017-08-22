@@ -1,0 +1,13 @@
+/* Leaflet */
+.leaflet-container {
+  height: 200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* emulate Thumbnail look */
+.whitebg {
+  background-image: none;
+  background-color: #fff;
+  opacity: 1;
+}

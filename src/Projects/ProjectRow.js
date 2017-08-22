@@ -2,7 +2,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Col, Glyphicon, Panel, Thumbnail } from 'react-bootstrap';
-import logo from './green_hatchling.jpg';
+import logo from '../img/green_hatchling.jpg';
 
 type Props = {
   project: PropTypes.array,
@@ -12,6 +12,7 @@ type Props = {
 export default class ProjectRow extends React.Component<Props> {
   render() {
     const pro = this.props.project;
+    const tagline = pro.tagline_plain ? pro.tagline_plain : 'Description';
     const imgsrc = pro.image
       ? this.props.sdisUrl + '/media/' + pro.image
       : logo;
@@ -31,7 +32,7 @@ export default class ProjectRow extends React.Component<Props> {
             <br />
             <Glyphicon glyph="user" /> {pro.team_list_plain}
           </p>
-          <Panel collapsible header={pro.tagline_plain}>
+          <Panel collapsible header={tagline}>
             <span dangerouslySetInnerHTML={wrapHTML(pro.comments)} />
           </Panel>
           <Button

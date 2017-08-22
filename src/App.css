@@ -1,18 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
 
-.App {
-  text-align: center;
-  font-family: 'Roboto', sans-serif;
-}
-
-/* Fullscreen */
+/* Fullscreen bg image */
 html {
   height: 100%;
 }
 
 body {
   height: 100%;
-  background-image: url('./green_hatchling.jpg');
+  min-height: 100%;
+  background-image: url('./img/green_hatchling.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -22,56 +18,8 @@ body {
   min-height: 100%;
 }
 
-/* Navbar */
-.navbar-brand {
-  padding-left: 15px;
-  padding-top: 0px;
-}
-
-/* Transparent Navbar */
-.navbar-default {
-  background: transparent;
-  border-color: transparent;
-  box-shadow: none;
-}
-
-/* Logo */
-.logo {
-  height: 50px;
-}
-
-/* Content spacing */
-.push500 {
-  margin-top: 50%;
-}
-
 .content {
   padding-top: 70px;
   padding-bottom: 70px;
   margin-bottom: -70px;
-}
-
-/* Transparent Well */
-.well {
-  background-color: #fff;
-  opacity: 0.85;
-}
-
-.whitebg {
-  background-image: none;
-  background-color: #fff;
-  opacity: 1;
-}
-
-/* Footer */
-.credit {
-  color: #fff;
-  margin-right: 10px;
-}
-
-/* Leaflet */
-.leaflet-container {
-  height: 200px;
-  width: 100%;
-  margin: 0 auto;
 }

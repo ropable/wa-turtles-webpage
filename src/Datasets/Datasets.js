@@ -3,7 +3,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'react-bootstrap';
 import DatasetRow from './DatasetRow';
-import AlertRow from './AlertRow';
+import AlertRow from '../AlertRow/AlertRow';
 
 type Props = {
   ckanApiUrl: string
@@ -14,7 +14,7 @@ type State = {
   ckanStatus: string
 };
 
-class Datasets extends React.Component<Props, State> {
+export default class Datasets extends React.Component<Props, State> {
   static defaultProps = {
     ckanApiUrl: 'https://data.dpaw.wa.gov.au/api/3/action/'
   };
@@ -75,5 +75,3 @@ class Datasets extends React.Component<Props, State> {
     }
   }
 }
-
-export default Datasets;
