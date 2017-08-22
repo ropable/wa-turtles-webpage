@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import Leaflet from 'leaflet';
 import { Map, TileLayer, GeoJSON } from 'react-leaflet';
@@ -10,9 +11,10 @@ Leaflet.Icon.Default.imagePath =
   '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/images/';
 
 type Props = {
-  dataset: array,
+  dataset: PropTypes.array,
   attr: string,
-  mapurl: string
+  mapurl: string,
+  doubleClickZoom: boolean
 };
 
 type State = {
@@ -21,12 +23,13 @@ type State = {
   zoom: number
 };
 
-class DatasetRow extends React.Component<Props, State> {
+export default class DatasetRow extends React.Component<Props, State> {
   static defaultProps = {
     attr: 'Tiles &copy; Esri &mdash; Source: Esri et al.',
     mapurl:
       'http://server.arcgisonline.com/ArcGIS/rest/services/' +
-      'World_Imagery/MapServer/tile/{z}/{y}/{x}'
+      'World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    doubleClickZoom: true
   };
 
   state = {
@@ -58,7 +61,11 @@ class DatasetRow extends React.Component<Props, State> {
     return (
       <Col xs={12} md={6} lg={4}>
         <Well className="whitebg">
-          <Map center={position} zoom={this.state.zoom}>
+          <Map
+            center={position}
+            zoom={this.state.zoom}
+            doubleClickZoom={this.props.doubleClickZoom}
+          >
             <TileLayer attribution={this.props.attr} url={this.props.mapurl} />
             <GeoJSON ref={ds.id} data={geojson_geometry} />
           </Map>
@@ -108,5 +115,3 @@ class DatasetRow extends React.Component<Props, State> {
     );
   }
 }
-
-export default DatasetRow;

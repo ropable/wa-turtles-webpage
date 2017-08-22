@@ -1,26 +1,21 @@
 // @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Col, Grid, Row } from 'react-bootstrap';
 
 type Props = {
-  filterText: string
+  filterText: string,
+  onFilterTextInput: PropTypes.func
 };
 
-class SearchBar extends React.Component<Props> {
-  constructor(props) {
-    super(props);
-    this.handleFilterTextInputChange = this.handleFilterTextInputChange.bind(
-      this
-    );
-  }
-
+export default class SearchBar extends React.Component<Props> {
   static defaultProps = {
     filterString: ''
   };
 
-  handleFilterTextInputChange(e: SyntheticInputEvent<>) {
+  handleFilterTextInputChange = (e: SyntheticInputEvent<>) => {
     this.props.onFilterTextInput(e.target.value);
-  }
+  };
 
   render() {
     return (
@@ -43,4 +38,3 @@ class SearchBar extends React.Component<Props> {
     );
   }
 }
-export default SearchBar;

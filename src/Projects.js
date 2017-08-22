@@ -1,31 +1,41 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Col, Grid, Row } from 'react-bootstrap';
 import ProjectRow from './ProjectRow';
 import SearchBar from './SearchBar';
 import AlertRow from './AlertRow';
 
-class Projects extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      projects: null,
-      apiStatus: 'loading',
-      filterText: ''
-    };
-    this.sdisUrl = 'https://sdis.dpaw.wa.gov.au';
-    this.handleFilterTextInput = this.handleFilterTextInput.bind(this);
-  }
+type Props = {
+  sdisUrl: string
+};
 
-  handleFilterTextInput(filterText) {
+type State = {
+  projects: PropTypes.array,
+  apiStatus: string,
+  filterText: string
+};
+
+export default class Projects extends React.Component<Props, State> {
+  static defaultProps = {
+    sdisUrl: 'https://sdis.dpaw.wa.gov.au'
+  };
+
+  state = {
+    projects: [],
+    apiStatus: 'loading',
+    filterText: ''
+  };
+
+  handleFilterTextInput = (filterText: string) => {
     this.setState({ filterText: filterText });
-  }
+  };
 
-  _get_projects = projects => {
+  _get_projects = (projects: PropTypes.array) => {
     const main = this;
     main.setState({ apiStatus: 'loading' });
 
-    var url = this.sdisUrl + '/api/projects/?format=json';
+    var url = this.props.sdisUrl + '/api/projects/?format=json';
 
     fetch(url)
       .then(function(response) {
@@ -73,7 +83,7 @@ class Projects extends Component {
             <ProjectRow
               project={project}
               key={project.id}
-              sdisUrl={this.sdisUrl}
+              sdisUrl={this.props.sdisUrl}
             />
           );
         });
@@ -99,5 +109,3 @@ class Projects extends Component {
     }
   }
 }
-
-export default Projects;

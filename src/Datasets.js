@@ -1,5 +1,6 @@
 // @flow
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Grid } from 'react-bootstrap';
 import DatasetRow from './DatasetRow';
 import AlertRow from './AlertRow';
@@ -9,7 +10,7 @@ type Props = {
 };
 
 type State = {
-  datasets: React.ChildrenArray<string>,
+  datasets: PropTypes.array,
   ckanStatus: string
 };
 
@@ -23,7 +24,7 @@ class Datasets extends React.Component<Props, State> {
     ckanStatus: 'loading'
   };
 
-  _get_datasets = datasets => {
+  _get_datasets = (datasets: PropTypes.array) => {
     const main = this;
     main.setState({ ckanStatus: 'loading' });
     var url =

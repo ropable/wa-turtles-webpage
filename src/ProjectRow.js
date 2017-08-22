@@ -1,9 +1,15 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Col, Glyphicon, Panel, Thumbnail } from 'react-bootstrap';
 import logo from './green_hatchling.jpg';
 
-class ProjectRow extends Component {
+type Props = {
+  project: PropTypes.array,
+  sdisUrl: string
+};
+
+export default class ProjectRow extends React.Component<Props> {
   render() {
     const pro = this.props.project;
     const imgsrc = pro.image
@@ -40,5 +46,3 @@ class ProjectRow extends Component {
     );
   }
 }
-
-export default ProjectRow;

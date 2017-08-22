@@ -1,11 +1,11 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Image, Navbar, Nav, NavItem } from 'react-bootstrap';
 import logo from './turtle_logo.png';
 
-class Navigation extends Component {
+export default class Navigation extends React.Component<{}> {
   render() {
     return (
       <div>
@@ -33,5 +33,3 @@ class Navigation extends Component {
     );
   }
 }
-
-export default Navigation;

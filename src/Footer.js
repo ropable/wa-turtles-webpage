@@ -1,11 +1,11 @@
 // @flow
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Navbar } from 'react-bootstrap';
 import dbcalogo from './dbca_logo.svg';
 import ghlogo from './gh32.png';
 
-class Footer extends Component {
+export default class Footer extends React.Component<{}> {
   render() {
     return (
       <div>
@@ -37,5 +37,3 @@ class Footer extends Component {
     );
   }
 }
-
-export default Footer;

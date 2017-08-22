@@ -1,7 +1,7 @@
 [ignore]
-.*/node_modules/react-event-listener/.*
-.*/node_modules/redux-offline/.*
-.*/node_modules/radium/.*
+<PROJECT_ROOT>/node_modules/react-event-listener/.*
+<PROJECT_ROOT>/node_modules/redux-offline/.*
+<PROJECT_ROOT>/node_modules/radium/.*
 
 [include]
 
@@ -10,3 +10,6 @@
 [lints]
 
 [options]
+esproposal.export_star_as=enable
+unsafe.enable_getters_and_setters=true
+emoji=true
