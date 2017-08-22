@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Col, Grid, Panel, Row } from 'react-bootstrap';
+import { TagCloud } from 'react-tagcloud';
 import ProjectRow from './ProjectRow';
 import SearchBar from './SearchBar';
 import AlertRow from '../AlertRow/AlertRow';
@@ -13,7 +14,8 @@ type Props = {
 type State = {
   projects: PropTypes.array,
   apiStatus: string,
-  filterText: string
+  filterText: string,
+  tags: PropTypes.array
 };
 
 export default class Projects extends React.Component<Props, State> {
@@ -24,7 +26,27 @@ export default class Projects extends React.Component<Props, State> {
   state = {
     projects: [],
     apiStatus: 'loading',
-    filterText: ''
+    filterText: '',
+    tags: [
+      { value: 'jQuery', count: 25 },
+      { value: 'MongoDB', count: 18 },
+      { value: 'JavaScript', count: 38 },
+      { value: 'React', count: 30 },
+      { value: 'Nodejs', count: 28 },
+      { value: 'Express.js', count: 25 },
+      { value: 'HTML5', count: 33 },
+      { value: 'CSS3', count: 20 },
+      { value: 'Webpack', count: 22 },
+      { value: 'Babel.js', count: 7 },
+      { value: 'ECMAScript', count: 25 },
+      { value: 'Jest', count: 15 },
+      { value: 'Mocha', count: 17 },
+      { value: 'React Native', count: 27 },
+      { value: 'Angular.js', count: 30 },
+      { value: 'TypeScript', count: 15 },
+      { value: 'Flow', count: 30 },
+      { value: 'NPM', count: 11 }
+    ]
   };
 
   handleFilterTextInput = (filterText: string) => {
@@ -91,13 +113,26 @@ export default class Projects extends React.Component<Props, State> {
         <div className="content">
           <Grid>
             <Row>
-              <Col xs={12} md={12}>
+              <Col xs={12} md={3}>
                 <SearchBar
                   filterText={this.state.filterText}
                   onFilterTextInput={this.handleFilterTextInput}
                 />
               </Col>
+
+              <Col xs={12} md={9}>
+                <Panel className="whitebg">
+                  <TagCloud
+                    minSize={10}
+                    maxSize={25}
+                    tags={this.state.tags}
+                    className="simple-cloud"
+                    onClick={tag => console.log(`'${tag.value}' was selected!`)}
+                  />
+                </Panel>
+              </Col>
             </Row>
+
             {rows}
           </Grid>
         </div>
