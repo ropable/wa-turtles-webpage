@@ -75,52 +75,53 @@ export default class DatasetRow extends React.Component<Props, State> {
               />
               <GeoJSON ref={ds.id} data={geojson_geometry} />
             </Map>
-
-            <h4>
-              {ds.title}
-            </h4>
-            <p>
-              <Glyphicon glyph="home" /> {ds.organization.title}
-              <br />
-              <Glyphicon glyph="edit" />{' '}
-              <a href={ds.author_email}>{ds.author}</a>
-              <br />
-              <Glyphicon glyph="wrench" />{' '}
-              <a href={ds.maintainer_email}>{ds.maintainer}</a>
-              <br />
-              <Glyphicon glyph="copyright-mark" /> {ds.license_id}
-              <br />
-              {ds.tags.map(function(tag) {
-                return (
-                  <span key={tag.id}>
-                    <Glyphicon glyph="tag" /> {tag.display_name}
-                    <br />
-                  </span>
-                );
-              })}
-              {ds.groups.map(function(group) {
-                return (
-                  <span key={group.id}>
-                    <Glyphicon glyph="folder-open" /> {group.title}
-                    <br />
-                  </span>
-                );
-              })}
-            </p>
-            <Panel collapsible header="Description">
-              <ReactMarkdown
-                source={ds.notes ? ds.notes : 'Not provided'}
-                containerTagName="span"
-                disallowedTypes={disallowedTypes}
-              />
-            </Panel>
-            <Panel collapsible header="Resources">
-              <ListGroup fill>
-                {ds.resources.map(function(r) {
-                  return <ResourceRow resource={r} key={r.id} />;
+            <div className="pseudoCaption">
+              <h4>
+                {ds.title}
+              </h4>
+              <p>
+                <Glyphicon glyph="home" /> {ds.organization.title}
+                <br />
+                <Glyphicon glyph="edit" />{' '}
+                <a href={ds.author_email}>{ds.author}</a>
+                <br />
+                <Glyphicon glyph="wrench" />{' '}
+                <a href={ds.maintainer_email}>{ds.maintainer}</a>
+                <br />
+                <Glyphicon glyph="copyright-mark" /> {ds.license_id}
+                <br />
+                {ds.tags.map(function(tag) {
+                  return (
+                    <span key={tag.id}>
+                      <Glyphicon glyph="tag" /> {tag.display_name}
+                      <br />
+                    </span>
+                  );
                 })}
-              </ListGroup>
-            </Panel>
+                {ds.groups.map(function(group) {
+                  return (
+                    <span key={group.id}>
+                      <Glyphicon glyph="folder-open" /> {group.title}
+                      <br />
+                    </span>
+                  );
+                })}
+              </p>
+              <Panel collapsible header="Description">
+                <ReactMarkdown
+                  source={ds.notes ? ds.notes : 'Not provided'}
+                  containerTagName="span"
+                  disallowedTypes={disallowedTypes}
+                />
+              </Panel>
+              <Panel collapsible header="Resources">
+                <ListGroup fill>
+                  {ds.resources.map(function(r) {
+                    return <ResourceRow resource={r} key={r.id} />;
+                  })}
+                </ListGroup>
+              </Panel>
+            </div>
           </Well>
         </Col>
       );
