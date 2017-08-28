@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import { Grid, Well, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import TurtleYoutube from '../TurtleYoutube/TurtleYoutube';
 import './Dashboard.css';
 
@@ -10,8 +11,33 @@ export default class Dashboard extends React.Component<{}> {
       <div className="content">
         <Grid>
           <Row>
-            <Col xs={12} lg={4} className="push500" xsHidden mdHidden />
+            <Col xs={12} lg={4} className="pushDown" xsHidden mdHidden />
           </Row>
+
+          <Row>
+            <Col xs={12} md={4} mdOffset={0}>
+              <Well>
+                <h1>Monitoring & Research</h1>
+                <p>What we do</p>
+                <p>Where are the turtles</p>
+                <p>Publications</p>
+              </Well>
+            </Col>
+            <Col xs={12} md={4}>
+              <Well>
+                <h1>Intervention</h1>
+                <p>Some content</p>
+              </Well>
+            </Col>
+            <Col xs={12} md={4}>
+              <Well>
+                <h1>Information & Education</h1>
+                <p>For volunteers, schools, tourists, public</p>
+                <Link to="/education">Dive in...</Link>
+              </Well>
+            </Col>
+          </Row>
+
           <Row>
             <Col xs={12} md={4} mdOffset={0}>
               <Well>

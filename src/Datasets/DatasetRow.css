@@ -6,8 +6,9 @@
 }
 
 /* emulate Thumbnail look */
-.whitebg {
+.pseudoThumbnail {
   background-image: none;
   background-color: #fff;
   opacity: 1;
+  padding: 4px;
 }

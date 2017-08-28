@@ -63,7 +63,7 @@ export default class DatasetRow extends React.Component<Props, State> {
             };
       return (
         <Col xs={12} md={6} lg={4}>
-          <Well className="whitebg">
+          <Well className="pseudoThumbnail">
             <Map
               center={position}
               zoom={this.state.zoom}
@@ -109,7 +109,7 @@ export default class DatasetRow extends React.Component<Props, State> {
             </p>
             <Panel collapsible header="Description">
               <ReactMarkdown
-                source={ds.notes}
+                source={ds.notes ? ds.notes : 'Not provided'}
                 containerTagName="span"
                 disallowedTypes={disallowedTypes}
               />

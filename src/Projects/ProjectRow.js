@@ -17,7 +17,7 @@ export default class ProjectRow extends React.Component<Props> {
       ? this.props.sdisUrl + '/media/' + pro.image
       : logo;
     const wrapHTML = htmlString => {
-      return { __html: htmlString };
+      return { __html: htmlString ? htmlString : 'Not provided' };
     };
 
     return (

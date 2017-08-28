@@ -8,6 +8,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Navigation from './Navigation/Navigation';
 import Dashboard from './Dashboard/Dashboard';
+import Education from './Education/Education';
 import Datasets from './Datasets/Datasets';
 import Projects from './Projects/Projects';
 import Footer from './Footer/Footer';
@@ -19,6 +20,7 @@ export default class App extends React.Component<{}> {
         <div>
           <Navigation />
           <Route exact path="/" component={Dashboard} />
+          <Route path={'/education'} component={Education} />
           <Route path="/datasets" component={Datasets} />
           <Route path="/projects" component={Projects} />
           <Footer />

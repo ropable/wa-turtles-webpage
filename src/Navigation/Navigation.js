@@ -27,6 +27,9 @@ export default class Navigation extends React.Component<{}> {
               <LinkContainer to="/projects">
                 <NavItem>Projects</NavItem>
               </LinkContainer>
+              <LinkContainer to="/education">
+                <NavItem>Education</NavItem>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
