@@ -11,19 +11,19 @@ export default class Education extends React.Component<{}> {
         <Grid>
           <Row>
             <Col xs={12} md={4} mdOffset={0}>
-              <Well>
+              <Well className="jumboWell">
                 <h1>Discover Flatbacks</h1>
                 <p>Fascinating facts about flatbacks</p>
               </Well>
             </Col>
             <Col xs={12} md={4}>
-              <Well>
+              <Well className="jumboWell">
                 <h1>Hands on</h1>
                 <p>Volunteering and viewing turtles in the wild</p>
               </Well>
             </Col>
             <Col xs={12} md={4}>
-              <Well>
+              <Well className="jumboWell">
                 <h1>For schools</h1>
                 <p>Resources for schools and education</p>
               </Well>
@@ -32,7 +32,7 @@ export default class Education extends React.Component<{}> {
 
           <Row>
             <Col xs={12} md={4} mdOffset={0}>
-              <Well>
+              <Well className="jumboWell">
                 <h1>What we do</h1>
                 <p>
                   Conservation planning and how we{"'"}ll spend $32{'.'}5M over
@@ -41,7 +41,7 @@ export default class Education extends React.Component<{}> {
               </Well>
             </Col>
             <Col xs={12} md={4}>
-              <Well>
+              <Well className="jumboWell">
                 <h1>Report a stranding</h1>
                 <p>
                   You stab {"'"}em, we slab {"'"}em
@@ -49,7 +49,7 @@ export default class Education extends React.Component<{}> {
               </Well>
             </Col>
             <Col xs={12} md={4}>
-              <Well>
+              <Well className="jumboWell">
                 <h1>Learn more</h1>
                 <p>More research resources</p>
               </Well>
