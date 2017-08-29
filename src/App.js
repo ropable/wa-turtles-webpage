@@ -21,7 +21,13 @@ export default class App extends React.Component<{}> {
           <Navigation />
           <Route exact path="/" component={Dashboard} />
           <Route path={'/education'} component={Education} />
-          <Route path="/datasets" component={Datasets} />
+          <Route exact path="/datasets" component={Datasets} />
+          <Route
+            exact
+            path="/datasets/infosheets"
+            render={() =>
+              <Datasets apiParams="package_search?q=groups:science-information-sheets" />}
+          />
           <Route path="/projects" component={Projects} />
           <Footer />
         </div>

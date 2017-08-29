@@ -2,30 +2,33 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Grid, Panel, Row } from 'react-bootstrap';
+import axios from 'axios';
 import { TagCloud } from 'react-tagcloud';
 import ProjectRow from './ProjectRow';
 import SearchBar from './SearchBar';
 import AlertRow from '../AlertRow/AlertRow';
 
 type Props = {
-  sdisUrl: string
+  apiUrl: string,
+  apiParams: string
 };
 
 type State = {
   projects: PropTypes.array,
-  apiStatus: string,
+  status: string,
   filterText: string,
   tags: PropTypes.array
 };
 
 export default class Projects extends React.Component<Props, State> {
   static defaultProps = {
-    sdisUrl: 'https://sdis.dpaw.wa.gov.au'
+    apiUrl: 'https://sdis.dpaw.wa.gov.au',
+    apiParams: '/api/projects/?format=json'
   };
 
   state = {
     projects: [],
-    apiStatus: 'loading',
+    status: 'loading',
     filterText: '',
     tags: [
       { value: 'jQuery', count: 25 },
@@ -53,40 +56,23 @@ export default class Projects extends React.Component<Props, State> {
     this.setState({ filterText: filterText });
   };
 
-  _get_projects = (projects: PropTypes.array) => {
-    const main = this;
-    main.setState({ apiStatus: 'loading' });
-
-    var url = this.props.sdisUrl + '/api/projects/?format=json';
-
-    fetch(url)
-      .then(function(response) {
-        return response;
-      })
-      .then(function(response) {
-        setTimeout(function() {
-          main.setState({
-            apiStatus: 'loaded'
-          });
-        }, 300);
-        return response.json();
-      })
-      .then(function(data) {
-        main.setState({ projects: data });
-      })
-      .catch(function() {
-        main.setState({ apiStatus: 'error' });
-      });
-  };
-
   componentDidMount() {
-    this._get_projects();
+    const main = this;
+
+    axios
+      .get(main.props.apiUrl + main.props.apiParams)
+      .then(res => {
+        main.setState({ projects: res.data, status: 'loaded' });
+      })
+      .catch(error => {
+        main.setState({ status: 'error' });
+      });
   }
 
   render() {
-    const { projects, apiStatus, filterText } = this.state;
+    const { projects, status, filterText } = this.state;
 
-    if (apiStatus === 'loaded') {
+    if (status === 'loaded') {
       let rows = [];
       projects
         .filter(
@@ -105,7 +91,7 @@ export default class Projects extends React.Component<Props, State> {
             <ProjectRow
               project={project}
               key={project.id}
-              sdisUrl={this.props.sdisUrl}
+              apiUrl={this.props.apiUrl}
             />
           );
         });
@@ -137,9 +123,9 @@ export default class Projects extends React.Component<Props, State> {
           </Grid>
         </div>
       );
-    } else if (apiStatus === 'loading') {
+    } else if (status === 'loading') {
       return <AlertRow />;
-    } else if (apiStatus === 'error') {
+    } else if (status === 'error') {
       return <AlertRow bsStyle="danger" message="Error loading data." />;
     }
   }

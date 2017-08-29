@@ -83,7 +83,7 @@ export default class DatasetRow extends React.Component<Props, State> {
                 <Glyphicon glyph="home" /> {ds.organization.title}
                 <br />
                 <Glyphicon glyph="edit" />{' '}
-                <a href={ds.author_email}>{ds.author}</a>
+                <a href={'mailto:' + ds.author_email}>{ds.author}</a>
                 <br />
                 <Glyphicon glyph="wrench" />{' '}
                 <a href={ds.maintainer_email}>{ds.maintainer}</a>

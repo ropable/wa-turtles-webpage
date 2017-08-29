@@ -6,16 +6,14 @@ import logo from '../img/green_hatchling.jpg';
 
 type Props = {
   project: PropTypes.array,
-  sdisUrl: string
+  apiUrl: string
 };
 
 export default class ProjectRow extends React.Component<Props> {
   render() {
     const pro = this.props.project;
     const tagline = pro.tagline_plain ? pro.tagline_plain : 'Description';
-    const imgsrc = pro.image
-      ? this.props.sdisUrl + '/media/' + pro.image
-      : logo;
+    const imgsrc = pro.image ? this.props.apiUrl + '/media/' + pro.image : logo;
     const wrapHTML = htmlString => {
       return { __html: htmlString ? htmlString : 'Not provided' };
     };
@@ -38,7 +36,7 @@ export default class ProjectRow extends React.Component<Props> {
           <Button
             bsStyle="primary"
             bsSize="xsmall"
-            href={this.props.sdisUrl + pro.absolute_url}
+            href={this.props.apiUrl + pro.absolute_url}
           >
             View in SDIS
           </Button>&nbsp;

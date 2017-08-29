@@ -2,63 +2,48 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'react-bootstrap';
+import axios from 'axios';
 import DatasetRow from './DatasetRow';
 import AlertRow from '../AlertRow/AlertRow';
 
 type Props = {
-  ckanApiUrl: string
+  apiUrl: string,
+  apiParams: string
 };
 
 type State = {
   datasets: PropTypes.array,
-  ckanStatus: string
+  status: string
 };
 
 export default class Datasets extends React.Component<Props, State> {
   static defaultProps = {
-    ckanApiUrl: 'https://data.dpaw.wa.gov.au/api/3/action/'
+    apiUrl: 'https://data.dpaw.wa.gov.au/api/3/action/',
+    apiParams: 'package_search?q=groups:habitat-sampling-initiative'
   };
 
   state = {
     datasets: [],
-    ckanStatus: 'loading'
-  };
-
-  _get_datasets = (datasets: PropTypes.array) => {
-    const main = this;
-    main.setState({ ckanStatus: 'loading' });
-    var url =
-      main.props.ckanApiUrl +
-      'package_search?q=groups:habitat-sampling-initiative';
-
-    fetch(url)
-      .then(function(response) {
-        return response;
-      })
-      .then(function(response) {
-        setTimeout(function() {
-          main.setState({
-            ckanStatus: 'loaded'
-          });
-        }, 300);
-        return response.json();
-      })
-      .then(function(data) {
-        main.setState({ datasets: data.result.results });
-      })
-      .catch(function() {
-        main.setState({ ckanStatus: 'error' });
-      });
+    status: 'loading'
   };
 
   componentDidMount() {
-    this._get_datasets();
+    const main = this;
+
+    axios
+      .get(main.props.apiUrl + main.props.apiParams)
+      .then(res => {
+        main.setState({ datasets: res.data.result.results, status: 'loaded' });
+      })
+      .catch(error => {
+        main.setState({ status: 'error' });
+      });
   }
 
   render() {
-    const { datasets, ckanStatus } = this.state;
+    const { datasets, status } = this.state;
 
-    if (ckanStatus === 'loaded') {
+    if (status === 'loaded') {
       return (
         <div className="content">
           <Grid>
@@ -68,9 +53,9 @@ export default class Datasets extends React.Component<Props, State> {
           </Grid>
         </div>
       );
-    } else if (ckanStatus === 'loading') {
+    } else if (status === 'loading') {
       return <AlertRow />;
-    } else if (ckanStatus === 'error') {
+    } else if (status === 'error') {
       return <AlertRow bsStyle="danger" message="Error loading data." />;
     }
   }
