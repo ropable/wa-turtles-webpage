@@ -24,7 +24,7 @@ export default class App extends React.Component<{}> {
           <Route exact path="/datasets" component={Datasets} />
           <Route
             exact
-            path="/datasets/infosheets"
+            path="/infosheets"
             render={() =>
               <Datasets apiParams="package_search?q=groups:science-information-sheets" />}
           />

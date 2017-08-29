@@ -24,7 +24,7 @@ export default class Navigation extends React.Component<{}> {
               <LinkContainer to="/datasets">
                 <NavItem>Datasets</NavItem>
               </LinkContainer>
-              <LinkContainer to="/datasets/infosheets">
+              <LinkContainer to="/infosheets">
                 <NavItem>Info sheets</NavItem>
               </LinkContainer>
               <LinkContainer to="/projects">
