@@ -32,6 +32,12 @@ export default class Footer extends React.Component<{}> {
                 alt="Build Status"
               />
             </Link>
+            <Link to="http://waffle.io/parksandwildlife/wa-turtles-webpage">
+              <Image
+                src="https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.svg?label=ready&title=Ready"
+                alt="To do"
+              />
+            </Link>
           </span>
         </Navbar>
       </div>

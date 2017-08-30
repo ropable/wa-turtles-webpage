@@ -20,15 +20,15 @@ export default class App extends React.Component<{}> {
         <div>
           <Navigation />
           <Route exact path="/" component={Dashboard} />
-          <Route path={'/education'} component={Education} />
+          <Route exact path={'/education'} component={Education} />
           <Route exact path="/datasets" component={Datasets} />
           <Route
             exact
             path="/infosheets"
             render={() =>
-              <Datasets apiParams="package_search?q=groups:science-information-sheets" />}
+              <Datasets apiParams="/api/3/action/package_search?q=groups:habitat-sampling-initiative" />}
           />
-          <Route path="/projects" component={Projects} />
+          <Route exact path="/projects" component={Projects} />
           <Footer />
         </div>
       </BrowserRouter>

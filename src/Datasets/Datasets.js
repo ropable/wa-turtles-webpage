@@ -7,7 +7,7 @@ import DatasetRow from './DatasetRow';
 import AlertRow from '../AlertRow/AlertRow';
 
 type Props = {
-  apiUrl: string,
+  webUrl: string,
   apiParams: string
 };
 
@@ -18,8 +18,9 @@ type State = {
 
 export default class Datasets extends React.Component<Props, State> {
   static defaultProps = {
-    apiUrl: 'https://data.dpaw.wa.gov.au/api/3/action/',
-    apiParams: 'package_search?q=groups:habitat-sampling-initiative'
+    webUrl: process.env.REACT_APP_CKAN_URL,
+    apiParams:
+      '/api/3/action/package_search?q=groups:habitat-sampling-initiative'
   };
 
   state = {
@@ -31,13 +32,15 @@ export default class Datasets extends React.Component<Props, State> {
     const main = this;
 
     axios
-      .get(main.props.apiUrl + main.props.apiParams)
+      .get(main.props.webUrl + main.props.apiParams)
       .then(res => {
         main.setState({ datasets: res.data.result.results, status: 'loaded' });
       })
       .catch(error => {
         main.setState({ status: 'error' });
       });
+
+    console.log(`webUrl for datasets is ${this.props.webUrl}`);
   }
 
   render() {
@@ -56,7 +59,8 @@ export default class Datasets extends React.Component<Props, State> {
     } else if (status === 'loading') {
       return <AlertRow />;
     } else if (status === 'error') {
-      return <AlertRow bsStyle="danger" message="Error loading data." />;
+      const msg = `Error loading data from ${this.props.webUrl}`;
+      return <AlertRow bsStyle="danger" message={msg} />;
     }
   }
 }

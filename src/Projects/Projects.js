@@ -9,7 +9,7 @@ import SearchBar from './SearchBar';
 import AlertRow from '../AlertRow/AlertRow';
 
 type Props = {
-  apiUrl: string,
+  webUrl: string,
   apiParams: string
 };
 
@@ -22,7 +22,7 @@ type State = {
 
 export default class Projects extends React.Component<Props, State> {
   static defaultProps = {
-    apiUrl: 'https://sdis.dpaw.wa.gov.au',
+    webUrl: process.env.REACT_APP_SDIS_URL,
     apiParams: '/api/projects/?format=json'
   };
 
@@ -60,7 +60,7 @@ export default class Projects extends React.Component<Props, State> {
     const main = this;
 
     axios
-      .get(main.props.apiUrl + main.props.apiParams)
+      .get(main.props.webUrl + main.props.apiParams)
       .then(res => {
         main.setState({ projects: res.data, status: 'loaded' });
       })
@@ -91,7 +91,7 @@ export default class Projects extends React.Component<Props, State> {
             <ProjectRow
               project={project}
               key={project.id}
-              apiUrl={this.props.apiUrl}
+              webUrl={this.props.webUrl}
             />
           );
         });
@@ -126,7 +126,8 @@ export default class Projects extends React.Component<Props, State> {
     } else if (status === 'loading') {
       return <AlertRow />;
     } else if (status === 'error') {
-      return <AlertRow bsStyle="danger" message="Error loading data." />;
+      const msg = `Error loading data from ${this.props.webUrl}`;
+      return <AlertRow bsStyle="danger" message={msg} />;
     }
   }
 }
