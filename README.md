@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/parksandwildlife/wa-turtles-webpage.svg?branch=master)](https://travis-ci.org/parksandwildlife/wa-turtles-webpage)
+[![To do](https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.png?label=ready&title=Ready)](http://waffle.io/parksandwildlife/wa-turtles-webpage)
 # WA Turtles web page
 Prototype of a web page for WA Turtles.
 
