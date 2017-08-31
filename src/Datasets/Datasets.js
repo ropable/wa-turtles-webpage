@@ -18,7 +18,7 @@ type State = {
 
 export default class Datasets extends React.Component<Props, State> {
   static defaultProps = {
-    webUrl: process.env.REACT_APP_CKAN_URL,
+    webUrl: process.env.REACT_APP_CKAN_URL || 'https://data.dpaw.wa.gov.au',
     apiParams:
       '/api/3/action/package_search?q=groups:habitat-sampling-initiative'
   };
@@ -40,7 +40,7 @@ export default class Datasets extends React.Component<Props, State> {
         main.setState({ status: 'error' });
       });
 
-    console.log(`webUrl for datasets is ${this.props.webUrl}`);
+    // console.log(`webUrl for datasets is ${this.props.webUrl}`);
   }
 
   render() {

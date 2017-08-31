@@ -26,7 +26,7 @@ export default class App extends React.Component<{}> {
             exact
             path="/infosheets"
             render={() =>
-              <Datasets apiParams="/api/3/action/package_search?q=groups:habitat-sampling-initiative" />}
+              <Datasets apiParams="/api/3/action/package_search?q=groups:science-information-sheets" />}
           />
           <Route exact path="/projects" component={Projects} />
           <Footer />
