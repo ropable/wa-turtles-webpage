@@ -83,7 +83,8 @@ export default class Projects extends React.Component<Props, State> {
       .reduce((acc, curr) => {
         return acc + curr.title_plain + curr.tagline_plain;
       }, [])
-      .replace(/![a-zA-Z][()-]/g, ' ')
+      .replace(/![a-zA-Z]/g, ' ')
+      .replace(/[()]/g, '')
       .split(/\s/)
       .filter(x => this.props.stopWords.indexOf(x) < 0);
   };
@@ -105,6 +106,7 @@ export default class Projects extends React.Component<Props, State> {
    * Turn wordFreq output into TagCloud input (update state.tags)
    */
   makeTags = (wfreq: PropTypes.array, cutoff: number) => {
+    cutoff = cutoff || 0;
     let ta = [];
     Object.keys(wfreq).forEach(function(k) {
       if (wfreq[k] > cutoff) {
