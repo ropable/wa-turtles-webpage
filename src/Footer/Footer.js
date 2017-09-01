@@ -32,6 +32,16 @@ export default class Footer extends React.Component<{}> {
                 alt="Build Status"
               />
             </Link>
+          </span>
+          <span className="text-muted credit">
+            <Link to="https://coveralls.io/github/parksandwildlife/wa-turtles-webpage">
+              <Image
+                src="https://coveralls.io/repos/github/parksandwildlife/wa-turtles-webpage/badge.svg"
+                alt="Test Coverage"
+              />
+            </Link>
+          </span>
+          <span className="text-muted credit">
             <Link to="http://waffle.io/parksandwildlife/wa-turtles-webpage">
               <Image
                 src="https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.svg?label=ready&title=Ready"
