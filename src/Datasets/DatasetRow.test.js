@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Glyphicon } from 'react-bootstrap';
 import Leaflet from 'leaflet';
 import { Map, TileLayer, GeoJSON } from 'react-leaflet';
+import TimeAgo from 'react-timeago';
 import { shallow } from 'enzyme';
 import 'jest-enzyme';
 import DatasetRow from './DatasetRow';
@@ -153,4 +154,10 @@ it('renders missing message if no dataset is given', () => {
   const wrapper = shallow(<DatasetRow dataset="" key="test" />);
   const msg = <h4>No dataset</h4>;
   expect(wrapper).toContainReact(msg); // jest-enzyme
+});
+
+it('renders last_modified', () => {
+  const wrapper = shallow(<DatasetRow dataset={ds} key="test" />);
+  const msg = <TimeAgo date="2017-08-18T03:15:08.149255" />;
+  expect(wrapper).toContainReact(msg);
 });

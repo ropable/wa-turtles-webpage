@@ -1,16 +1,18 @@
 // @flow
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Grid, Panel, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Panel, Row } from 'react-bootstrap';
 import axios from 'axios';
 import { TagCloud } from 'react-tagcloud';
+// import { WordFreq } from "wordfreq";
 import ProjectRow from './ProjectRow';
 import SearchBar from './SearchBar';
 import AlertRow from '../AlertRow/AlertRow';
 
 type Props = {
   webUrl: string,
-  apiParams: string
+  apiParams: string,
+  stopWords: PropTypes.array
 };
 
 type State = {
@@ -22,8 +24,27 @@ type State = {
 
 export default class Projects extends React.Component<Props, State> {
   static defaultProps = {
-    webUrl: process.env.REACT_APP_SDIS_URL,
-    apiParams: '/api/projects/?format=json'
+    webUrl: process.env.REACT_APP_SDIS_URL || 'https://sdis.dpaw.wa.gov.au',
+    apiParams: '/api/projects/?format=json',
+    stopWords: [
+      'a',
+      'an',
+      'as',
+      'at',
+      'and',
+      'by',
+      'for',
+      'into',
+      'in',
+      'it',
+      'its',
+      'of',
+      'on',
+      'the',
+      'their',
+      'to',
+      'with'
+    ]
   };
 
   state = {
@@ -31,29 +52,66 @@ export default class Projects extends React.Component<Props, State> {
     status: 'loading',
     filterText: '',
     tags: [
-      { value: 'jQuery', count: 25 },
-      { value: 'MongoDB', count: 18 },
-      { value: 'JavaScript', count: 38 },
-      { value: 'React', count: 30 },
-      { value: 'Nodejs', count: 28 },
-      { value: 'Express.js', count: 25 },
-      { value: 'HTML5', count: 33 },
-      { value: 'CSS3', count: 20 },
-      { value: 'Webpack', count: 22 },
-      { value: 'Babel.js', count: 7 },
-      { value: 'ECMAScript', count: 25 },
-      { value: 'Jest', count: 15 },
-      { value: 'Mocha', count: 17 },
-      { value: 'React Native', count: 27 },
-      { value: 'Angular.js', count: 30 },
-      { value: 'TypeScript', count: 15 },
-      { value: 'Flow', count: 30 },
-      { value: 'NPM', count: 11 }
+      { value: 'adaptive', count: 25 },
+      { value: 'woylie', count: 18 },
+      { value: 'management', count: 38 },
+      { value: 'fire', count: 30 },
+      { value: 'marine', count: 28 },
+      { value: 'turtle', count: 25 },
+      { value: 'flatback', count: 33 }
     ]
   };
 
   handleFilterTextInput = (filterText: string) => {
     this.setState({ filterText: filterText });
+  };
+
+  clearFilterTextInput = () => {
+    this.setState({ filterText: '' });
+  };
+
+  /**
+  * Tokenize SDIS project title_plain and tagline_plain
+  *
+  * Join SDIS project title and tagline into one string,
+  * strip punctuation,
+  * split into an array of individual words (incl duplicates),
+  * drop stopwords (props.stopWords).
+  */
+  sdisProjectTokenizer = (projectArray: PropTypes.array) => {
+    return projectArray
+      .reduce((acc, curr) => {
+        return acc + curr.title_plain + curr.tagline_plain;
+      }, [])
+      .replace(/![a-zA-Z][()-]/g, ' ')
+      .split(/\s/)
+      .filter(x => this.props.stopWords.indexOf(x) < 0);
+  };
+
+  /**
+   * Calculate word frequencies
+   *
+   * https://stackoverflow.com/a/30907349
+   * wordFreq(["the", "the", "stuff"]) = [{the: 2}, {stuff: 1}]
+   */
+  wordFreq = (stringArray: PropTypes.array) => {
+    return stringArray.reduce(
+      (map, wrd) => Object.assign(map, { [wrd]: map[wrd] ? map[wrd] + 1 : 1 }),
+      {}
+    );
+  };
+
+  /**
+   * Turn wordFreq output into TagCloud input (update state.tags)
+   */
+  makeTags = (wfreq: PropTypes.array, cutoff: number) => {
+    let ta = [];
+    Object.keys(wfreq).forEach(function(k) {
+      if (wfreq[k] > cutoff) {
+        ta.push({ value: k, count: wfreq[k] });
+      }
+    });
+    return ta;
   };
 
   componentDidMount() {
@@ -62,7 +120,14 @@ export default class Projects extends React.Component<Props, State> {
     axios
       .get(main.props.webUrl + main.props.apiParams)
       .then(res => {
-        main.setState({ projects: res.data, status: 'loaded' });
+        main.setState({
+          projects: res.data,
+          status: 'loaded',
+          tags: main.makeTags(
+            main.wordFreq(main.sdisProjectTokenizer(res.data)),
+            3
+          )
+        });
       })
       .catch(error => {
         main.setState({ status: 'error' });
@@ -104,16 +169,21 @@ export default class Projects extends React.Component<Props, State> {
                   filterText={this.state.filterText}
                   onFilterTextInput={this.handleFilterTextInput}
                 />
+                <Button bsStyle="primary" bsSize="xsmall">
+                  Clear
+                </Button>
               </Col>
 
               <Col xs={12} md={9}>
                 <Panel className="whitebg">
                   <TagCloud
-                    minSize={10}
-                    maxSize={25}
+                    minSize={12}
+                    maxSize={30}
                     tags={this.state.tags}
                     className="simple-cloud"
-                    onClick={tag => console.log(`'${tag.value}' was selected!`)}
+                    onClick={tag => {
+                      this.setState({ filterText: tag.value });
+                    }}
                   />
                 </Panel>
               </Col>
