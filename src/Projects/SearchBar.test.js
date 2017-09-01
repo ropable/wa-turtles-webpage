@@ -32,8 +32,6 @@ it('should pass a selected value to the onChange handler', () => {
     <SearchBar value={value} onFilterTextInput={onChange} />
   );
 
-  expect(wrapper).toMatchSnapshot();
-
   wrapper.find('input').simulate('change', {
     target: { value }
   });
