@@ -27,13 +27,16 @@ export default class Projects extends React.Component<Props, State> {
     webUrl: process.env.REACT_APP_SDIS_URL || 'https://sdis.dpaw.wa.gov.au',
     apiParams: '/api/projects/?format=json',
     stopWords: [
+      '1',
       'a',
       'an',
       'as',
       'at',
       'and',
+      'be',
       'by',
       'for',
+      'from',
       'into',
       'in',
       'it',
@@ -43,6 +46,7 @@ export default class Projects extends React.Component<Props, State> {
       'the',
       'their',
       'to',
+      'will',
       'with'
     ]
   };
@@ -78,13 +82,14 @@ export default class Projects extends React.Component<Props, State> {
   * split into an array of individual words (incl duplicates),
   * drop stopwords (props.stopWords).
   */
-  sdisProjectTokenizer = (projectArray: PropTypes.array) => {
+  sdisTokenizer = (projectArray: PropTypes.array) => {
     return projectArray
       .reduce((acc, curr) => {
         return acc + curr.title_plain + curr.tagline_plain;
       }, [])
       .replace(/![a-zA-Z]/g, ' ')
-      .replace(/[()]/g, '')
+      .replace(/[():]/g, ' ')
+      .toLowerCase()
       .split(/\s/)
       .filter(x => this.props.stopWords.indexOf(x) < 0);
   };
@@ -125,10 +130,7 @@ export default class Projects extends React.Component<Props, State> {
         main.setState({
           projects: res.data,
           status: 'loaded',
-          tags: main.makeTags(
-            main.wordFreq(main.sdisProjectTokenizer(res.data)),
-            3
-          )
+          tags: main.makeTags(main.wordFreq(main.sdisTokenizer(res.data)), 3)
         });
       })
       .catch(error => {
@@ -166,17 +168,14 @@ export default class Projects extends React.Component<Props, State> {
         <div className="content">
           <Grid>
             <Row>
-              <Col xs={12} md={3}>
+              <Col xs={12} md={4}>
                 <SearchBar
                   filterText={this.state.filterText}
                   onFilterTextInput={this.handleFilterTextInput}
                 />
-                <Button bsStyle="primary" bsSize="xsmall">
-                  Clear
-                </Button>
               </Col>
 
-              <Col xs={12} md={9}>
+              <Col xs={12} md={8}>
                 <Panel className="whitebg">
                   <TagCloud
                     minSize={12}
@@ -189,9 +188,9 @@ export default class Projects extends React.Component<Props, State> {
                   />
                 </Panel>
               </Col>
-            </Row>
 
-            {rows}
+              {rows}
+            </Row>
           </Grid>
         </div>
       );
