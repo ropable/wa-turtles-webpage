@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Col, Grid, Panel, Row } from 'react-bootstrap';
+import { Col, Grid, Panel, Row } from 'react-bootstrap';
 import axios from 'axios';
 import { TagCloud } from 'react-tagcloud';
 // import { WordFreq } from "wordfreq";

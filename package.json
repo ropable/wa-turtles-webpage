@@ -14,6 +14,7 @@
     "jest-enzyme": "^3.7.0",
     "leaflet": "^1.2.0",
     "lint-staged": "^4.0.3",
+    "mobx": "^3.2.2",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.0.2",
     "prettier": "^1.5.3",

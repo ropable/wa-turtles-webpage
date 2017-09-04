@@ -11,6 +11,7 @@ import Dashboard from './Dashboard/Dashboard';
 import Education from './Education/Education';
 import Datasets from './Datasets/Datasets';
 import Projects from './Projects/Projects';
+import Locations from './Locations/Locations';
 import Footer from './Footer/Footer';
 
 export default class App extends React.Component<{}> {
@@ -29,6 +30,7 @@ export default class App extends React.Component<{}> {
               <Datasets apiParams="/api/3/action/package_search?q=groups:science-information-sheets" />}
           />
           <Route exact path="/projects" component={Projects} />
+          <Route exact path="/locations" component={Locations} />
           <Footer />
         </div>
       </BrowserRouter>

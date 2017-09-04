@@ -30,6 +30,9 @@ export default class Navigation extends React.Component<{}> {
               <LinkContainer to="/projects">
                 <NavItem>Projects</NavItem>
               </LinkContainer>
+              <LinkContainer to="/locations">
+                <NavItem>Locations</NavItem>
+              </LinkContainer>
               <LinkContainer to="/education">
                 <NavItem>Education</NavItem>
               </LinkContainer>
