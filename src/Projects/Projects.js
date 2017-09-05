@@ -1,13 +1,15 @@
 // @flow
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Col, Grid, Panel, Row } from 'react-bootstrap';
-import axios from 'axios';
-import { TagCloud } from 'react-tagcloud';
+import React from "react";
+import PropTypes from "prop-types";
+import { Col, Grid, Panel, Row } from "react-bootstrap";
+import axios from "axios";
+import { TagCloud } from "react-tagcloud";
 // import { WordFreq } from "wordfreq";
-import ProjectRow from './ProjectRow';
-import SearchBar from './SearchBar';
-import AlertRow from '../AlertRow/AlertRow';
+import Spinner from "react-spinkit";
+
+import ProjectRow from "./ProjectRow";
+import SearchBar from "./SearchBar";
+import AlertRow from "../AlertRow/AlertRow";
 
 type Props = {
   webUrl: string,
@@ -24,45 +26,52 @@ type State = {
 
 export default class Projects extends React.Component<Props, State> {
   static defaultProps = {
-    webUrl: process.env.REACT_APP_SDIS_URL || 'https://sdis.dpaw.wa.gov.au',
-    apiParams: '/api/projects/?format=json',
+    webUrl: process.env.REACT_APP_SDIS_URL || "https://sdis.dpaw.wa.gov.au",
+    apiParams: "/api/projects/?format=json",
     stopWords: [
-      '1',
-      'a',
-      'an',
-      'as',
-      'at',
-      'and',
-      'be',
-      'by',
-      'for',
-      'from',
-      'into',
-      'in',
-      'it',
-      'its',
-      'of',
-      'on',
-      'the',
-      'their',
-      'to',
-      'will',
-      'with'
+      "-",
+      "1",
+      "a",
+      "along",
+      "an",
+      "as",
+      "at",
+      "and",
+      "areathe",
+      "be",
+      "between",
+      "by",
+      "for",
+      "from",
+      "into",
+      "in",
+      "it",
+      "its",
+      "new",
+      "of",
+      "on",
+      "other",
+      "the",
+      "their",
+      "to",
+      "using",
+      "will",
+      "with"
     ]
   };
 
   state = {
     projects: [],
-    status: 'loading',
-    filterText: '',
+    status: "loading",
+    filterText: "",
     tags: [
-      { value: 'adaptive', count: 25 },
-      { value: 'woylie', count: 18 },
-      { value: 'management', count: 38 },
-      { value: 'fire', count: 30 },
-      { value: 'marine', count: 28 },
-      { value: 'turtle', count: 25 },
-      { value: 'flatback', count: 33 }
+      { value: "adaptive", count: 25 },
+      { value: "woylie", count: 18 },
+      { value: "management", count: 38 },
+      { value: "fire", count: 30 },
+      { value: "marine", count: 28 },
+      { value: "turtle", count: 25 },
+      { value: "flatback", count: 33 }
     ]
   };
 
@@ -71,7 +80,7 @@ export default class Projects extends React.Component<Props, State> {
   };
 
   clearFilterTextInput = () => {
-    this.setState({ filterText: '' });
+    this.setState({ filterText: "" });
   };
 
   /**
@@ -87,8 +96,8 @@ export default class Projects extends React.Component<Props, State> {
       .reduce((acc, curr) => {
         return acc + curr.title_plain + curr.tagline_plain;
       }, [])
-      .replace(/![a-zA-Z]/g, ' ')
-      .replace(/[():]/g, ' ')
+      .replace(/![a-zA-Z]/g, " ")
+      .replace(/[():]/g, " ")
       .toLowerCase()
       .split(/\s/)
       .filter(x => this.props.stopWords.indexOf(x) < 0);
@@ -123,25 +132,24 @@ export default class Projects extends React.Component<Props, State> {
 
   componentDidMount() {
     const main = this;
-
     axios
       .get(main.props.webUrl + main.props.apiParams)
       .then(res => {
         main.setState({
           projects: res.data,
-          status: 'loaded',
+          status: "loaded",
           tags: main.makeTags(main.wordFreq(main.sdisTokenizer(res.data)), 3)
         });
       })
       .catch(error => {
-        main.setState({ status: 'error' });
+        main.setState({ status: "error" });
       });
   }
 
   render() {
     const { projects, status, filterText } = this.state;
 
-    if (status === 'loaded') {
+    if (status === "loaded") {
       let rows = [];
       projects
         .filter(
@@ -168,14 +176,14 @@ export default class Projects extends React.Component<Props, State> {
         <div className="content">
           <Grid>
             <Row>
-              <Col xs={12} md={4}>
+              <Col xs={12}>
                 <SearchBar
-                  filterText={this.state.filterText}
+                  filterText={filterText}
                   onFilterTextInput={this.handleFilterTextInput}
                 />
               </Col>
 
-              <Col xs={12} md={8}>
+              <Col xs={12}>
                 <Panel className="whitebg">
                   <TagCloud
                     minSize={12}
@@ -194,11 +202,28 @@ export default class Projects extends React.Component<Props, State> {
           </Grid>
         </div>
       );
-    } else if (status === 'loading') {
-      return <AlertRow />;
-    } else if (status === 'error') {
+    } else if (status === "loading") {
+      return (
+        <div>
+          <AlertRow />
+          <div className="content">
+            <Grid>
+              <Row>
+                <Col xs={12} md={4}>
+                  <Spinner name="ball-beat" color="orange" />
+                </Col>
+              </Row>
+            </Grid>
+          </div>
+        </div>
+      );
+    } else if (status === "error") {
       const msg = `Error loading data from ${this.props.webUrl}`;
-      return <AlertRow bsStyle="danger" message={msg} />;
+      return (
+        <div className="content">
+          <AlertRow bsStyle="danger" message={msg} />
+        </div>
+      );
     }
   }
 }

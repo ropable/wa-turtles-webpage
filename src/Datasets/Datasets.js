@@ -1,11 +1,12 @@
 // @flow
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Grid } from 'react-bootstrap';
-import axios from 'axios';
+import React from "react";
+import PropTypes from "prop-types";
+import { Grid, Row, Col } from "react-bootstrap";
+import axios from "axios";
+import Spinner from "react-spinkit";
 
-import DatasetRow from './DatasetRow';
-import AlertRow from '../AlertRow/AlertRow';
+import DatasetRow from "./DatasetRow";
+import AlertRow from "../AlertRow/AlertRow";
 
 type Props = {
   webUrl: string,
@@ -19,14 +20,14 @@ type State = {
 
 export default class Datasets extends React.Component<Props, State> {
   static defaultProps = {
-    webUrl: process.env.REACT_APP_CKAN_URL || 'https://data.dpaw.wa.gov.au',
+    webUrl: process.env.REACT_APP_CKAN_URL || "https://data.dpaw.wa.gov.au",
     apiParams:
-      '/api/3/action/package_search?q=groups:habitat-sampling-initiative'
+      "/api/3/action/package_search?q=groups:habitat-sampling-initiative"
   };
 
   state = {
     datasets: [],
-    status: 'loading'
+    status: "loading"
   };
 
   componentDidMount() {
@@ -35,10 +36,10 @@ export default class Datasets extends React.Component<Props, State> {
     axios
       .get(main.props.webUrl + main.props.apiParams)
       .then(res => {
-        main.setState({ datasets: res.data.result.results, status: 'loaded' });
+        main.setState({ datasets: res.data.result.results, status: "loaded" });
       })
       .catch(error => {
-        main.setState({ status: 'error' });
+        main.setState({ status: "error" });
       });
 
     // console.log(`webUrl for datasets is ${this.props.webUrl}`);
@@ -47,7 +48,7 @@ export default class Datasets extends React.Component<Props, State> {
   render() {
     const { datasets, status } = this.state;
 
-    if (status === 'loaded') {
+    if (status === "loaded") {
       return (
         <div className="content">
           <Grid>
@@ -57,9 +58,22 @@ export default class Datasets extends React.Component<Props, State> {
           </Grid>
         </div>
       );
-    } else if (status === 'loading') {
-      return <AlertRow />;
-    } else if (status === 'error') {
+    } else if (status === "loading") {
+      return (
+        <div>
+          <AlertRow />
+          <div className="content">
+            <Grid>
+              <Row>
+                <Col xs={12} md={4}>
+                  <Spinner name="ball-beat" color="blue" />
+                </Col>
+              </Row>
+            </Grid>
+          </div>
+        </div>
+      );
+    } else if (status === "error") {
       const msg = `Error loading data from ${this.props.webUrl}`;
       return <AlertRow bsStyle="danger" message={msg} />;
     }

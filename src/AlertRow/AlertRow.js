@@ -1,6 +1,6 @@
 // @flow
-import * as React from 'react';
-import { Alert, Col, Grid, Row } from 'react-bootstrap';
+import * as React from "react";
+import { Alert, Col, Grid, Row } from "react-bootstrap";
 
 type Props = {
   bsStyle: string,
@@ -9,8 +9,8 @@ type Props = {
 
 class AlertRow extends React.Component<Props> {
   static defaultProps = {
-    bsStyle: 'info',
-    message: 'Loading data, hang tight...'
+    bsStyle: "info",
+    message: "Loading data, hang tight..."
   };
 
   render() {
@@ -19,9 +19,7 @@ class AlertRow extends React.Component<Props> {
         <Grid>
           <Row>
             <Col xs={12} md={12}>
-              <Alert bsStyle={this.props.bsStyle}>
-                {this.props.message}
-              </Alert>
+              <Alert bsStyle={this.props.bsStyle}>{this.props.message}</Alert>
             </Col>
           </Row>
         </Grid>

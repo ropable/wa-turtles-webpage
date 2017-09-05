@@ -1,7 +1,6 @@
 // @flow
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import { Col, Grid, Row } from 'react-bootstrap';
+import * as React from "react";
+import PropTypes from "prop-types";
 
 type Props = {
   filterText: string,
@@ -10,7 +9,7 @@ type Props = {
 
 export default class SearchBar extends React.Component<Props> {
   static defaultProps = {
-    filterString: ''
+    filterString: ""
   };
 
   handleFilterTextInputChange = (e: SyntheticInputEvent<>) => {
@@ -19,22 +18,16 @@ export default class SearchBar extends React.Component<Props> {
 
   render() {
     return (
-      <Grid>
-        <Row>
-          <Col xs={12} md={6}>
-            <form>
-              <p>
-                <input
-                  type="text"
-                  placeholder="Type to filter..."
-                  value={this.props.filterText}
-                  onChange={this.handleFilterTextInputChange}
-                />
-              </p>
-            </form>
-          </Col>
-        </Row>
-      </Grid>
+      <form>
+        <p>
+          <input
+            type="text"
+            placeholder="Type to filter..."
+            value={this.props.filterText}
+            onChange={this.handleFilterTextInputChange}
+          />
+        </p>
+      </form>
     );
   }
 }
