@@ -3,12 +3,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Grid, Row } from 'react-bootstrap';
 
-type Props = {
-  filterText: string,
-  onFilterTextInput: PropTypes.func
-};
-
-export default class SearchBar extends React.Component<Props> {
+export default class SearchBar extends React.Component {
   static defaultProps = {
     filterString: ''
   };
@@ -38,3 +33,8 @@ export default class SearchBar extends React.Component<Props> {
     );
   }
 }
+
+SearchBar.propTypes = {
+  filterText: PropTypes.string,
+  onFilterTextInput: PropTypes.func
+};
