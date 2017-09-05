@@ -2,7 +2,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import Leaflet from 'leaflet';
-import { Map, TileLayer, GeoJSON, Popup, Tooltip } from 'react-leaflet';
+import { Map, TileLayer, GeoJSON, Tooltip } from 'react-leaflet';
 // import st from "geojson-bounds";
 import { Col, Grid, Row, Well } from 'react-bootstrap';
 import './Locations.css';
