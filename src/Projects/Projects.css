@@ -1,0 +1,12 @@
+.blackbg {
+  background-color: black;
+}
+
+.simple-cloud .tag-cloud-tag {
+  cursor: pointer;
+}
+
+span.tag-cloud-tag:hover {
+  font-weight: bold;
+  font-size: 32pt;
+}

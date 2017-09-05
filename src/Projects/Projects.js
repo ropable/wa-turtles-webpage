@@ -7,6 +7,7 @@ import { TagCloud } from "react-tagcloud";
 // import { WordFreq } from "wordfreq";
 import Spinner from "react-spinkit";
 
+import "./Projects.css";
 import ProjectRow from "./ProjectRow";
 import SearchBar from "./SearchBar";
 import AlertRow from "../AlertRow/AlertRow";
@@ -31,6 +32,10 @@ export default class Projects extends React.Component<Props, State> {
     stopWords: [
       "-",
       "1",
+      "2",
+      "3",
+      "4",
+      "5",
       "a",
       "along",
       "an",
@@ -45,6 +50,7 @@ export default class Projects extends React.Component<Props, State> {
       "from",
       "into",
       "in",
+      "is",
       "it",
       "its",
       "new",
@@ -97,7 +103,7 @@ export default class Projects extends React.Component<Props, State> {
         return acc + curr.title_plain + curr.tagline_plain;
       }, [])
       .replace(/![a-zA-Z]/g, " ")
-      .replace(/[():]/g, " ")
+      .replace(/[():.]/g, " ")
       .toLowerCase()
       .split(/\s/)
       .filter(x => this.props.stopWords.indexOf(x) < 0);
@@ -184,10 +190,10 @@ export default class Projects extends React.Component<Props, State> {
               </Col>
 
               <Col xs={12}>
-                <Panel className="whitebg">
+                <Panel className="blackbg">
                   <TagCloud
-                    minSize={12}
-                    maxSize={30}
+                    minSize={16}
+                    maxSize={40}
                     tags={this.state.tags}
                     className="simple-cloud"
                     onClick={tag => {
