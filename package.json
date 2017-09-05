@@ -44,7 +44,7 @@
     "analyze": "source-map-explorer build/static/js/main.*",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "precommit": "lint-staged && npm run coveralls",
+    "precommit": "lint-staged",
     "flow": "flow",
     "start-js": "react-scripts start",
     "start": "npm-run-all -p watch-css start-js",
