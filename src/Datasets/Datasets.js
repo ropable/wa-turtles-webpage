@@ -1,8 +1,9 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'react-bootstrap';
 import axios from 'axios';
+
 import DatasetRow from './DatasetRow';
 import AlertRow from '../AlertRow/AlertRow';
 

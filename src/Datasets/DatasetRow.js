@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import Leaflet from 'leaflet';
@@ -7,6 +7,7 @@ import { Map, TileLayer, GeoJSON } from 'react-leaflet';
 import st from 'geojson-bounds';
 import { Col, Glyphicon, ListGroup, Panel, Well } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
+
 import ResourceRow from './ResourceRow';
 import './DatasetRow.css';
 
@@ -60,7 +61,10 @@ export default class DatasetRow extends React.Component<Props> {
 
       // Generate max extent in degrees from given GeoJSON
       const getSpatialExtent = gjs =>
-        Math.abs(st.yMax(gjs) - st.yMin(gjs), st.xMax(gjs) - st.xMin(gjs));
+        Math.max(
+          Math.abs(st.yMax(gjs) - st.yMin(gjs)),
+          Math.abs(st.xMax(gjs) - st.xMin(gjs))
+        );
 
       // Distill sum fine moonshine zoom level from coord extent of GeoJSON
       const getZoom = gjs => -1 * Math.log(getSpatialExtent(gjs)) + 6.5;
@@ -81,9 +85,7 @@ export default class DatasetRow extends React.Component<Props> {
               <GeoJSON ref="gj" data={gj} />
             </Map>
             <div className="pseudoCaption">
-              <h4>
-                {ds.title}
-              </h4>
+              <h4>{ds.title}</h4>
               <p>
                 <Glyphicon
                   glyph="home"

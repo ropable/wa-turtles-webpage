@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { shallow } from 'enzyme';
 import 'jest-enzyme';
+
 import App from './App';
 import Dashboard from './Dashboard/Dashboard';
 

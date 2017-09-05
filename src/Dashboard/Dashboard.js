@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import { Grid, Well, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import TurtleYoutube from '../TurtleYoutube/TurtleYoutube';

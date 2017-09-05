@@ -1,7 +1,9 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Image, Navbar } from 'react-bootstrap';
+
 import './Footer.css';
 import dbcalogo from '../img/dbca_logo.svg';
 import ghlogo from '../img/gh32.png';

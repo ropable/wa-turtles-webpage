@@ -1,13 +1,13 @@
 // @flow
-import React, { Component } from 'react';
-import { object } from 'prop-types';
+import React from 'react';
+import PropTypes from 'prop-types';
 import ReactMarkdown from 'react-markdown';
 import { Button, Glyphicon, ListGroupItem } from 'react-bootstrap';
 import TimeAgo from 'react-timeago';
 
-type Props = { resource: object };
+type Props = { resource: PropTypes.object };
 
-export default class ResourceRow extends Component<Props> {
+export default class ResourceRow extends React.Component<Props> {
   render() {
     const r = this.props.resource;
     const disallowedTypes = ['p'];

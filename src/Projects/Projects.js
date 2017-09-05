@@ -1,5 +1,5 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Grid, Panel, Row } from 'react-bootstrap';
 import axios from 'axios';

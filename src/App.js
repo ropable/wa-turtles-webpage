@@ -1,5 +1,6 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { BrowserRouter, Route } from 'react-router-dom';
 // import { applyMiddleware, createStore, compose } from "redux";
 // import { offline } from "redux-offline";
@@ -26,8 +27,9 @@ export default class App extends React.Component<{}> {
           <Route
             exact
             path="/infosheets"
-            render={() =>
-              <Datasets apiParams="/api/3/action/package_search?q=groups:science-information-sheets" />}
+            render={() => (
+              <Datasets apiParams="/api/3/action/package_search?q=groups:science-information-sheets" />
+            )}
           />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/locations" component={Locations} />

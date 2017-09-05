@@ -1,10 +1,11 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Leaflet from 'leaflet';
 import { Map, TileLayer, GeoJSON, Tooltip } from 'react-leaflet';
 // import st from "geojson-bounds";
 import { Col, Grid, Row, Well } from 'react-bootstrap';
+
 import './Locations.css';
 
 Leaflet.Icon.Default.imagePath =
@@ -129,9 +130,11 @@ export default class Locations extends React.Component<Props, State> {
 
               <Well className="pseudoThumbnail">
                 <h4>Details</h4>
-                {content && content.title
-                  ? 'Delightful details on ' + content.title
-                  : 'Click on a map feature to view details'}
+                {content && content.title ? (
+                  'Delightful details on ' + content.title
+                ) : (
+                  'Click on a map feature to view details'
+                )}
               </Well>
             </Col>
           </Row>

@@ -1,7 +1,9 @@
 // @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Grid, Well, Row, Col } from 'react-bootstrap';
 // import TurtleYoutube from "../TurtleYoutube/TurtleYoutube";
+
 import './Education.css';
 
 export default class Education extends React.Component<{}> {
