@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter, Route } from 'react-router-dom';
 // import { applyMiddleware, createStore, compose } from "redux";
 // import { offline } from "redux-offline";

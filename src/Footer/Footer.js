@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Image, Navbar } from 'react-bootstrap';
 
@@ -12,7 +11,7 @@ export default class Footer extends React.Component<{}> {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect fixedBottom>
+        <Navbar inverse collapseOnSelect fixedBottom>
           <span className="text-muted credit">
             <Link to="https://github.com/parksandwildlife/wa-turtles-webpage">
               <Image

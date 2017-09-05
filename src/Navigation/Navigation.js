@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Image, Navbar, Nav, NavItem } from 'react-bootstrap';
@@ -11,7 +10,7 @@ export default class Navigation extends React.Component<{}> {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect fixedTop>
+        <Navbar inverse collapseOnSelect fixedTop>
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">

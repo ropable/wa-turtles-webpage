@@ -5,22 +5,22 @@
 }
 
 /* Transparent Navbar */
-.navbar-default {
+/*.navbar-default {
   background: transparent;
   border-color: transparent;
   box-shadow: none;
-}
+}*/
 
 /* Logo */
 .logo {
   height: 50px;
 }
 
-.navbar-default .navbar-nav > .open > a,
+/*.navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .hover > a {
   font-weight: bold;
   background: transparent;
   border-color: transparent;
   box-shadow: none;
-}
+}*/
