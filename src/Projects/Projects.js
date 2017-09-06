@@ -190,7 +190,7 @@ export default class Projects extends React.Component<Props, State> {
               </Col>
 
               <Col xs={12}>
-                <Panel className="blackbg">
+                <Panel className="blackbg thumbnail">
                   <TagCloud
                     minSize={16}
                     maxSize={40}

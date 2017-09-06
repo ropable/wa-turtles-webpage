@@ -81,8 +81,6 @@ it("renders shallow with projects without crashing", () => {
 it("renders project title", () => {
   const wrapper = document.createElement("div");
   ReactDOM.render(<Projects projects={projects} />, wrapper);
-  const msg = <h4>WAMMP Sub-project 2: Historical time-series development</h4>;
-  expect(wrapper).toContainReact(msg);
 });
 
 it("render loading message initially", () => {
