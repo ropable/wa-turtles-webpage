@@ -2,6 +2,10 @@
   background-color: black;
 }
 
+.greybg {
+  background-color: grey;
+}
+
 .simple-cloud .tag-cloud-tag {
   cursor: pointer;
 }

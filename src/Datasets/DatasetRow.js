@@ -1,18 +1,18 @@
 // @flow
-import React from 'react';
-import PropTypes from 'prop-types';
-import ReactMarkdown from 'react-markdown';
-import Leaflet from 'leaflet';
-import { Map, TileLayer, GeoJSON } from 'react-leaflet';
-import st from 'geojson-bounds';
-import { Col, Glyphicon, ListGroup, Panel, Well } from 'react-bootstrap';
-import TimeAgo from 'react-timeago';
+import React from "react";
+import PropTypes from "prop-types";
+import ReactMarkdown from "react-markdown";
+import Leaflet from "leaflet";
+import { Map, TileLayer, GeoJSON } from "react-leaflet";
+import st from "geojson-bounds";
+import { Col, Glyphicon, ListGroup, Panel, Well } from "react-bootstrap";
+import TimeAgo from "react-timeago";
 
-import ResourceRow from './ResourceRow';
-import './DatasetRow.css';
+import ResourceRow from "./ResourceRow";
+import "./DatasetRow.css";
 
 Leaflet.Icon.Default.imagePath =
-  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/images/';
+  "//cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/images/";
 
 type Props = {
   dataset: PropTypes.array,
@@ -24,13 +24,13 @@ type Props = {
 
 export default class DatasetRow extends React.Component<Props> {
   static defaultProps = {
-    attr: 'Tiles &copy; Esri &mdash; Source: Esri et al.',
+    attr: "Tiles &copy; Esri &mdash; Source: Esri et al.",
     mapurl:
-      'http://server.arcgisonline.com/ArcGIS/rest/services/' +
-      'World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      "http://server.arcgisonline.com/ArcGIS/rest/services/" +
+      "World_Imagery/MapServer/tile/{z}/{y}/{x}",
     doubleClickZoom: true,
     defaultGeom: {
-      type: 'MultiPolygon',
+      type: "MultiPolygon",
       coordinates: [
         [
           [
@@ -47,7 +47,7 @@ export default class DatasetRow extends React.Component<Props> {
 
   render() {
     const ds = this.props.dataset;
-    const disallowedTypes = ['p'];
+    const disallowedTypes = ["p"];
     if (ds) {
       // Dataset's GeoJSON Multipolygon geometry or fallback
       const gj =
@@ -90,39 +90,39 @@ export default class DatasetRow extends React.Component<Props> {
                 <Glyphicon
                   glyph="home"
                   title="The dataset belongs to this organisation"
-                />{' '}
+                />{" "}
                 {ds.organization.title}
                 <br />
                 <Glyphicon
                   glyph="edit"
                   title="The dataset author is the intellectual owner of the main dataset resource"
-                />{' '}
-                <a href={'mailto:' + ds.author_email}>{ds.author}</a>
+                />{" "}
+                <a href={"mailto:" + ds.author_email}>{ds.author}</a>
                 <br />
                 <Glyphicon glyph="comment" title="Citation" /> {ds.citation}
                 <br />
-                <Glyphicon glyph="copyright-mark" title="License" />{' '}
+                <Glyphicon glyph="copyright-mark" title="License" />{" "}
                 {ds.license_id}
                 <br />
                 <Glyphicon
                   glyph="wrench"
                   title="The dataset maintainer wrote and updates this metadata entry"
-                />{' '}
-                <a href={'mailto:' + ds.maintainer_email}>{ds.maintainer}</a>
+                />{" "}
+                <a href={"mailto:" + ds.maintainer_email}>{ds.maintainer}</a>
                 <br />
                 <Glyphicon
                   glyph="repeat"
                   title="Update frequency of main dataset resource"
-                />{' '}
+                />{" "}
                 {ds.update_frequency}
                 <br />
-                <Glyphicon glyph="refresh" title="Metadata last updated" />{' '}
+                <Glyphicon glyph="refresh" title="Metadata last updated" />{" "}
                 <TimeAgo date={ds.metadata_modified} />
                 <br />
                 {ds.tags.map(function(tag) {
                   return (
                     <span key={tag.id}>
-                      <Glyphicon glyph="tag" title="Tagged with keyword" />{' '}
+                      <Glyphicon glyph="tag" title="Tagged with keyword" />{" "}
                       {tag.display_name}
                       <br />
                     </span>
@@ -134,20 +134,21 @@ export default class DatasetRow extends React.Component<Props> {
                       <Glyphicon
                         glyph="folder-open"
                         title="Thematic group"
-                      />{' '}
+                      />{" "}
                       {group.title}
                       <br />
                     </span>
                   );
                 })}
               </p>
+
               <Panel
                 collapsible
                 header="Description"
                 title="Click to read the dataset's description"
               >
                 <ReactMarkdown
-                  source={ds.notes ? ds.notes : 'Not provided'}
+                  source={ds.notes ? ds.notes : "Not provided"}
                   containerTagName="span"
                   disallowedTypes={disallowedTypes}
                 />

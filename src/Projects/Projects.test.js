@@ -78,14 +78,21 @@ it("renders shallow with projects without crashing", () => {
   shallow(<Projects projects={projects} />);
 });
 
-it("renders project title", () => {
+it("renders withough crashing", () => {
   const wrapper = document.createElement("div");
   ReactDOM.render(<Projects projects={projects} />, wrapper);
 });
 
 it("render loading message initially", () => {
   const wrapper = shallow(<Projects />);
-  const msg = <AlertRow bsStyle="info" message="Loading data, hang tight..." />;
+  const msg = (
+    <AlertRow
+      showSpinner={true}
+      bsStyle="info"
+      message="Loading data, hang tight..."
+    />
+  );
+
   expect(wrapper).toContainReact(msg);
 });
 

@@ -5,7 +5,6 @@ import { Col, Grid, Panel, Row } from "react-bootstrap";
 import axios from "axios";
 import { TagCloud } from "react-tagcloud";
 // import { WordFreq } from "wordfreq";
-import Spinner from "react-spinkit";
 
 import "./Projects.css";
 import ProjectRow from "./ProjectRow";
@@ -209,27 +208,10 @@ export default class Projects extends React.Component<Props, State> {
         </div>
       );
     } else if (status === "loading") {
-      return (
-        <div>
-          <AlertRow />
-          <div className="content">
-            <Grid>
-              <Row>
-                <Col xs={12} md={4}>
-                  <Spinner name="ball-beat" color="orange" />
-                </Col>
-              </Row>
-            </Grid>
-          </div>
-        </div>
-      );
+      return <AlertRow showSpinner={true} />;
     } else if (status === "error") {
       const msg = `Error loading data from ${this.props.webUrl}`;
-      return (
-        <div className="content">
-          <AlertRow bsStyle="danger" message={msg} />
-        </div>
-      );
+      return <AlertRow bsStyle="danger" message={msg} />;
     }
   }
 }

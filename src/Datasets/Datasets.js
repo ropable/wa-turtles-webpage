@@ -1,9 +1,8 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
-import { Grid, Row, Col } from "react-bootstrap";
+import { Grid } from "react-bootstrap";
 import axios from "axios";
-import Spinner from "react-spinkit";
 
 import DatasetRow from "./DatasetRow";
 import AlertRow from "../AlertRow/AlertRow";
@@ -31,18 +30,14 @@ export default class Datasets extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    const main = this;
-
     axios
-      .get(main.props.webUrl + main.props.apiParams)
+      .get(this.props.webUrl + this.props.apiParams)
       .then(res => {
-        main.setState({ datasets: res.data.result.results, status: "loaded" });
+        this.setState({ datasets: res.data.result.results, status: "loaded" });
       })
       .catch(error => {
-        main.setState({ status: "error" });
+        this.setState({ status: "error" });
       });
-
-    // console.log(`webUrl for datasets is ${this.props.webUrl}`);
   }
 
   render() {
@@ -59,20 +54,7 @@ export default class Datasets extends React.Component<Props, State> {
         </div>
       );
     } else if (status === "loading") {
-      return (
-        <div>
-          <AlertRow />
-          <div className="content">
-            <Grid>
-              <Row>
-                <Col xs={12} md={4}>
-                  <Spinner name="ball-beat" color="blue" />
-                </Col>
-              </Row>
-            </Grid>
-          </div>
-        </div>
-      );
+      return <AlertRow showSpinner={true} />;
     } else if (status === "error") {
       const msg = `Error loading data from ${this.props.webUrl}`;
       return <AlertRow bsStyle="danger" message={msg} />;
