@@ -11,6 +11,5 @@
 }
 
 span.tag-cloud-tag:hover {
-  font-weight: bold;
-  font-size: 32pt;
+  text-decoration: underline;
 }

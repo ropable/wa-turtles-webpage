@@ -112,7 +112,7 @@ export default class Projects extends React.Component<Props, State> {
    * Calculate word frequencies
    *
    * https://stackoverflow.com/a/30907349
-   * wordFreq(["the", "the", "stuff"]) = [{the: 2}, {stuff: 1}]
+   * wordFreq(["the", "the", "stuff"]) = {"stuff": 1, "the": 2}
    */
   wordFreq = (stringArray: PropTypes.array) => {
     return stringArray.reduce(

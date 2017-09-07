@@ -47,3 +47,8 @@ body {
   box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 0.75);
   border: none;
 }
+
+.nav.navbar-nav li a:hover,
+.nav.navbar-nav li.active a {
+  font-weight: bold;
+}

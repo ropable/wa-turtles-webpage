@@ -1,6 +1,5 @@
 // @flow
 import React from "react";
-import { Link } from "react-router-dom";
 import { Col, Button, Collapse, Image, Row, Navbar } from "react-bootstrap";
 
 import "./Footer.css";
@@ -24,7 +23,7 @@ export default class Footer extends React.Component<State> {
     return (
       <div>
         <Navbar inverse collapseOnSelect fixedBottom>
-          <Collapse in={this.state.showSitemap}>
+          <Collapse id="Sitemap" in={this.state.showSitemap}>
             <div className="credit">
               <Row>
                 <Col xs={12} md={4} lg={3}>
@@ -60,45 +59,46 @@ export default class Footer extends React.Component<State> {
           </Collapse>
 
           <span className="text-muted credit">
-            <Link to="https://github.com/parksandwildlife/wa-turtles-webpage">
+            <a href="https://github.com/parksandwildlife/wa-turtles-webpage">
               <Image
                 className="logo"
                 src={dbcalogo}
                 alt="Department of Biodiversity, Conservation and Attractions"
               />
-            </Link>
+            </a>
           </span>
           <span className="text-muted credit">
-            <Link to="https://github.com/parksandwildlife/wa-turtles-webpage">
+            <a href="https://github.com/parksandwildlife/wa-turtles-webpage">
               <Image src={ghlogo} alt="GitHub" />
-            </Link>
+            </a>
           </span>
           <span className="text-muted credit">
-            <Link to="https://travis-ci.org/parksandwildlife/wa-turtles-webpage">
+            <a href="https://travis-ci.org/parksandwildlife/wa-turtles-webpage">
               <Image
                 src="https://travis-ci.org/parksandwildlife/wa-turtles-webpage.svg?branch=master"
                 alt="Build Status"
               />
-            </Link>
+            </a>
           </span>
           <span className="text-muted credit">
-            <Link to="https://coveralls.io/github/parksandwildlife/wa-turtles-webpage">
+            <a href="https://coveralls.io/github/parksandwildlife/wa-turtles-webpage">
               <Image
                 src="https://coveralls.io/repos/github/parksandwildlife/wa-turtles-webpage/badge.svg"
                 alt="Test Coverage"
               />
-            </Link>
+            </a>
           </span>
           <span className="text-muted credit">
-            <Link to="http://waffle.io/parksandwildlife/wa-turtles-webpage">
+            <a href="http://waffle.io/parksandwildlife/wa-turtles-webpage">
               <Image
                 src="https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.svg?label=ready&title=Ready"
                 alt="To do"
               />
-            </Link>
+            </a>
           </span>
           <span className="text-muted credit">
             <Button
+              id="btnToggleSitemap"
               bsSize="xsmall"
               bsStyle="primary"
               onClick={this.toggleSitemap}

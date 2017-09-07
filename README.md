@@ -14,6 +14,20 @@ Internal project documentation is behind DBCA staff login at the
 * serve -C -p PORT -s build &
 * reverse proxy PORT
 
+# Developer tasks
+## Testing
+[Jest](http://facebook.github.io/jest/)
+[Enzyme](http://airbnb.io/enzyme/)
+
+[Tutorial](https://hackernoon.com/react-unit-test-example-tutorial-jest-enzyme-jsdom-mocha-chai-state-props-component-7ec850a98566).
+
+## CI
+To enable automatic testing and code coverage reporting on every `git push`:
+
+* Activate Github repo in Travis and Coveralls.
+* Add the Coveralls `repo_token` as environment variable to Travis.
+* Add the `npm run coveralls` task to `.travis.yml`.
+
 # Developer docs
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 

@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { shallow } from "enzyme";
+import { shallow, render, mount } from "enzyme";
 import "jest-enzyme";
 import Projects from "./Projects";
+import ProjectRow from "./ProjectRow";
 import AlertRow from "../AlertRow/AlertRow";
 
 const projects = [
@@ -70,7 +71,8 @@ const projects = [
   }
 ];
 
-it("renders shallow empty without crashing", () => {
+/* Basic component rendering */
+it("renders shallow without crashing", () => {
   shallow(<Projects />);
 });
 
@@ -78,9 +80,12 @@ it("renders shallow with projects without crashing", () => {
   shallow(<Projects projects={projects} />);
 });
 
-it("renders withough crashing", () => {
-  const wrapper = document.createElement("div");
-  ReactDOM.render(<Projects projects={projects} />, wrapper);
+it("renders static without crashing", () => {
+  render(<Projects projects={projects} />);
+});
+
+it("renders fully without crashing", () => {
+  mount(<Projects projects={projects} />);
 });
 
 it("render loading message initially", () => {
@@ -106,4 +111,58 @@ it("renders error message on loading error", () => {
     />
   );
   expect(wrapper).toContainReact(msg);
+});
+
+/* Functions */
+it("calculates wordFreq", () => {
+  const wrapper = shallow(<Projects />);
+
+  expect(wrapper.instance().wordFreq(["the", "the", "stuff"])).toEqual({
+    stuff: 1,
+    the: 2
+  });
+});
+
+it("computes tagCloud", () => {
+  const wrapper = shallow(<Projects />);
+
+  expect(
+    wrapper.instance().makeTags({
+      stuff: 1,
+      the: 2
+    })
+  ).toEqual([{ count: 1, value: "stuff" }, { count: 2, value: "the" }]);
+});
+
+it("tokenizes SDIS output", () => {
+  const wrapper = shallow(<Projects />);
+
+  expect(wrapper.instance().sdisTokenizer(projects)).toEqual([
+    "wammp",
+    "sub-project",
+    "",
+    "historical",
+    "time-series",
+    "developmentwammp",
+    "sub-project",
+    "",
+    "asset",
+    "knowledge",
+    "review",
+    "standard",
+    "operating",
+    "protocol",
+    "documentationstrategic",
+    "plan",
+    "development",
+    "implementation",
+    "western",
+    "australian",
+    "marine",
+    "monitoring",
+    "program",
+    "",
+    "wammp",
+    ""
+  ]);
 });
