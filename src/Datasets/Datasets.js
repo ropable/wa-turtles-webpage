@@ -29,15 +29,19 @@ export default class Datasets extends React.Component<Props, State> {
     status: "loading"
   };
 
-  componentDidMount() {
+  getData = url => {
     axios
-      .get(this.props.webUrl + this.props.apiParams)
+      .get(url)
       .then(res => {
         this.setState({ datasets: res.data.result.results, status: "loaded" });
       })
       .catch(error => {
         this.setState({ status: "error" });
       });
+  };
+
+  componentDidMount() {
+    this.getData(this.props.webUrl + this.props.apiParams);
   }
 
   render() {

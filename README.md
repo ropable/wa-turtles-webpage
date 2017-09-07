@@ -20,6 +20,7 @@ Internal project documentation is behind DBCA staff login at the
 [Enzyme](http://airbnb.io/enzyme/)
 
 [Tutorial](https://hackernoon.com/react-unit-test-example-tutorial-jest-enzyme-jsdom-mocha-chai-state-props-component-7ec850a98566).
+[What to test](https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22)
 
 ## CI
 To enable automatic testing and code coverage reporting on every `git push`:

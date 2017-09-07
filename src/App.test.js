@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
-import { shallow } from "enzyme";
+import { shallow, mount, render } from "enzyme";
 import "jest-enzyme";
 
 import App from "./App";
@@ -16,6 +16,19 @@ it("renders without crashing", () => {
 
 it("renders shallow without crashing", () => {
   shallow(<App />);
+});
+
+it("renders static without crashing", () => {
+  render(<App />);
+});
+
+it("renders fully without crashing", () => {
+  mount(<App />);
+});
+
+it("renders Datasets with parameters", () => {
+  const wrapper = mount(<App />);
+  expect(wrapper.find(Route).length).toBe(11);
 });
 
 it("renders Navigation component", () => {
