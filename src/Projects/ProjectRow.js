@@ -36,19 +36,17 @@ export default class ProjectRow extends React.Component<Props, State> {
   };
 
   preventEmptyTagline = taglineString => {
-    taglineString ? taglineString : "Tagline not provided";
+    return taglineString ? taglineString : "Tagline not provided";
+  };
+
+  preventEmptyImage = (baseUrl, imageUrl, logo) => {
+    return imageUrl ? baseUrl + "/media/" + imageUrl : logo;
   };
 
   render() {
     const pro = this.props.project;
 
     if (pro) {
-      const tagline = pro.tagline_plain
-        ? pro.tagline_plain
-        : "Tagline not provided";
-      const imgsrc = pro.image
-        ? this.props.webUrl + "/media/" + pro.image
-        : logo;
       const description = pro.comments ? (
         <span>
           <Button bsStyle="link" bsSize="xsmall" onClick={this.toggleComment}>
@@ -65,7 +63,10 @@ export default class ProjectRow extends React.Component<Props, State> {
       );
       return (
         <Col xs={12} md={6} lg={4}>
-          <Thumbnail src={imgsrc} alt={pro.project_type_year_number_plain}>
+          <Thumbnail
+            src={this.preventEmptyImage(this.props.webUrl, pro.image, logo)}
+            alt={pro.project_type_year_number_plain}
+          >
             <h4>{pro.title_plain}</h4>
             <p>
               <Glyphicon glyph="wrench" /> {pro.project_type_year_number_plain}{" "}

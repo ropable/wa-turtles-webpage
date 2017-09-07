@@ -3,12 +3,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import Leaflet from "leaflet";
 import {
-  FeatureGroup,
   LayerGroup,
   LayersControl,
   Circle,
   CircleMarker,
-  GeoJSON,
   Map,
   TileLayer,
   Tooltip
