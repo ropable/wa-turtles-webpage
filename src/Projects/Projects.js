@@ -88,6 +88,10 @@ export default class Projects extends React.Component<Props, State> {
     this.setState({ filterText: "" });
   };
 
+  handleClickTag = (tag: PropTypes.object) => {
+    this.setState({ filterText: tag.value });
+  };
+
   /**
   * Tokenize SDIS project title_plain and tagline_plain
   *
@@ -195,9 +199,7 @@ export default class Projects extends React.Component<Props, State> {
                     maxSize={40}
                     tags={this.state.tags}
                     className="simple-cloud"
-                    onClick={tag => {
-                      this.setState({ filterText: tag.value });
-                    }}
+                    onClick={this.handleClickTag}
                   />
                 </Panel>
               </Col>

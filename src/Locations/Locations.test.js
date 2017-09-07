@@ -25,4 +25,18 @@ it("renders static without crashing", () => {
 it("clicking on a feature sets state var content to feature title", () => {
   const wrapper = shallow(<Locations />);
   // TODO render map, add feature, simulate click on feature
+  const feature = {
+    layer: {
+      options: {
+        data: {
+          properties: { title: "a title", description: "a description" }
+        }
+      }
+    }
+  };
+  wrapper.instance().oef(feature);
+  expect(wrapper.state().content).toEqual({
+    title: "a title",
+    description: "a description"
+  });
 });

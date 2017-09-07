@@ -145,7 +145,7 @@ const datasets_api_response = [
 ];
 
 beforeEach(function() {
-  global.fetch = jest.fn().mockImplementation(() => {
+  global.axios = jest.fn().mockImplementation(() => {
     var p = new Promise((resolve, reject) => {
       resolve({
         ok: true,
@@ -193,6 +193,12 @@ it("render loading message initially", () => {
 });
 
 /* State */
+it("renders content in loaded state", () => {
+  const wrapper = shallow(<Datasets />);
+  wrapper.setState({ status: "loaded" });
+  expect(wrapper.find(".content").length).toEqual(1);
+});
+
 it("renders loading message in loading state", () => {
   const wrapper = shallow(<Datasets />);
   wrapper.setState({ status: "loading" });

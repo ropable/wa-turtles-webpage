@@ -113,7 +113,32 @@ it("renders error message on loading error", () => {
   expect(wrapper).toContainReact(msg);
 });
 
+/* State */
+it("renders content in loaded state", () => {
+  const wrapper = shallow(<Projects />);
+  wrapper.setState({ status: "loaded" });
+  expect(wrapper.find(".content").length).toEqual(1);
+});
+
 /* Functions */
+it("handles search input", () => {
+  const wrapper = shallow(<Projects />);
+  wrapper.instance().handleFilterTextInput("term");
+  expect(wrapper.state().filterText).toEqual("term");
+});
+
+it("clears search input", () => {
+  const wrapper = shallow(<Projects />);
+  wrapper.instance().clearFilterTextInput();
+  expect(wrapper.state().filterText).toEqual("");
+});
+
+it("handles click on tag", () => {
+  const wrapper = shallow(<Projects />);
+  wrapper.instance().handleClickTag({ value: "adaptive", count: 25 });
+  expect(wrapper.state().filterText).toEqual("adaptive");
+});
+
 it("calculates wordFreq", () => {
   const wrapper = shallow(<Projects />);
 

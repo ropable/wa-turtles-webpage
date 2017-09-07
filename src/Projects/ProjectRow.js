@@ -31,6 +31,14 @@ export default class ProjectRow extends React.Component<Props, State> {
     this.setState({ showComment: !this.state.showComment });
   };
 
+  wrapHTML = htmlString => {
+    return { __html: htmlString ? htmlString : "Not provided" };
+  };
+
+  preventEmptyTagline = taglineString => {
+    taglineString ? taglineString : "Tagline not provided";
+  };
+
   render() {
     const pro = this.props.project;
 
@@ -41,9 +49,6 @@ export default class ProjectRow extends React.Component<Props, State> {
       const imgsrc = pro.image
         ? this.props.webUrl + "/media/" + pro.image
         : logo;
-      const wrapHTML = htmlString => {
-        return { __html: htmlString ? htmlString : "Not provided" };
-      };
       const description = pro.comments ? (
         <span>
           <Button bsStyle="link" bsSize="xsmall" onClick={this.toggleComment}>
@@ -51,7 +56,7 @@ export default class ProjectRow extends React.Component<Props, State> {
           </Button>
           <Collapse in={this.state.showComment}>
             <Panel>
-              <span dangerouslySetInnerHTML={wrapHTML(pro.comments)} />
+              <span dangerouslySetInnerHTML={this.wrapHTML(pro.comments)} />
             </Panel>
           </Collapse>
         </span>
@@ -70,7 +75,8 @@ export default class ProjectRow extends React.Component<Props, State> {
               <br />
               <Glyphicon glyph="user" /> {pro.team_list_plain}
               <br />
-              <Glyphicon glyph="comment" /> {tagline} {description}
+              <Glyphicon glyph="comment" />{" "}
+              {this.preventEmptyTagline(pro.tagline_plain)} {description}
             </p>
             <Button
               bsStyle="primary"
