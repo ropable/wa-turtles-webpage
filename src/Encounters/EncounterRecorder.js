@@ -39,6 +39,13 @@ export default class EncounterList extends React.Component<State> {
     });
   };
 
+  resetEncounters = () => {
+    this.setState({
+      count: 0
+    });
+    // alert("Pretend we've just uploaded the data!");
+  };
+
   render() {
     // const store = this.props.store;
     return (
@@ -50,7 +57,7 @@ export default class EncounterList extends React.Component<State> {
                 <h1>Track (fresh)</h1>
                 <p>Made last night</p>
                 <Button
-                  id="btnAddTrackFresh"
+                  id="btnAddTrack"
                   bsSize="large"
                   bsStyle="primary"
                   onClick={this.addEncounter}
@@ -68,7 +75,7 @@ export default class EncounterList extends React.Component<State> {
                 <h1>Track (old)</h1>
                 <p>Made before last night</p>
                 <Button
-                  id="btnAddTrackFresh"
+                  id="btnAddOld"
                   bsSize="large"
                   bsStyle="primary"
                   onClick={this.addEncounter}
@@ -86,7 +93,7 @@ export default class EncounterList extends React.Component<State> {
                 <h1>Nest, unhatched</h1>
                 <p>Nest, unhatched, no track</p>
                 <Button
-                  id="btnAddTrackFresh"
+                  id="btnAddNest"
                   bsSize="large"
                   bsStyle="primary"
                   onClick={this.addEncounter}
@@ -104,7 +111,7 @@ export default class EncounterList extends React.Component<State> {
                 <h1>Nest, hatched</h1>
                 <p>Nest, hatched, hatchling tracks</p>
                 <Button
-                  id="btnAddTrackFresh"
+                  id="btnAddHatched"
                   bsSize="large"
                   bsStyle="primary"
                   onClick={this.addEncounter}
@@ -122,6 +129,13 @@ export default class EncounterList extends React.Component<State> {
             <Col xs={12} md={12}>
               <Well className="jumboWell">
                 <h1>Count: {this.state.count}</h1>
+                <Button
+                  bsSize="large"
+                  bsStyle="primary"
+                  onClick={this.resetEncounters}
+                >
+                  <Glyphicon glyph="upload" title="Upload data" /> Upload
+                </Button>
               </Well>
             </Col>
           </Row>

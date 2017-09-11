@@ -1,15 +1,19 @@
 // @flow
-import React from 'react';
-import { Grid, Well, Row, Col } from 'react-bootstrap';
+import React from "react";
+import { Grid, Well, Row, Col } from "react-bootstrap";
 // import TurtleYoutube from "../TurtleYoutube/TurtleYoutube";
 
-import './Education.css';
+import "./Education.css";
 
 export default class Education extends React.Component<{}> {
   render() {
     return (
       <div className="content">
         <Grid>
+          <Row>
+            <Col xs={12} lg={4} className="pushDown" xsHidden mdHidden />
+          </Row>
+
           <Row>
             <Col xs={12} md={4} mdOffset={0}>
               <Well className="jumboWell">
@@ -36,7 +40,7 @@ export default class Education extends React.Component<{}> {
               <Well className="jumboWell">
                 <h1>What we do</h1>
                 <p>
-                  Conservation planning and how we{"'"}ll spend $32{'.'}5M over
+                  Conservation planning and how we{"'"}ll spend $32{"."}5M over
                   30 years
                 </p>
               </Well>

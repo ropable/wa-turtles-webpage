@@ -29,7 +29,11 @@ export default class AlertRow extends React.Component<Props, State> {
   render() {
     const { alertVisible } = this.state;
     const spinner = this.props.showSpinner ? (
-      <Spinner name="ball-beat" color="orange" />
+      <div>
+        <Spinner name="ball-beat" color="orange" />
+        <Spinner name="ball-beat" color="orange" />
+        <Spinner name="ball-beat" color="orange" />
+      </div>
     ) : (
       <span />
     );
