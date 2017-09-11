@@ -1,10 +1,10 @@
 // @flow
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Image, Navbar, Nav, NavItem } from 'react-bootstrap';
-import logo from '../img/turtle_logo.png';
-import './Navigation.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
+import { Image, Navbar, Nav, NavItem } from "react-bootstrap";
+import logo from "../img/turtle_logo.png";
+import "./Navigation.css";
 
 export default class Navigation extends React.Component<{}> {
   render() {
@@ -32,6 +32,9 @@ export default class Navigation extends React.Component<{}> {
               </LinkContainer>
               <LinkContainer to="/locations">
                 <NavItem>Locations</NavItem>
+              </LinkContainer>
+              <LinkContainer to="/encounters">
+                <NavItem>Encounters</NavItem>
               </LinkContainer>
               <LinkContainer to="/education">
                 <NavItem>Education</NavItem>

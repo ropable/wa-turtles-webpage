@@ -1,6 +1,7 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
+import validateURL from "react-proptypes-url-validator";
 import { Grid } from "react-bootstrap";
 import axios from "axios";
 
@@ -8,7 +9,7 @@ import DatasetRow from "./DatasetRow";
 import AlertRow from "../AlertRow/AlertRow";
 
 type Props = {
-  webUrl: string,
+  webUrl: validateURL,
   apiParams: string
 };
 
@@ -29,7 +30,7 @@ export default class Datasets extends React.Component<Props, State> {
     status: "loading"
   };
 
-  getData = url => {
+  getData = (url: validateURL) => {
     axios
       .get(url)
       .then(res => {

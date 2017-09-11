@@ -59,7 +59,10 @@ export default class Footer extends React.Component<State> {
           </Collapse>
 
           <span className="text-muted credit">
-            <a href="https://github.com/parksandwildlife/wa-turtles-webpage">
+            <a
+              href="https://github.com/parksandwildlife/wa-turtles-webpage"
+              target="_"
+            >
               <Image
                 className="logo"
                 src={dbcalogo}
@@ -68,12 +71,18 @@ export default class Footer extends React.Component<State> {
             </a>
           </span>
           <span className="text-muted credit">
-            <a href="https://github.com/parksandwildlife/wa-turtles-webpage">
+            <a
+              href="https://github.com/parksandwildlife/wa-turtles-webpage"
+              target="_"
+            >
               <Image src={ghlogo} alt="GitHub" />
             </a>
           </span>
           <span className="text-muted credit">
-            <a href="https://travis-ci.org/parksandwildlife/wa-turtles-webpage">
+            <a
+              href="https://travis-ci.org/parksandwildlife/wa-turtles-webpage"
+              target="_"
+            >
               <Image
                 src="https://travis-ci.org/parksandwildlife/wa-turtles-webpage.svg?branch=master"
                 alt="Build Status"
@@ -81,7 +90,10 @@ export default class Footer extends React.Component<State> {
             </a>
           </span>
           <span className="text-muted credit">
-            <a href="https://coveralls.io/github/parksandwildlife/wa-turtles-webpage">
+            <a
+              href="https://coveralls.io/github/parksandwildlife/wa-turtles-webpage"
+              target="_"
+            >
               <Image
                 src="https://coveralls.io/repos/github/parksandwildlife/wa-turtles-webpage/badge.svg"
                 alt="Test Coverage"
@@ -89,7 +101,10 @@ export default class Footer extends React.Component<State> {
             </a>
           </span>
           <span className="text-muted credit">
-            <a href="http://waffle.io/parksandwildlife/wa-turtles-webpage">
+            <a
+              href="http://waffle.io/parksandwildlife/wa-turtles-webpage"
+              target="_"
+            >
               <Image
                 src="https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.svg?label=ready&title=Ready"
                 alt="To do"

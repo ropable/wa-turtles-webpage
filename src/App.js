@@ -12,26 +12,33 @@ import Education from "./Education/Education";
 import Datasets from "./Datasets/Datasets";
 import Projects from "./Projects/Projects";
 import Locations from "./Locations/Locations";
+import EncounterRecorder from "./Encounters/EncounterRecorder";
+// import observableEncounterStore from "./Stores/EncounterStore";
 import Footer from "./Footer/Footer";
 
 export default class App extends React.Component<{}> {
+  embedInfosheets = () => {
+    return (
+      <Datasets
+        apiParams={
+          "/api/3/action/package_search?q=groups:science-information-sheets"
+        }
+      />
+    );
+  };
+
   render() {
     return (
       <BrowserRouter>
         <div>
           <Navigation />
           <Route exact path="/" component={Dashboard} />
-          <Route exact path={"/education"} component={Education} />
           <Route exact path="/datasets" component={Datasets} />
-          <Route
-            exact
-            path="/infosheets"
-            render={() => (
-              <Datasets apiParams="/api/3/action/package_search?q=groups:science-information-sheets" />
-            )}
-          />
+          <Route exact path="/infosheets" render={this.embedInfosheets} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/locations" component={Locations} />
+          <Route exact path={"/encounters"} component={EncounterRecorder} />
+          <Route exact path={"/education"} component={Education} />
           <Footer />
         </div>
       </BrowserRouter>
