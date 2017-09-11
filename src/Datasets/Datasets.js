@@ -1,7 +1,6 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
-import validateURL from "react-proptypes-url-validator";
 import { Grid } from "react-bootstrap";
 import axios from "axios";
 
@@ -9,7 +8,7 @@ import DatasetRow from "./DatasetRow";
 import AlertRow from "../AlertRow/AlertRow";
 
 type Props = {
-  webUrl: validateURL,
+  webUrl: string,
   apiParams: string
 };
 
