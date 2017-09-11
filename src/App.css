@@ -31,6 +31,10 @@ body {
   min-height: 300px;
 }
 
+.videoWell {
+  min-height: 500px;
+}
+
 /* Content spacing */
 .pushDown {
   margin-top: 20%;

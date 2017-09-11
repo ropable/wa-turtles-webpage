@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Grid, Well, Row, Col } from "react-bootstrap";
+import { Button, Grid, Well, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import TurtleYoutube from "../TurtleYoutube/TurtleYoutube";
@@ -12,29 +12,9 @@ export default class Dashboard extends React.Component<{}> {
       <div className="content">
         <Grid>
           <Row>
-            <Col xs={12} lg={4} className="pushDown" xsHidden mdHidden />
-          </Row>
-
-          <Row>
-            <Col xs={12} md={4} mdOffset={0}>
-              <Well className="jumboWell">
-                <h1>Monitoring & Research</h1>
-                <p>What we do</p>
-                <p>Where are the turtles</p>
-                <p>Publications</p>
-              </Well>
-            </Col>
-            <Col xs={12} md={4}>
-              <Well className="jumboWell">
-                <h1>Intervention</h1>
-                <p>Some content</p>
-              </Well>
-            </Col>
-            <Col xs={12} md={4}>
-              <Well className="jumboWell">
-                <h1>Information & Education</h1>
-                <p>For volunteers, schools, tourists, public</p>
-                <Link to="/education">Dive in...</Link>
+            <Col md={12} xsHidden>
+              <Well className="videoWell">
+                <TurtleYoutube />
               </Well>
             </Col>
           </Row>
@@ -43,20 +23,32 @@ export default class Dashboard extends React.Component<{}> {
             <Col xs={12} md={4} mdOffset={0}>
               <Well className="jumboWell">
                 <h1>Explore</h1>
-                <p>General public, schools, tourists</p>
-                <TurtleYoutube />
+                <h3>Monitoring, Research, Intervention</h3>
+                <Link to="/projects">What we do</Link>
+                <br />
+                <Link to="/education">Who we are</Link>
               </Well>
             </Col>
+
             <Col xs={12} md={4}>
               <Well className="jumboWell">
                 <h1>Learn</h1>
-                <p>Committees, industry, researchers, students</p>
+                <h3>Information & Education</h3>
+                <p>
+                  From strategic documents to innteractive 3D models of turtles,
+                  access any information we have about turtles.
+                </p>
+                <Link to="/education">Dive in</Link>
               </Well>
             </Col>
+
             <Col xs={12} md={4}>
               <Well className="jumboWell">
                 <h1>Interact</h1>
-                <p>Volunteers, industry, researchers</p>
+                <h3>Contribute data</h3>
+                <Link to="/encounters">Report a sighting</Link>
+                <h3>Contribute time</h3>
+                <Link to="/education">Become a Volunteer</Link>
               </Well>
             </Col>
           </Row>
