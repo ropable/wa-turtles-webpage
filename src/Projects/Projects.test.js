@@ -73,19 +73,20 @@ const projects = [
 
 /* Basic component rendering */
 it("renders shallow without crashing", () => {
-  shallow(<Projects />);
+  const wrapper = shallow(<Projects />);
 });
 
 it("renders shallow with projects without crashing", () => {
-  shallow(<Projects projects={projects} />);
+  const wrapper = shallow(<Projects projects={projects} />);
 });
 
 it("renders static without crashing", () => {
-  render(<Projects projects={projects} />);
+  const wrapper = render(<Projects projects={projects} />);
 });
 
 it("renders fully without crashing", () => {
-  mount(<Projects projects={projects} />);
+  const wrapper = mount(<Projects projects={projects} />);
+  // console.log(wrapper);
 });
 
 it("render loading message initially", () => {
@@ -204,4 +205,10 @@ it("prepares filtered project rows", () => {
   const wrapper = shallow(<Projects />);
   wrapper.instance().setStateLoaded(projects);
   expect(wrapper.instance().state.status).toEqual("loaded");
+});
+
+it("handles loading error", () => {
+  const wrapper = shallow(<Projects />);
+  wrapper.instance().setStateError("error");
+  expect(wrapper.instance().state.status).toEqual("error");
 });

@@ -1,183 +1,144 @@
 import React from "react";
 import ReactDOM from "react-dom";
+// import axios from "axios";
+// import MockAdapter from 'axios-mock-adapter';
 import { shallow, mount, render } from "enzyme";
 import "jest-enzyme";
 import Datasets from "./Datasets";
 import AlertRow from "../AlertRow/AlertRow";
 
-const datasets_api_response = [
-  {
-    license_title: "Creative Commons Attribution Share-Alike",
-    maintainer: "Michael Rule",
-    relationships_as_object: [],
-    citation: "",
-    private: false,
-    maintainer_email: "marinedatarequests@dpaw.wa.gov.au",
-    num_tags: 5,
-    organization: {
-      description:
-        "[Marine Science Program](http://www.dpaw.wa.gov.au/management/marine/60-marine-research) ([Wiki](https://confluence.dec.wa.gov.au/display/sd/Marine+Science)), \r\n[Science and Conservation Division](http://www.dpaw.wa.gov.au/about-us/science-and-research), \r\n[Department of Parks and Wildlife](http://www.dpaw.wa.gov.au/)",
-      created: "2015-11-17T03:37:00.490959",
-      title: "Marine Science",
-      name: "marinescience",
-      is_organization: true,
-      state: "active",
-      image_url: "20140403-065014.260667biodiversity2.jpg",
-      revision_id: "b4d0839d-0eea-4a52-a165-33dbcb3b4e11",
-      type: "organization",
-      id: "523911a2-ddd8-495e-84bd-98e1e20715ed",
-      approval_status: "approved"
-    },
-    update_frequency: "",
-    id: "6c5d58f8-3a2d-4623-9d57-bdfdbf938490",
-    metadata_created: "2015-11-17T03:43:17.530718",
-    metadata_modified: "2017-08-18T03:15:08.149255",
-    author: "Michael Rule",
-    author_email: "michael.rule@dpaw.wa.gov.au",
-    theme: "",
-    state: "active",
-    version: "",
-    spatial:
-      '{"type": "MultiPolygon", "coordinates": [[[[115.66622251276195, -32.26228492802104], [115.66823914721607, -32.25946163978527], [115.70131195226362, -32.24494187171562], [115.70695852873516, -32.248975140623855], [115.7025219329361, -32.27075479272834], [115.70494189428103, -32.302617617103415], [115.72793152705799, -32.30584423223001], [115.73882135311023, -32.31471742382813], [115.74608123714505, -32.33327046080603], [115.74366127580011, -32.355050112910504], [115.72188162369562, -32.377636418796634], [115.6670291665436, -32.377233091905815], [115.66622251276195, -32.26228492802104]]]]}',
-    license_id: "cc-by-sa",
-    type: "dataset",
-    resources: [
-      {
-        mimetype: "text/html",
-        cache_url: null,
-        hash: "f6cff6f8afd83bc4ba5ef7948e6e0fde742becb6",
-        description: "Point of truth for the dataset",
-        name: "Return to Seagrasses of Western Australia",
-        format: "HTML",
-        url:
-          "https://data.dpaw.wa.gov.au/dataset/seagrass-in-situ-surveys-in-western-australia",
-        datastore_active: false,
-        cache_last_updated: null,
-        package_id: "6c5d58f8-3a2d-4623-9d57-bdfdbf938490",
-        created: "2014-07-15T05:31:44.939405",
-        state: "active",
-        mimetype_inner: null,
-        last_modified: "2014-12-04T19:07:30.864381",
-        position: 0,
-        revision_id: "394caa48-9c77-4234-8134-8c9e853e0cf9",
-        url_type: null,
-        id: "a25672bd-15d8-4644-933f-3eaa9fe6b320",
-        resource_type: null,
-        size: "57308"
-      },
-      {
-        mimetype: null,
-        cache_url: null,
-        hash: "",
-        description: "",
-        name: "Shoot density of seagrass at Shoalwater Islands MPA code",
-        format: "TXT",
-        url:
-          "https://data.dpaw.wa.gov.au/dataset/6c5d58f8-3a2d-4623-9d57-bdfdbf938490/resource/ef76d134-cc13-4c54-8864-0c441a36a127/download/jbmp_shoot_density_and_canopy_height_code.r",
-        datastore_active: false,
-        cache_last_updated: null,
-        package_id: "6c5d58f8-3a2d-4623-9d57-bdfdbf938490",
-        created: "2015-07-27T14:30:01.281965",
-        state: "active",
-        mimetype_inner: null,
-        last_modified: "2017-07-20T06:56:58.425225",
-        position: 1,
-        revision_id: "b5d487f2-f50a-405e-afd1-078e8f1e1bd1",
-        url_type: "upload",
-        id: "ef76d134-cc13-4c54-8864-0c441a36a127",
-        resource_type: null,
-        size: null
-      }
-    ],
-    num_resources: 10,
-    tags: [
-      {
-        vocabulary_id: null,
-        state: "active",
-        display_name: "asset_seagrass",
-        id: "7aa09a0c-5681-4790-861e-ac1598f49a6d",
-        name: "asset_seagrass"
-      },
-      {
-        vocabulary_id: null,
-        state: "active",
-        display_name: "author_michael_rule",
-        id: "02639c36-3f35-444d-9dfb-c6dc167fd7c1",
-        name: "author_michael_rule"
-      },
-      {
-        vocabulary_id: null,
-        state: "active",
-        display_name: "data_products",
-        id: "f74ad36b-42d5-4da0-a660-ade7f34f194f",
-        name: "data_products"
-      }
-    ],
-    data_homepage: "",
-    language: "",
-    groups: [
-      {
-        display_name: "MPA reporting",
+const api_url =
+  "https://data.dpaw.wa.gov.au/api/3/action/package_search?q=groups:science-information-sheets";
+const result = {
+  count: 1,
+  sort: "score desc, metadata_modified desc",
+  facets: {},
+  results: [
+    {
+      license_title: "Creative Commons Attribution Share-Alike",
+      maintainer: "Florian Mayer",
+      relationships_as_object: [],
+      citation: "",
+      private: false,
+      last_updated_on: "2016-12-01",
+      num_tags: 1,
+      organization: {
         description:
-          "Datasets relevant to annual MPA reporting by Marine Science to the regional marine park managers ",
-        image_display_url:
-          "https://data.dpaw.wa.gov.au/uploads/group/20140415-044330.634591nmpawqdissolvedinorganicnitrogen.svg",
-        title: "MPA reporting",
-        id: "53be9fab-6a80-4306-84e8-e61c6d0d2a52",
-        name: "mpa-reporting"
-      }
-    ],
-    creator_user_id: "7561256b-5317-4d35-a5d5-f4ff37c24e8e",
-    relationships_as_subject: [],
-    data_portal: "",
-    doi: "",
-    name:
-      "seagrass-in-situ-surveys-in-western-australia-shoot-density-at-shoalwater-islands-mp",
-    isopen: true,
-    url:
-      "http://marine-data.dpaw.wa.gov.au/dataset/seagrass-in-situ-surveys-in-western-australia",
-    notes: "",
-    owner_org: "523911a2-ddd8-495e-84bd-98e1e20715ed",
-    license_url: "http://www.opendefinition.org/licenses/cc-by-sa",
-    title: "Seagrasses at Shoalwater Islands MPA",
-    revision_id: "1c13c7f5-6214-411a-9c85-6e654e1d731e"
-  }
-];
-
-beforeEach(function() {
-  global.axios = jest.fn().mockImplementation(() => {
-    var p = new Promise((resolve, reject) => {
-      resolve({
-        ok: true,
-        Id: "123",
-        json: function() {
-          return datasets_api_response;
+          "Public datasets of the Department of Parks and Wildlife, harvested from the [public data catalog](http://data-demo.dpaw.wa.gov.au/).",
+        created: "2015-11-17T03:36:58.701959",
+        title: "DPaW",
+        name: "dpaw",
+        is_organization: true,
+        state: "active",
+        image_url: "20150106-024754.505375carrot.gif",
+        revision_id: "597108da-8568-4451-9677-c933a6de9b06",
+        type: "organization",
+        id: "44dbf724-8366-4001-a38a-cff23bb45957",
+        approval_status: "approved"
+      },
+      update_frequency: "static",
+      id: "92b723b3-d0b3-443f-86ce-0852082cdde3",
+      metadata_created: "2017-08-29T07:54:12.032761",
+      published_on: "2016-12-01",
+      metadata_modified: "2017-08-29T07:55:59.588585",
+      author:
+        "S Wilson, T Holmes, G Shedrawi, K Bennett, D Collins, T Langlois and D McLean",
+      author_email: "Shaun.Wilson@dbca.wa.gov.au",
+      theme: "Environment and Conservation",
+      state: "active",
+      version: null,
+      spatial:
+        '{"type": "MultiPolygon", "coordinates": [[[[128.84765625000003, -11.523087506868514], [128.67187500000003, -34.88593094075316], [114.43359375000001, -37.020098201368114], [110.91796875000001, -19.973348786110602], [128.84765625000003, -11.523087506868514]]]]}',
+      license_id: "cc-by-sa",
+      type: "dataset",
+      resources: [
+        {
+          mimetype: null,
+          cache_url: null,
+          hash: "",
+          description: "",
+          name: "Assessing benthic assemblages from fish  survey  videos",
+          format: "PDF",
+          url:
+            "https://data.dpaw.wa.gov.au/dataset/92b723b3-d0b3-443f-86ce-0852082cdde3/resource/a2e2a0c2-ba1c-4aed-838d-41a84e8e1216/download/sdis090.pdf",
+          datastore_active: false,
+          cache_last_updated: null,
+          package_id: "92b723b3-d0b3-443f-86ce-0852082cdde3",
+          created: "2017-08-29T07:55:59.070027",
+          state: "active",
+          mimetype_inner: null,
+          last_modified: "2017-08-29T07:55:59.042801",
+          position: 0,
+          revision_id: "86e295f0-fbd5-4150-bcec-f2da53c53a52",
+          url_type: "upload",
+          id: "a2e2a0c2-ba1c-4aed-838d-41a84e8e1216",
+          resource_type: null,
+          size: null
         }
-      });
-    });
-
-    return p;
-  });
-});
+      ],
+      num_resources: 1,
+      tags: [
+        {
+          vocabulary_id: null,
+          state: "active",
+          display_name: "science_information_sheet",
+          id: "863afa7c-4045-4555-9d41-c1cabb9c0bbc",
+          name: "science_information_sheet"
+        }
+      ],
+      data_homepage: "",
+      language: "English",
+      groups: [
+        {
+          display_name: "Public datasets",
+          description: "Datasets to be harvested into public facing outlets",
+          image_display_url:
+            "https://www-devup.dpaw.wa.gov.au/images/logos/logo_DBCA_Stacked.svg",
+          title: "Public datasets",
+          id: "d40b03db-ab51-420d-ad7a-58885ade37bc",
+          name: "public-datasets"
+        },
+        {
+          display_name: "Science Information Sheets",
+          description: "Handy one-pagers about science projects.",
+          image_display_url:
+            "https://data.dpaw.wa.gov.au/uploads/group/2017-08-29-074742.525907Screenshot-from-2017-08-29-15-47-29.png",
+          title: "Science Information Sheets",
+          id: "04373c15-bf1b-4a25-8268-9121bcb08e79",
+          name: "science-information-sheets"
+        }
+      ],
+      creator_user_id: "7561256b-5317-4d35-a5d5-f4ff37c24e8e",
+      maintainer_email: "Florian.Mayer@dbca.wa.gov.au",
+      relationships_as_subject: [],
+      data_portal: "",
+      doi: "",
+      name:
+        "information-sheet-assessing-benthic-assemblages-from-fish-survey-videos",
+      isopen: true,
+      url: null,
+      notes: "",
+      owner_org: "44dbf724-8366-4001-a38a-cff23bb45957",
+      license_url: "http://www.opendefinition.org/licenses/cc-by-sa",
+      title: "Assessing benthic assemblages from fish survey videos",
+      revision_id: "86e295f0-fbd5-4150-bcec-f2da53c53a52"
+    }
+  ]
+};
 
 /* Basic component rendering */
 it("renders shallow without crashing", () => {
-  shallow(<Datasets />);
+  const wrapper = shallow(<Datasets />);
+  // TODO how to load data using mock axios request?
+  // console.log(wrapper.instance().state.datasets);
 });
 
 it("renders static without crashing", () => {
-  render(<Datasets />);
+  const wrapper = render(<Datasets />);
 });
 
 it("renders fully without crashing", () => {
-  mount(<Datasets />);
-});
-
-it("getData loads datasets into state", function() {
-  const wrapper = shallow(<Datasets />);
-  wrapper.instance().getData();
-  // expect state.datasets to be datasets_api_response
-  //expect(wrapper.state().datasets).toEqual(datasets_api_response);
+  const wrapper = mount(<Datasets />);
 });
 
 it("render loading message initially", () => {
@@ -216,4 +177,25 @@ it("renders error message on loading error", () => {
     />
   );
   expect(wrapper).toContainReact(msg);
+});
+
+/* Functions */
+it("builds default API url", () => {
+  const wrapper = shallow(<Datasets />);
+  const url = wrapper.instance().buildUrl();
+  const expectedUrl =
+    "https://data.dpaw.wa.gov.au/api/3/action/package_search?q=tags:asset_turtles";
+  expect(url).toEqual(expectedUrl);
+});
+
+it("handles data loaded", () => {
+  const wrapper = shallow(<Datasets />);
+  wrapper.instance().setStateLoaded(result.results);
+  expect(wrapper.instance().state.status).toEqual("loaded");
+});
+
+it("handles loading error", () => {
+  const wrapper = shallow(<Datasets />);
+  wrapper.instance().setStateError("error");
+  expect(wrapper.instance().state.status).toEqual("error");
 });

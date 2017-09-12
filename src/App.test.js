@@ -36,3 +36,16 @@ it("renders Navigation component", () => {
   const msg = <Navigation />;
   expect(wrapper).toContainReact(msg);
 });
+
+/* Functions */
+it("renders turtle datasets without crashing", () => {
+  const wrapper = shallow(<App />);
+  const ds = wrapper.instance().embedTurtleData();
+  // console.log(ds);
+});
+
+it("renders infosheets datasets without crashing", () => {
+  const wrapper = shallow(<App />);
+  const ds = wrapper.instance().embedInfosheets();
+  // console.log(ds);
+});
