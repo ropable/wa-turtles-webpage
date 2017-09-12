@@ -29,7 +29,7 @@ export default class Datasets extends React.Component<Props, State> {
     status: "loading"
   };
 
-  getData = (url: validateURL) => {
+  getData = (url: PropTypes.string) => {
     axios
       .get(url)
       .then(res => {

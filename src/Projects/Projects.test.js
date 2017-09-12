@@ -191,3 +191,17 @@ it("tokenizes SDIS output", () => {
     ""
   ]);
 });
+
+it("prepares filtered project rows", () => {
+  const wrapper = shallow(<Projects />);
+  // const prows = wrapper
+  //   .instance()
+  //   .makeFilteredProjectRows(projects, "", "https://sdis.dpaw.wa.gov.au");
+  // expect(prows.length).toBe(3);
+});
+
+it("prepares filtered project rows", () => {
+  const wrapper = shallow(<Projects />);
+  wrapper.instance().setStateLoaded(projects);
+  expect(wrapper.instance().state.status).toEqual("loaded");
+});

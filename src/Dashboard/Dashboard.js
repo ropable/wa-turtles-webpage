@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Button, Grid, Well, Row, Col } from "react-bootstrap";
+import { Grid, Well, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import TurtleYoutube from "../TurtleYoutube/TurtleYoutube";

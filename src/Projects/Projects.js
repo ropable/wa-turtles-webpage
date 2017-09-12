@@ -139,48 +139,70 @@ export default class Projects extends React.Component<Props, State> {
     return ta;
   };
 
-  componentDidMount() {
-    const main = this;
-    axios
-      .get(main.props.webUrl + main.props.apiParams)
-      .then(res => {
-        main.setState({
-          projects: res.data,
-          status: "loaded",
-          tags: main.makeTags(main.wordFreq(main.sdisTokenizer(res.data)), 3)
-        });
-      })
-      .catch(error => {
-        main.setState({ status: "error" });
+  /**
+   * Return an Array of ProjectRow HTML from projects matching filterText
+   *
+   * Args:
+   * projects: an array of SDIS projects (=SDIS API JSON response.data)
+   * filterText: a case-insensitive filter text to match project title & tagline
+   * webUrl: the SDIS web URL, a required prop for ProjectRow
+   */
+  makeFilteredProjectRows = (
+    projects: PropTypes.array,
+    filterText: string,
+    webUrl: string
+  ) => {
+    let rows = [];
+    projects
+      .filter(
+        project =>
+          filterText
+            ? (project.title_plain + " " + project.tagline_plain)
+                .toLowerCase()
+                .includes(filterText.toLowerCase())
+            : project
+      )
+      .forEach(project => {
+        rows.push(
+          <ProjectRow project={project} key={project.id} webUrl={webUrl} />
+        );
       });
+    return rows;
+  };
+
+  /**
+   * Change state once projects are loaded
+   */
+  setStateLoaded = projects => {
+    this.setState({
+      projects: projects,
+      status: "loaded",
+      tags: this.makeTags(this.wordFreq(this.sdisTokenizer(projects)), 3)
+    });
+  };
+
+  /**
+   * Change state if projects fail to load
+   */
+  setStateError = error => {
+    this.setState({ status: "error" });
+    console.log(error);
+  };
+
+  /**
+   * Load SDIS projects from SDIS API (should be cached in store)
+   */
+  componentDidMount() {
+    axios
+      .get(this.props.webUrl + this.props.apiParams)
+      .then(res => this.setStateLoaded(res.data))
+      .catch(error => this.setStateError(error));
   }
 
   render() {
     const { projects, status, filterText } = this.state;
 
     if (status === "loaded") {
-      let rows = [];
-      projects
-        .filter(
-          project =>
-            filterText
-              ? project.title_plain
-                  .toLowerCase()
-                  .indexOf(filterText.toLowerCase()) > -1 ||
-                project.tagline_plain
-                  .toLowerCase()
-                  .indexOf(filterText.toLowerCase()) > -1
-              : project
-        )
-        .forEach(project => {
-          rows.push(
-            <ProjectRow
-              project={project}
-              key={project.id}
-              webUrl={this.props.webUrl}
-            />
-          );
-        });
       return (
         <div className="content">
           <Grid>
@@ -204,7 +226,11 @@ export default class Projects extends React.Component<Props, State> {
                 </Panel>
               </Col>
 
-              {rows}
+              {this.makeFilteredProjectRows(
+                projects,
+                filterText,
+                this.props.webUrl
+              )}
             </Row>
           </Grid>
         </div>

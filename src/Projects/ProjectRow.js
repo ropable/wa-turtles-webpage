@@ -32,11 +32,11 @@ export default class ProjectRow extends React.Component<Props, State> {
   };
 
   wrapHTML = htmlString => {
-    return { __html: htmlString ? htmlString : "Not provided" };
+    return { __html: htmlString || "Not provided" };
   };
 
   preventEmptyTagline = taglineString => {
-    return taglineString ? taglineString : "Tagline not provided";
+    return taglineString || "Tagline not provided";
   };
 
   preventEmptyImage = (baseUrl, imageUrl, logo) => {
