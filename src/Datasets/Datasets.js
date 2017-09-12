@@ -20,8 +20,7 @@ type State = {
 export default class Datasets extends React.Component<Props, State> {
   static defaultProps = {
     webUrl: process.env.REACT_APP_CKAN_URL || "https://data.dpaw.wa.gov.au",
-    apiParams:
-      "/api/3/action/package_search?q=groups:habitat-sampling-initiative"
+    apiParams: "tags:asset_turtles"
   };
 
   state = {
@@ -41,7 +40,11 @@ export default class Datasets extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    this.getData(this.props.webUrl + this.props.apiParams);
+    this.getData(
+      this.props.webUrl +
+        "/api/3/action/package_search?q=" +
+        this.props.apiParams
+    );
   }
 
   render() {

@@ -18,13 +18,11 @@ import Footer from "./Footer/Footer";
 
 export default class App extends React.Component<{}> {
   embedInfosheets = () => {
-    return (
-      <Datasets
-        apiParams={
-          "/api/3/action/package_search?q=groups:science-information-sheets"
-        }
-      />
-    );
+    return <Datasets apiParams={"groups:science-information-sheets"} />;
+  };
+
+  embedTurtleData = () => {
+    return <Datasets apiParams={"tags:asset_turtles"} />;
   };
 
   render() {
@@ -33,7 +31,7 @@ export default class App extends React.Component<{}> {
         <div>
           <Navigation />
           <Route exact path="/" component={Dashboard} />
-          <Route exact path="/datasets" component={Datasets} />
+          <Route exact path="/datasets" render={this.embedTurtleData} />
           <Route exact path="/infosheets" render={this.embedInfosheets} />
           <Route exact path="/projects" component={Projects} />
           <Route exact path="/locations" component={Locations} />
