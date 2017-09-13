@@ -43,24 +43,26 @@ export default class ProjectRow extends React.Component<Props, State> {
     return imageUrl ? baseUrl + "/media/" + imageUrl : logo;
   };
 
+  renderComments = (main, comments) => {
+    return comments ? (
+      <span>
+        <Button bsStyle="link" bsSize="xsmall" onClick={main.toggleComment}>
+          Read more...
+        </Button>
+        <Collapse in={main.state.showComment}>
+          <Panel>
+            <span dangerouslySetInnerHTML={main.wrapHTML(comments)} />
+          </Panel>
+        </Collapse>
+      </span>
+    ) : (
+      <span />
+    );
+  };
+
   render() {
     const pro = this.props.project;
-
     if (pro) {
-      const description = pro.comments ? (
-        <span>
-          <Button bsStyle="link" bsSize="xsmall" onClick={this.toggleComment}>
-            Read more...
-          </Button>
-          <Collapse in={this.state.showComment}>
-            <Panel>
-              <span dangerouslySetInnerHTML={this.wrapHTML(pro.comments)} />
-            </Panel>
-          </Collapse>
-        </span>
-      ) : (
-        <span />
-      );
       return (
         <Col xs={12} md={6} lg={4}>
           <Thumbnail
@@ -77,7 +79,8 @@ export default class ProjectRow extends React.Component<Props, State> {
               <Glyphicon glyph="user" /> {pro.team_list_plain}
               <br />
               <Glyphicon glyph="comment" />{" "}
-              {this.preventEmptyTagline(pro.tagline_plain)} {description}
+              {this.preventEmptyTagline(pro.tagline_plain)}{" "}
+              {this.renderComments(this, pro.comments)}
             </p>
             <Button
               bsStyle="primary"

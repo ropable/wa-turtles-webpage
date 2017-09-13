@@ -6,7 +6,9 @@ import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import TimeAgo from "react-timeago";
 import { shallow, mount, render } from "enzyme";
 import "jest-enzyme";
+
 import ProjectRow from "./ProjectRow";
+import logo from "../img/green_hatchling.jpg";
 
 const pro = {
   id: 174,
@@ -82,4 +84,36 @@ it("renders htmlString", () => {
 it("renders none htmlString to placeholder", () => {
   const wrapper = shallow(<ProjectRow />);
   expect(wrapper.instance().wrapHTML()).toEqual({ __html: "Not provided" });
+});
+
+it("renders image src with valid baseUrl and valid imageUrl", () => {
+  const wrapper = shallow(<ProjectRow />);
+  const imagesrc = wrapper
+    .instance()
+    .preventEmptyImage("https://sdis.dpaw.wa.gov.au", "image.jpg", logo);
+  expect(imagesrc).toEqual("https://sdis.dpaw.wa.gov.au/media/image.jpg");
+});
+
+it("renders fallback image src with valid baseUrl and empty imageUrl", () => {
+  const wrapper = shallow(<ProjectRow />);
+  const imagesrc = wrapper
+    .instance()
+    .preventEmptyImage(wrapper.instance().props.webUrl, pro.image, logo);
+  expect(imagesrc).toEqual(logo);
+});
+
+it("renders valid comments", () => {
+  const wrapper = shallow(<ProjectRow />);
+  const commentHTML = wrapper
+    .instance()
+    .renderComments(wrapper.instance(), "test");
+  // console.log(commentHTML);
+});
+
+it("renders fallback for empty comments", () => {
+  const wrapper = shallow(<ProjectRow />);
+  const commentHTML = wrapper
+    .instance()
+    .renderComments(wrapper.instance(), undefined);
+  // console.log(commentHTML);
 });

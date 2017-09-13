@@ -2,7 +2,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { Image, Navbar, Nav, NavItem } from "react-bootstrap";
+import {
+  Image,
+  Navbar,
+  Nav,
+  NavDropdown,
+  NavItem,
+  MenuItem
+} from "react-bootstrap";
 import logo from "../img/turtle_logo.png";
 import "./Navigation.css";
 
@@ -21,21 +28,24 @@ export default class Navigation extends React.Component<{}> {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <LinkContainer to="/datasets">
-                <NavItem>Datasets</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/infosheets">
-                <NavItem>Info sheets</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/projects">
-                <NavItem>Projects</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/locations">
-                <NavItem>Locations</NavItem>
-              </LinkContainer>
-              <LinkContainer to="/encounters">
-                <NavItem>Encounters</NavItem>
-              </LinkContainer>
+              <NavDropdown eventKey={1} title="Data" id="nav-data">
+                <LinkContainer to="/datasets">
+                  <MenuItem eventKey={1.1}>Turtle datasets</MenuItem>
+                </LinkContainer>
+                <LinkContainer to="/infosheets">
+                  <MenuItem eventKey={1.2}>Info sheets</MenuItem>
+                </LinkContainer>
+                <LinkContainer to="/projects">
+                  <MenuItem eventKey={1.3}>Projects</MenuItem>
+                </LinkContainer>
+                <LinkContainer to="/locations">
+                  <MenuItem eventKey={1.4}>Locations</MenuItem>
+                </LinkContainer>
+                <MenuItem divider />
+                <LinkContainer to="/encounters">
+                  <MenuItem eventKey={1.5}>Track census</MenuItem>
+                </LinkContainer>
+              </NavDropdown>
               <LinkContainer to="/education">
                 <NavItem>Education</NavItem>
               </LinkContainer>

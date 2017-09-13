@@ -45,37 +45,40 @@ export default class DatasetRow extends React.Component<Props> {
     }
   };
 
+  /* Return Dataset's GeoJSON Multipolygon geometry or fallback */
+  getGeom = (ds, fallback) => {
+    return ds.spatial ? JSON.parse(ds.spatial) : fallback;
+  };
+
+  /* react-leaflet doesn't seem to like fitBounds, so we'll roll our own */
+  getCenter = gjs => [
+    (st.yMax(gjs) + st.yMin(gjs)) * 0.5,
+    (st.xMax(gjs) + st.xMin(gjs)) * 0.5
+  ];
+
+  // Generate max extent in degrees from given GeoJSON
+  getSpatialExtent = gjs =>
+    Math.max(
+      Math.abs(st.yMax(gjs) - st.yMin(gjs)),
+      Math.abs(st.xMax(gjs) - st.xMin(gjs))
+    );
+
+  // Distill sum fine moonshine zoom level from coord extent of GeoJSON
+  getZoom = gjs => -1 * Math.log(this.getSpatialExtent(gjs)) + 6.5;
+
   render() {
     const ds = this.props.dataset;
     const disallowedTypes = ["p"];
     if (ds) {
-      // Dataset's GeoJSON Multipolygon geometry or fallback
-      const gj =
-        ds && ds.spatial ? JSON.parse(ds.spatial) : this.props.defaultGeom;
-
-      /* react-leaflet doesn't seem to like fitBounds, so we'll roll our own */
-      const getCenter = gjs => [
-        (st.yMax(gjs) + st.yMin(gjs)) * 0.5,
-        (st.xMax(gjs) + st.xMin(gjs)) * 0.5
-      ];
-
-      // Generate max extent in degrees from given GeoJSON
-      const getSpatialExtent = gjs =>
-        Math.max(
-          Math.abs(st.yMax(gjs) - st.yMin(gjs)),
-          Math.abs(st.xMax(gjs) - st.xMin(gjs))
-        );
-
-      // Distill sum fine moonshine zoom level from coord extent of GeoJSON
-      const getZoom = gjs => -1 * Math.log(getSpatialExtent(gjs)) + 6.5;
+      const gj = this.getGeom(ds, this.props.defaultGeom);
 
       return (
         <Col xs={12} md={6} lg={4}>
           <Well className="pseudoThumbnail">
             <Map
               id="map"
-              center={getCenter(gj)}
-              zoom={getZoom(gj)}
+              center={this.getCenter(gj)}
+              zoom={this.getZoom(gj)}
               doubleClickZoom={this.props.doubleClickZoom}
             >
               <TileLayer
@@ -148,7 +151,7 @@ export default class DatasetRow extends React.Component<Props> {
                 title="Click to read the dataset's description"
               >
                 <ReactMarkdown
-                  source={ds.notes ? ds.notes : "Not provided"}
+                  source={ds.notes || "Not provided"}
                   containerTagName="span"
                   disallowedTypes={disallowedTypes}
                 />

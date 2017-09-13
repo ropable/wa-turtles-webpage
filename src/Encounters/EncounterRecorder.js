@@ -143,8 +143,4 @@ export default class EncounterList extends React.Component<State> {
       </div>
     );
   }
-
-  onNewEncounter = () => {
-    console.log("new encounter created");
-  };
 }
