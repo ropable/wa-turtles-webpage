@@ -44,11 +44,15 @@ export default class Datasets extends React.Component<Props, State> {
     `${this.props.webUrl}/api/3/action/package_search?q=${this.props
       .apiParams}`;
 
-  componentDidMount() {
+  loadData = () => {
     axios
       .get(this.buildUrl())
       .then(res => this.setStateLoaded(res.data.result.results))
       .catch(error => this.setStateError(error));
+  };
+
+  componentDidMount() {
+    this.loadData();
   }
 
   render() {

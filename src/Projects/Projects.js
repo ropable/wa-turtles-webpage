@@ -189,14 +189,18 @@ export default class Projects extends React.Component<Props, State> {
     console.log(error);
   };
 
-  /**
-   * Load SDIS projects from SDIS API (should be cached in store)
-   */
-  componentDidMount() {
+  loadData = () => {
     axios
       .get(this.props.webUrl + this.props.apiParams)
       .then(res => this.setStateLoaded(res.data))
       .catch(error => this.setStateError(error));
+  };
+
+  /**
+   * Load SDIS projects from SDIS API (should be cached in store)
+   */
+  componentDidMount() {
+    this.loadData();
   }
 
   render() {

@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { shallow, render, mount } from "enzyme";
 import "jest-enzyme";
+import axios from "axios";
+import moxios from "moxios";
+import sinon from "sinon";
 import Projects from "./Projects";
 import ProjectRow from "./ProjectRow";
 import AlertRow from "../AlertRow/AlertRow";
@@ -71,21 +74,65 @@ const projects = [
   }
 ];
 
+beforeEach(function() {
+  // import and pass your custom axios instance to this method
+  moxios.install();
+});
+afterEach(function() {
+  // import and pass your custom axios instance to this method
+  moxios.uninstall();
+});
+
 /* Basic component rendering */
+it("renders shallow without crashing", () => {
+  const wrapper = shallow(<Projects />);
+
+  wrapper.instance().loadData();
+
+  moxios.wait(function() {
+    let request = moxios.requests.mostRecent();
+    request
+      .respondWith({
+        status: 200,
+        data: projects
+      })
+      .then(function() {
+        expect(wrapper.instance().state.projects).toEqual(projects);
+        done();
+      });
+  });
+});
+
+it("renders shallow without crashing after server error", () => {
+  const wrapper = shallow(<Projects />);
+
+  wrapper.instance().loadData();
+
+  moxios.wait(function() {
+    let request = moxios.requests.mostRecent();
+    request
+      .respondWith({
+        status: 500,
+        error: "halt hammerzeit"
+      })
+      .then(function() {
+        expect(wrapper.instance().state.projects).toEqual([]);
+        expect(wrapper.instance().state.status).toBe("error");
+        done();
+      });
+  });
+});
+
 it("renders shallow without crashing", () => {
   const wrapper = shallow(<Projects />);
 });
 
-it("renders shallow with projects without crashing", () => {
-  const wrapper = shallow(<Projects projects={projects} />);
-});
-
 it("renders static without crashing", () => {
-  const wrapper = render(<Projects projects={projects} />);
+  const wrapper = render(<Projects />);
 });
 
 it("renders fully without crashing", () => {
-  const wrapper = mount(<Projects projects={projects} />);
+  const wrapper = mount(<Projects />);
   // console.log(wrapper);
 });
 
