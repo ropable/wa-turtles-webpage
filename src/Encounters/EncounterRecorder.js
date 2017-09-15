@@ -54,6 +54,25 @@ export default class EncounterList extends React.Component<State> {
     // alert("Pretend we've just uploaded the data!");
   };
 
+  geoSuccess = position => {
+    const msg = `Lat ${position.coords.latitude} Lon ${position.coords
+      .longitude}`;
+    console.log(msg);
+    return msg;
+  };
+
+  geoError = error => {
+    const msg = `Error occurred. Error code: ${error.code}`;
+    console.log(msg);
+    return msg;
+
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable (error response from location provider)
+    //   3: timed out
+  };
+
   render() {
     // const store = this.props.store;
     return (
@@ -161,6 +180,12 @@ export default class EncounterList extends React.Component<State> {
 
                   <AddTodo />
                   <VisibleTodoList />
+                  <div>
+                    {navigator.geolocation.getCurrentPosition(
+                      this.geoSuccess,
+                      this.geoError
+                    )}
+                  </div>
                 </Well>
               </Col>
             </Row>
