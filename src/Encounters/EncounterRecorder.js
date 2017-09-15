@@ -181,9 +181,13 @@ export default class EncounterList extends React.Component<State> {
                   <AddTodo />
                   <VisibleTodoList />
                   <div>
-                    {navigator.geolocation.getCurrentPosition(
-                      this.geoSuccess,
-                      this.geoError
+                    {navigator.geolocation ? (
+                      navigator.geolocation.getCurrentPosition(
+                        this.geoSuccess,
+                        this.geoError
+                      )
+                    ) : (
+                      "Geolocation unavailable"
                     )}
                   </div>
                 </Well>
