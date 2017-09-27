@@ -6,8 +6,9 @@ import {
   Col,
   Collapse,
   Glyphicon,
+  Image,
   Panel,
-  Thumbnail,
+  Row,
   Well
 } from "react-bootstrap";
 
@@ -50,7 +51,7 @@ export default class ProjectRow extends React.Component<Props, State> {
           Read more...
         </Button>
         <Collapse in={main.state.showComment}>
-          <Panel>
+          <Panel className="no-margin">
             <span dangerouslySetInnerHTML={main.wrapHTML(comments)} />
           </Panel>
         </Collapse>
@@ -64,38 +65,63 @@ export default class ProjectRow extends React.Component<Props, State> {
     const pro = this.props.project;
     if (pro) {
       return (
-        <Col xs={12} md={6} lg={4}>
-          <Thumbnail
-            src={this.preventEmptyImage(this.props.webUrl, pro.image, logo)}
-            alt={pro.project_type_year_number_plain}
-          >
-            <h4>{pro.title_plain}</h4>
-            <p>
-              <Glyphicon glyph="wrench" /> {pro.project_type_year_number_plain}{" "}
-              {pro.status_display}
-              <br />
-              <Glyphicon glyph="home" /> {pro.program}
-              <br />
-              <Glyphicon glyph="user" /> {pro.team_list_plain}
-              <br />
-              <Glyphicon glyph="comment" />{" "}
-              {this.preventEmptyTagline(pro.tagline_plain)}{" "}
-              {this.renderComments(this, pro.comments)}
-            </p>
-            <Button
-              bsStyle="primary"
-              bsSize="xsmall"
-              href={this.props.webUrl + pro.absolute_url}
-              target="_"
-            >
-              <Glyphicon glyph="link" /> View in SDIS
-            </Button>&nbsp;
-          </Thumbnail>
-        </Col>
+        <Row>
+          <Panel className="thumbnail">
+            <Col xs={12} md={4} lg={3} className="no-padding">
+              <Image
+                src={this.preventEmptyImage(this.props.webUrl, pro.image, logo)}
+                alt={pro.project_type_year_number_plain}
+                responsive
+              />
+            </Col>
+            <Col xs={12} md={8} lg={9}>
+              <Row>
+                <Col xs={12}>
+                  <h4>{pro.title_plain}</h4>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="wrench" />{" "}
+                  {pro.project_type_year_number_plain} {pro.status_display}
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="home" /> {pro.program}
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="user" /> {pro.team_list_plain}
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="comment" />{" "}
+                  {this.preventEmptyTagline(pro.tagline_plain)}{" "}
+                  {this.renderComments(this, pro.comments)}
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <Button
+                    bsStyle="primary"
+                    bsSize="xsmall"
+                    href={this.props.webUrl + pro.absolute_url}
+                    target="_"
+                  >
+                    <Glyphicon glyph="link" /> View in SDIS
+                  </Button>&nbsp;
+                </Col>
+              </Row>
+            </Col>
+          </Panel>
+        </Row>
       );
     } else {
       return (
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12}>
           <Well className="whitebg">
             <h4>No project</h4>
           </Well>

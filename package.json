@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "axios-cache-plugin": "0.0.7",
     "babel-eslint": "^7.2.3",
     "bootstrap": "^3.3.7",
     "enzyme": "^2.9.1",
@@ -40,6 +41,7 @@
     "react-youtube": "^7.4.0",
     "redux": "^3.7.2",
     "redux-offline": "^2.0.0",
+    "redux-persist": "^4.9.1",
     "redux-search": "^2.4.0",
     "stylelint": "^8.1.1",
     "wordfreq": "0.1.0-dev"
@@ -73,5 +75,18 @@
     "sinon": "^3.2.1",
     "sw-precache": "^5.2.0",
     "sw-precache-webpack-plugin": "^0.11.4"
-  }
+  },
+  "description": "[![Build Status](https://travis-ci.org/parksandwildlife/wa-turtles-webpage.svg?branch=master)](https://travis-ci.org/parksandwildlife/wa-turtles-webpage) [![Coverage Status](https://coveralls.io/repos/github/parksandwildlife/wa-turtles-webpage/badge.svg)](https://coveralls.io/github/parksandwildlife/wa-turtles-webpage) [![To do](https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.png?label=ready&title=Ready)](http://waffle.io/parksandwildlife/wa-turtles-webpage) # WA Turtles web page Prototype of a web page for WA Turtles.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parksandwildlife/wa-turtles-webpage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parksandwildlife/wa-turtles-webpage/issues"
+  },
+  "homepage": "https://github.com/parksandwildlife/wa-turtles-webpage#readme"
 }

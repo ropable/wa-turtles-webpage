@@ -55,17 +55,11 @@ export default class EncounterList extends React.Component<State> {
   };
 
   geoSuccess = position => {
-    const msg = `Lat ${position.coords.latitude} Lon ${position.coords
-      .longitude}`;
-    console.log(msg);
-    return msg;
+    return `Lat ${position.coords.latitude} Lon ${position.coords.longitude}`;
   };
 
   geoError = error => {
-    const msg = `Error occurred. Error code: ${error.code}`;
-    console.log(msg);
-    return msg;
-
+    return `Error occurred. Error code: ${error.code}`;
     // error.code can be:
     //   0: unknown error
     //   1: permission denied

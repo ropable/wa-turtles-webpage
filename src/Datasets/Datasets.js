@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Grid } from "react-bootstrap";
 import axios from "axios";
+import wrapper from "axios-cache-plugin";
 
 import DatasetRow from "./DatasetRow";
 import AlertRow from "../AlertRow/AlertRow";
@@ -16,6 +17,11 @@ type State = {
   datasets: PropTypes.array,
   status: string
 };
+
+let http = wrapper(axios, {
+  maxCacheSize: 15
+});
+http.__addFilter(/datasets/);
 
 export default class Datasets extends React.Component<Props, State> {
   static defaultProps = {
@@ -45,7 +51,12 @@ export default class Datasets extends React.Component<Props, State> {
       .apiParams}`;
 
   loadData = () => {
-    axios
+    // axios
+    //   .get(this.buildUrl())
+    //   .then(res => this.setStateLoaded(res.data.result.results))
+    //   .catch(error => this.setStateError(error));
+
+    http
       .get(this.buildUrl())
       .then(res => this.setStateLoaded(res.data.result.results))
       .catch(error => this.setStateError(error));

@@ -211,15 +211,12 @@ export default class Projects extends React.Component<Props, State> {
         <div className="content">
           <Grid>
             <Row>
-              <Col xs={12}>
-                <SearchBar
-                  filterText={filterText}
-                  onFilterTextInput={this.handleFilterTextInput}
-                />
-              </Col>
-
-              <Col xs={12}>
-                <Panel className="blackbg thumbnail">
+              <Panel className="blackbg thumbnail">
+                <Col xs={12}>
+                  <SearchBar
+                    filterText={filterText}
+                    onFilterTextInput={this.handleFilterTextInput}
+                  />
                   <TagCloud
                     minSize={16}
                     maxSize={40}
@@ -227,15 +224,14 @@ export default class Projects extends React.Component<Props, State> {
                     className="simple-cloud"
                     onClick={this.handleClickTag}
                   />
-                </Panel>
-              </Col>
-
-              {this.makeFilteredProjectRows(
-                projects,
-                filterText,
-                this.props.webUrl
-              )}
+                </Col>
+              </Panel>
             </Row>
+            {this.makeFilteredProjectRows(
+              projects,
+              filterText,
+              this.props.webUrl
+            )}
           </Grid>
         </div>
       );

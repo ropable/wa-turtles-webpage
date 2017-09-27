@@ -7,8 +7,11 @@ import {
   createStore,
   compose
 } from "redux";
-import { offline } from "redux-offline";
-import offlineConfig from "redux-offline/lib/defaults";
+
+import {
+  // persistStore,
+  autoRehydrate
+} from "redux-persist";
 
 import "./App.css";
 import Navigation from "./Navigation/Navigation";
@@ -21,14 +24,12 @@ import EncounterRecorder from "./Encounters/EncounterRecorder";
 import Footer from "./Footer/Footer";
 import todoApp from "./reducers";
 
-// let store = createStore(todoApp);
-const preloadedState = {};
 const store = createStore(
   todoApp,
-  preloadedState,
+  undefined,
   compose(
     // applyMiddleware(middleware),
-    offline(offlineConfig)
+    autoRehydrate()
   )
 );
 

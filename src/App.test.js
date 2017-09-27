@@ -28,7 +28,7 @@ it("renders fully without crashing", () => {
 
 it("renders Datasets with parameters", () => {
   const wrapper = mount(<App />);
-  expect(wrapper.find(Route).length).toBe(13);
+  expect(wrapper.find(Route).length).toBe(14);
 });
 
 it("renders Navigation component", () => {

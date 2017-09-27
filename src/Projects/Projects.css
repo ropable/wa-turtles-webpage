@@ -13,3 +13,13 @@
 span.tag-cloud-tag:hover {
   text-decoration: underline;
 }
+
+.panel-body,
+.no-padding {
+  padding: 0px;
+}
+
+.no-margin {
+  margin: 0px;
+  border-style: none;
+}
