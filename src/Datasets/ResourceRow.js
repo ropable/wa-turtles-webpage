@@ -11,13 +11,6 @@ export default class ResourceRow extends React.Component<Props> {
   render() {
     const r = this.props.resource;
     const disallowedTypes = ["p"];
-    const TEXT_COLLAPSE_OPTIONS = {
-      collapse: true,
-      collapseText: "... show more",
-      expandText: "show less",
-      minHeight: 40,
-      maxHeight: 500
-    };
 
     if (r) {
       return (
