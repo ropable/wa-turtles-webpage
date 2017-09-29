@@ -7,6 +7,7 @@ import {
   Collapse,
   Glyphicon,
   Image,
+  Label,
   Panel,
   Row,
   Well
@@ -82,37 +83,40 @@ export default class ProjectRow extends React.Component<Props, State> {
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="wrench" />{" "}
-                  {pro.project_type_year_number_plain} {pro.status_display}
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <Glyphicon glyph="home" /> {pro.program}
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <Glyphicon glyph="user" /> {pro.team_list_plain}
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <Glyphicon glyph="comment" />{" "}
-                  {this.preventEmptyTagline(pro.tagline_plain)}{" "}
-                  {this.renderComments(this, pro.comments)}
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
+                  <Glyphicon glyph="link" title="Project ID" />{" "}
                   <Button
                     bsStyle="primary"
                     bsSize="xsmall"
                     href={this.props.webUrl + pro.absolute_url}
                     target="_"
+                    title="Open project in SDIS"
                   >
-                    <Glyphicon glyph="link" /> View in SDIS
-                  </Button>&nbsp;
+                    {" "}
+                    {pro.project_type_year_number_plain}
+                  </Button>{" "}
+                  <Label bsStyle="success" bsSize="xsmall">
+                    <Glyphicon glyph="wrench" title="Project Status" />{" "}
+                    {pro.status_display}
+                  </Label>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="home" title="Divisional Program" />{" "}
+                  {pro.program}
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="user" title="Project Team" />{" "}
+                  {pro.team_list_plain}
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="comment" title="Project description" />{" "}
+                  {this.preventEmptyTagline(pro.tagline_plain)}{" "}
+                  {this.renderComments(this, pro.comments)}
                 </Col>
               </Row>
             </Col>

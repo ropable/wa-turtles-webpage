@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import Leaflet from "leaflet";
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import st from "geojson-bounds";
-import { Col, Glyphicon, ListGroup, Panel, Well } from "react-bootstrap";
+import { Col, Glyphicon, Row, Well } from "react-bootstrap";
 import TimeAgo from "react-timeago";
 
 import ResourceRow from "./ResourceRow";
@@ -88,85 +88,114 @@ export default class DatasetRow extends React.Component<Props> {
               <GeoJSON ref="gj" data={gj} />
             </Map>
             <div className="pseudoCaption">
-              <h4>{ds.title}</h4>
-              <p>
-                <Glyphicon
-                  glyph="home"
-                  title="The dataset belongs to this organisation"
-                />{" "}
-                {ds.organization.title}
-                <br />
-                <Glyphicon
-                  glyph="edit"
-                  title="The dataset author is the intellectual owner of the main dataset resource"
-                />{" "}
-                <a href={"mailto:" + ds.author_email}>{ds.author}</a>
-                <br />
-                <Glyphicon glyph="comment" title="Citation" /> {ds.citation}
-                <br />
-                <Glyphicon glyph="copyright-mark" title="License" />{" "}
-                {ds.license_id}
-                <br />
-                <Glyphicon
-                  glyph="wrench"
-                  title="The dataset maintainer wrote and updates this metadata entry"
-                />{" "}
-                <a href={"mailto:" + ds.maintainer_email}>{ds.maintainer}</a>
-                <br />
-                <Glyphicon
-                  glyph="repeat"
-                  title="Update frequency of main dataset resource"
-                />{" "}
-                {ds.update_frequency}
-                <br />
-                <Glyphicon glyph="refresh" title="Metadata last updated" />{" "}
-                <TimeAgo date={ds.metadata_modified} />
-                <br />
-                {ds.tags.map(function(tag) {
-                  return (
-                    <span key={tag.id}>
-                      <Glyphicon glyph="tag" title="Tagged with keyword" />{" "}
-                      {tag.display_name}
-                      <br />
-                    </span>
-                  );
-                })}
-                {ds.groups.map(function(group) {
-                  return (
-                    <span key={group.id}>
-                      <Glyphicon
-                        glyph="folder-open"
-                        title="Thematic group"
-                      />{" "}
-                      {group.title}
-                      <br />
-                    </span>
-                  );
-                })}
-              </p>
+              <Row>
+                <Col xs={12}>
+                  <h4>{ds.title}</h4>
+                </Col>
+              </Row>
 
-              <Panel
-                collapsible
-                header="Description"
-                title="Click to read the dataset's description"
-              >
-                <ReactMarkdown
-                  source={ds.notes || "Not provided"}
-                  containerTagName="span"
-                  disallowedTypes={disallowedTypes}
-                />
-              </Panel>
-              <Panel
-                collapsible
-                header="Resources"
-                title="Dataset resources are files or hyperlinks, click to view"
-              >
-                <ListGroup fill componentClass="div">
-                  {ds.resources.map(function(r) {
-                    return <ResourceRow resource={r} key={r.id} />;
-                  })}
-                </ListGroup>
-              </Panel>
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon
+                    glyph="home"
+                    title="The dataset belongs to this organisation"
+                  />{" "}
+                  {ds.organization.title}
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon
+                    glyph="edit"
+                    title="The dataset author is the intellectual owner of the main dataset resource"
+                  />{" "}
+                  <a href={"mailto:" + ds.author_email}>{ds.author}</a>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="pencil" title="Citation" /> {ds.citation}
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="copyright-mark" title="License" />{" "}
+                  {ds.license_id}
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon
+                    glyph="wrench"
+                    title="The dataset maintainer wrote and updates this metadata entry"
+                  />{" "}
+                  <a href={"mailto:" + ds.maintainer_email}>{ds.maintainer}</a>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon
+                    glyph="repeat"
+                    title="Update frequency of main dataset resource"
+                  />{" "}
+                  {ds.update_frequency}
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon
+                    glyph="refresh"
+                    title="Metadata last updated"
+                  />{" "}
+                  <TimeAgo date={ds.metadata_modified} />
+                </Col>
+              </Row>
+
+              {ds.tags.map(tag => (
+                <Row key={tag.id}>
+                  <Col xs={12}>
+                    <Glyphicon glyph="tag" title="Tagged with keyword" />{" "}
+                    {tag.display_name}
+                  </Col>
+                </Row>
+              ))}
+
+              {ds.groups.map(group => (
+                <Row key={group.id}>
+                  <Col xs={12}>
+                    <Glyphicon
+                      glyph="folder-open"
+                      title="Thematic group"
+                    />{" "}
+                    {group.title}
+                  </Col>
+                </Row>
+              ))}
+
+              <Row>
+                <Col xs={12}>
+                  <Glyphicon glyph="comment" title="Dataset description" />
+                  <ReactMarkdown
+                    source={ds.notes || "No description provided"}
+                    containerTagName="span"
+                    disallowedTypes={disallowedTypes}
+                  />
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs={12}>
+                  {ds.resources.map(r => (
+                    <ResourceRow resource={r} key={r.id} />
+                  ))}
+                </Col>
+              </Row>
             </div>
           </Well>
         </Col>
