@@ -95,7 +95,7 @@ export default class Projects extends React.Component<Props, State> {
   /**
   * Tokenize SDIS project title_plain and tagline_plain
   *
-  * Join SDIS project title and tagline into one string,
+  * Join SDIS project title, tagline, keywords into one string,
   * strip punctuation,
   * split into an array of individual words (incl duplicates),
   * drop stopwords (props.stopWords).
@@ -103,10 +103,16 @@ export default class Projects extends React.Component<Props, State> {
   sdisTokenizer = (projectArray: PropTypes.array) => {
     return projectArray
       .reduce((acc, curr) => {
-        return acc + curr.title_plain + curr.tagline_plain;
+        return (
+          acc +
+          // + curr.title_plain
+          // + curr.tagline_plain
+          curr.keywords_plain +
+          " " // prevent merging last with first element
+        );
       }, [])
       .replace(/![a-zA-Z]/g, " ")
-      .replace(/[():.]/g, " ")
+      .replace(/[():.,]/g, " ")
       .toLowerCase()
       .split(/\s/)
       .filter(x => this.props.stopWords.indexOf(x) < 0);
@@ -157,7 +163,11 @@ export default class Projects extends React.Component<Props, State> {
       .filter(
         project =>
           filterText
-            ? (project.title_plain + " " + project.tagline_plain)
+            ? (project.title_plain +
+                " " +
+                project.tagline_plain +
+                " " +
+                project.keywords_plain)
                 .toLowerCase()
                 .includes(filterText.toLowerCase())
             : project
@@ -177,7 +187,7 @@ export default class Projects extends React.Component<Props, State> {
     this.setState({
       projects: projects,
       status: "loaded",
-      tags: this.makeTags(this.wordFreq(this.sdisTokenizer(projects)), 3)
+      tags: this.makeTags(this.wordFreq(this.sdisTokenizer(projects)), 1)
     });
   };
 

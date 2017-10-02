@@ -37,10 +37,6 @@ export default class ProjectRow extends React.Component<Props, State> {
     return { __html: htmlString || "Not provided" };
   };
 
-  preventEmptyTagline = taglineString => {
-    return taglineString || "Tagline not provided";
-  };
-
   preventEmptyImage = (baseUrl, imageUrl, logo) => {
     return imageUrl ? baseUrl + "/media/" + imageUrl : logo;
   };
@@ -114,8 +110,14 @@ export default class ProjectRow extends React.Component<Props, State> {
               </Row>
               <Row>
                 <Col xs={12}>
+                  <Glyphicon glyph="tag" title="Tagged with keyword" />{" "}
+                  {pro.keywords_plain ? pro.keywords_plain : "No keywords"}
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
                   <Glyphicon glyph="comment" title="Project description" />{" "}
-                  {this.preventEmptyTagline(pro.tagline_plain)}{" "}
+                  {pro.tagline_plain ? pro.tagline_plain : "No tagline"}{" "}
                   {this.renderComments(this, pro.comments)}
                 </Col>
               </Row>

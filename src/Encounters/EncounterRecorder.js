@@ -54,18 +54,14 @@ export default class EncounterList extends React.Component<State> {
     // alert("Pretend we've just uploaded the data!");
   };
 
-  geoSuccess = position => {
-    return `Lat ${position.coords.latitude} Lon ${position.coords.longitude}`;
-  };
-
-  geoError = error => {
-    return `Error occurred. Error code: ${error.code}`;
-    // error.code can be:
-    //   0: unknown error
-    //   1: permission denied
-    //   2: position unavailable (error response from location provider)
-    //   3: timed out
-  };
+  geoSuccess = position =>
+    `Lat ${position.coords.latitude} Lon ${position.coords.longitude}`;
+  geoError = error => `Error ${error} occurred. Error code: ${error.code}`;
+  // error.code can be:
+  //   0: unknown error
+  //   1: permission denied
+  //   2: position unavailable (error response from location provider)
+  //   3: timed out
 
   render() {
     // const store = this.props.store;
@@ -73,11 +69,9 @@ export default class EncounterList extends React.Component<State> {
       <Provider store={store}>
         <div className="content">
           <Grid>
-            <Row id="data-collection">
-              <Col xs={6} md={3}>
-                <Well className="jumboWell">
-                  <h1>Track (fresh)</h1>
-                  <p>Made last night</p>
+            <Well className="jumboWell">
+              <Row id="data-collection">
+                <Col xs={12} md={12}>
                   <Button
                     id="btnAddTrack"
                     bsSize="large"
@@ -88,14 +82,9 @@ export default class EncounterList extends React.Component<State> {
                       glyph="plus"
                       title="Record a fresh track on current location"
                     />{" "}
-                    Record
-                  </Button>
-                </Well>
-              </Col>
-              <Col xs={6} md={3}>
-                <Well className="jumboWell">
-                  <h1>Track (old)</h1>
-                  <p>Made before last night</p>
+                    <h1>Track, fresh</h1>
+                    <p>Made last night</p>
+                  </Button>{" "}
                   <Button
                     id="btnAddOld"
                     bsSize="large"
@@ -106,14 +95,9 @@ export default class EncounterList extends React.Component<State> {
                       glyph="plus"
                       title="Record a fresh track on current location"
                     />{" "}
-                    Record
-                  </Button>
-                </Well>
-              </Col>
-              <Col xs={6} md={3}>
-                <Well className="jumboWell">
-                  <h1>Nest, unhatched</h1>
-                  <p>Nest, unhatched, no track</p>
+                    <h1>Track, old</h1>
+                    <p>Made before last night</p>
+                  </Button>{" "}
                   <Button
                     id="btnAddNest"
                     bsSize="large"
@@ -124,14 +108,9 @@ export default class EncounterList extends React.Component<State> {
                       glyph="plus"
                       title="Record a fresh track on current location"
                     />{" "}
-                    Record
-                  </Button>
-                </Well>
-              </Col>
-              <Col xs={6} md={3}>
-                <Well className="jumboWell">
-                  <h1>Nest, hatched</h1>
-                  <p>Nest, hatched, hatchling tracks</p>
+                    <h1>Nest, unhatched</h1>
+                    <p>Nest, unhatched, no track</p>
+                  </Button>{" "}
                   <Button
                     id="btnAddHatched"
                     bsSize="large"
@@ -142,14 +121,13 @@ export default class EncounterList extends React.Component<State> {
                       glyph="plus"
                       title="Record a fresh track on current location"
                     />{" "}
-                    Record
+                    <h1>Nest, hatched</h1>
+                    <p>Nest, hatched, hatchling tracks</p>
                   </Button>
-                </Well>
-              </Col>
-            </Row>
-            <Row>
-              <Col xs={12} md={6}>
-                <Well className="jumboWell">
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} md={6}>
                   <h1>Count: {this.state.count}</h1>
                   <Button
                     bsSize="large"
@@ -158,11 +136,13 @@ export default class EncounterList extends React.Component<State> {
                   >
                     <Glyphicon glyph="upload" title="Upload data" /> Upload
                   </Button>
-                </Well>
-              </Col>
+                </Col>
+              </Row>
+            </Well>
 
-              <Col xs={12} md={6}>
-                <Well className="jumboWell">
+            <Well className="jumboWell">
+              <Row>
+                <Col xs={12} md={6}>
                   <h1>Todo</h1>
                   <span>
                     Show: <FilterLink filter="SHOW_ALL">All</FilterLink>
@@ -177,16 +157,20 @@ export default class EncounterList extends React.Component<State> {
                   <div>
                     {navigator.geolocation ? (
                       navigator.geolocation.getCurrentPosition(
-                        this.geoSuccess,
-                        this.geoError
+                        position => {
+                          console.log(position);
+                        },
+                        error => {
+                          console.log(error);
+                        }
                       )
                     ) : (
                       "Geolocation unavailable"
                     )}
                   </div>
-                </Well>
-              </Col>
-            </Row>
+                </Col>
+              </Row>
+            </Well>
           </Grid>
         </div>
       </Provider>
