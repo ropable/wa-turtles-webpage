@@ -29,6 +29,7 @@ export default class Projects extends React.Component<Props, State> {
     webUrl: process.env.REACT_APP_SDIS_URL || "https://sdis.dpaw.wa.gov.au",
     apiParams: "/api/projects/?format=json",
     stopWords: [
+      "",
       "-",
       "1",
       "2",

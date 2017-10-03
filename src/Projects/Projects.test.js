@@ -14,42 +14,40 @@ const projects = [
     id: 176,
     absolute_url: "/projects/scienceproject/176/",
     project_type_year_number_plain: "SP 2012-014",
-    title: "<p>WAMMP Sub-project 2: Historical time-series development</p>",
     title_plain: "WAMMP Sub-project 2: Historical time-series development",
     status: "completed",
     status_display: "Completed and closed",
-    tagline: "",
-    tagline_plain: "",
+    tagline_plain:
+      "Time and time again: a treasure trove of historical marine monitoring data",
     comments: "<p>KF advises folded into SPP 2012-008 - PG</p>",
+    keywords_plain: "marine, monitoring, baseline, data, historical",
     image: "",
     team_list_plain: "K Friedman, K Friedman, K Bancroft, C Simpson",
     program: "Marine Science",
-    area_list_nrm_region: "",
-    area_list_ibra_imcra_region: "",
+    area_list_nrm_region: "All Regions",
+    area_list_ibra_imcra_region: "All IMCRA Regions",
     area_list_dpaw_region: "All Regions",
-    area_list_dpaw_district: ""
+    area_list_dpaw_district: "All DPaW Districts"
   },
   {
     id: 175,
     absolute_url: "/projects/scienceproject/175/",
     project_type_year_number_plain: "SP 2012-013",
-    title:
-      "<p>WAMMP Sub-project 1: Asset knowledge review and standard operating protocol documentation</p>",
     title_plain:
       "WAMMP Sub-project 1: Asset knowledge review and standard operating protocol documentation",
     status: "completed",
     status_display: "Completed and closed",
-    tagline: "",
-    tagline_plain: "",
+    tagline_plain: "What do we know and how do we do it?",
     comments: "<p>KF advises folded into SPP 2012-008 - PG</p>",
+    keywords_plain: "knowledge, review, SOP",
     image: "",
     team_list_plain:
       "K Friedman, C Simpson, A Kendrick, S Wilson, K Bancroft, K Onton, T Holmes, M Rule, K Waples",
     program: "Marine Science",
-    area_list_nrm_region: "",
-    area_list_ibra_imcra_region: "",
+    area_list_nrm_region: "All Regions",
+    area_list_ibra_imcra_region: "All IMCRA Regions",
     area_list_dpaw_region: "All Regions",
-    area_list_dpaw_district: ""
+    area_list_dpaw_district: "All DPaW Districts"
   },
   {
     id: 174,
@@ -61,16 +59,16 @@ const projects = [
       "Strategic plan for the development and implementation of the Western Australian Marine Monitoring Program (WAMMP)",
     status: "completed",
     status_display: "Completed and closed",
-    tagline: "",
-    tagline_plain: "",
+    tagline_plain: "Keeping tabs on WA's marine biodiversity",
     comments: "",
+    keywords_plain: "strategic, plan, document, WAMMP, marine, monitoring",
     image: "",
     team_list_plain: "K Friedman, K Friedman, C Simpson",
     program: "Marine Science",
-    area_list_nrm_region: "",
-    area_list_ibra_imcra_region: "",
-    area_list_dpaw_region: "",
-    area_list_dpaw_district: ""
+    area_list_nrm_region: "All Regions",
+    area_list_ibra_imcra_region: "All IBRA Regions, All IMCRA Regions",
+    area_list_dpaw_region: "All Regions",
+    area_list_dpaw_district: "All DPaW Districts"
   }
 ];
 
@@ -211,32 +209,20 @@ it("tokenizes SDIS output", () => {
   const wrapper = shallow(<Projects />);
 
   expect(wrapper.instance().sdisTokenizer(projects)).toEqual([
-    "wammp",
-    "sub-project",
-    "",
-    "historical",
-    "time-series",
-    "developmentwammp",
-    "sub-project",
-    "",
-    "asset",
-    "knowledge",
-    "review",
-    "standard",
-    "operating",
-    "protocol",
-    "documentationstrategic",
-    "plan",
-    "development",
-    "implementation",
-    "western",
-    "australian",
     "marine",
     "monitoring",
-    "program",
-    "",
+    "baseline",
+    "data",
+    "historical",
+    "knowledge",
+    "review",
+    "sop",
+    "strategic",
+    "plan",
+    "document",
     "wammp",
-    ""
+    "marine",
+    "monitoring"
   ]);
 });
 
