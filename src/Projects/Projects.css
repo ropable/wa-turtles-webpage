@@ -23,3 +23,7 @@ span.tag-cloud-tag:hover {
   margin: 0px;
   border-style: none;
 }
+
+.img-responsive {
+  width: 100%;
+}
