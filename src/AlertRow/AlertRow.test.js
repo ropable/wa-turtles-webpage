@@ -9,13 +9,13 @@ import AlertRow from "./AlertRow";
 
 it("hides the spinner unless showSpinner is given and true", () => {
   const wrapper = shallow(<AlertRow />);
-  const msg = <span />;
+  const msg = <div />;
   expect(wrapper).toContainReact(msg);
 });
 
 it("hides the spinner if showSpinner is false", () => {
   const wrapper = shallow(<AlertRow showSpinner={false} />);
-  const msg = <span />;
+  const msg = <div />;
   expect(wrapper).toContainReact(msg);
 });
 

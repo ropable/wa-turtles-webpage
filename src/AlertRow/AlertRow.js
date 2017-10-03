@@ -27,32 +27,35 @@ export default class AlertRow extends React.Component<Props, State> {
   };
 
   render() {
-    const { alertVisible } = this.state;
-    const spinner = this.props.showSpinner ? (
-      <div>
-        <Spinner name="pacman" color="orange" />
-      </div>
+    const alert = this.state.alertVisible ? (
+      <Row>
+        <Col xs={12} md={12}>
+          <Alert bsStyle={this.props.bsStyle} onDismiss={this.hide}>
+            {this.props.message}
+          </Alert>
+        </Col>
+      </Row>
     ) : (
-      <span />
+      <div />
     );
 
-    if (alertVisible) {
-      return (
-        <div className="content">
-          <Grid>
-            <Row>
-              <Col xs={12} md={12}>
-                <Alert bsStyle={this.props.bsStyle} onDismiss={this.hide}>
-                  {this.props.message}
-                </Alert>
-                {spinner}
-              </Col>
-            </Row>
-          </Grid>
-        </div>
-      );
-    } else {
-      return null;
-    }
+    const spinner = this.props.showSpinner ? (
+      <Row>
+        <Col xs={4} md={3} mdOffset={3}>
+          <Spinner name="pacman" color="orange" fadeIn="half" />
+        </Col>
+      </Row>
+    ) : (
+      <div />
+    );
+
+    return (
+      <div className="content">
+        <Grid>
+          {alert}
+          {spinner}
+        </Grid>
+      </div>
+    );
   }
 }
