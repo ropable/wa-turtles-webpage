@@ -60,8 +60,10 @@ export default class ProjectRow extends React.Component<Props, State> {
 
   render() {
     const pro = this.props.project;
-    const start_date = new Date(pro.start_date);
-    const end_date = new Date(pro.end_date);
+    const start_date =
+      pro && pro.start_date ? new Date(pro.start_date).getFullYear() : "";
+    const end_date =
+      pro && pro.end_date ? new Date(pro.end_date).getFullYear() : "";
     if (pro) {
       return (
         <Row>
@@ -94,7 +96,7 @@ export default class ProjectRow extends React.Component<Props, State> {
                   </Button>{" "}
                   <Label bsStyle="default" bsSize="xsmall">
                     <Glyphicon glyph="calendar" title="Project Duration" />{" "}
-                    {start_date.getFullYear()} - {end_date.getFullYear()}
+                    {start_date} - {end_date}
                   </Label>{" "}
                   <Label bsStyle="success" bsSize="xsmall">
                     <Glyphicon glyph="wrench" title="Project Status" />{" "}
