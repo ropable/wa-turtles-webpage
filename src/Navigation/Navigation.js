@@ -52,7 +52,7 @@ export default class Navigation extends React.Component<{}> {
                 </LinkContainer>
               </NavDropdown>
 
-              <NavDropdown eventKey={3} title="About us" id="nav-contribute">
+              <NavDropdown eventKey={3} title="About us" id="nav-about">
                 <LinkContainer to="/">
                   <MenuItem eventKey={3.1}>About us</MenuItem>
                 </LinkContainer>
