@@ -29,7 +29,7 @@ export default class Navigation extends React.Component<{}> {
           <Navbar.Collapse>
             <Nav>
               <LinkContainer to="/">
-                <MenuItem eventKey={4}>Where we are</MenuItem>
+                <MenuItem eventKey={4}>Who we are</MenuItem>
               </LinkContainer>
               <LinkContainer to="/locations">
                 <MenuItem eventKey={5}>Where we are</MenuItem>
