@@ -78,51 +78,53 @@ export default class Footer extends React.Component<State> {
               <Image src={ghlogo} alt="GitHub" />
             </a>
           </span>
-          <span className="text-muted credit">
-            <a
-              href="https://travis-ci.org/parksandwildlife/wa-turtles-webpage"
-              target="_"
-            >
-              <Image
-                src="https://travis-ci.org/parksandwildlife/wa-turtles-webpage.svg?branch=master"
-                alt="Build Status"
-              />
-            </a>
-          </span>
-          <span className="text-muted credit">
-            <a
-              href="https://coveralls.io/github/parksandwildlife/wa-turtles-webpage"
-              target="_"
-            >
-              <Image
-                src="https://coveralls.io/repos/github/parksandwildlife/wa-turtles-webpage/badge.svg"
-                alt="Test Coverage"
-              />
-            </a>
-          </span>
-          <span className="text-muted credit">
-            <a
-              href="http://waffle.io/parksandwildlife/wa-turtles-webpage"
-              target="_"
-            >
-              <Image
-                src="https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.svg?label=ready&title=Ready"
-                alt="To do"
-              />
-            </a>
-          </span>
-          <span className="text-muted credit">
-            <Button
-              id="btnToggleSitemap"
-              bsSize="xsmall"
-              bsStyle="primary"
-              onClick={this.toggleSitemap}
-            >
-              Sitemap
-            </Button>
-          </span>
         </Navbar>
       </div>
     );
   }
 }
+/*
+          // <span className="text-muted credit">
+          //   <a
+          //     href="https://travis-ci.org/parksandwildlife/wa-turtles-webpage"
+          //     target="_"
+          //   >
+          //     <Image
+          //       src="https://travis-ci.org/parksandwildlife/wa-turtles-webpage.svg?branch=master"
+          //       alt="Build Status"
+          //     />
+          //   </a>
+          // </span>
+          // <span className="text-muted credit">
+          //   <a
+          //     href="https://coveralls.io/github/parksandwildlife/wa-turtles-webpage"
+          //     target="_"
+          //   >
+          //     <Image
+          //       src="https://coveralls.io/repos/github/parksandwildlife/wa-turtles-webpage/badge.svg"
+          //       alt="Test Coverage"
+          //     />
+          //   </a>
+          // </span>
+          // <span className="text-muted credit">
+          //   <a
+          //     href="http://waffle.io/parksandwildlife/wa-turtles-webpage"
+          //     target="_"
+          //   >
+          //     <Image
+          //       src="https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.svg?label=ready&title=Ready"
+          //       alt="To do"
+          //     />
+          //   </a>
+          // </span>
+          // <span className="text-muted credit">
+          //   <Button
+          //     id="btnToggleSitemap"
+          //     bsSize="xsmall"
+          //     bsStyle="primary"
+          //     onClick={this.toggleSitemap}
+          //   >
+          //     Sitemap
+          //   </Button>
+          // </span>
+*/

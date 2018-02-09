@@ -28,6 +28,21 @@ export default class Navigation extends React.Component<{}> {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
+              <LinkContainer to="/">
+                <MenuItem eventKey={4}>Where we are</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/locations">
+                <MenuItem eventKey={5}>Where we are</MenuItem>
+              </LinkContainer>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+    );
+  }
+}
+
+/*
               <NavDropdown eventKey={1} title="Discover" id="nav-data">
                 <LinkContainer to="/datasets">
                   <MenuItem eventKey={1.1}>Turtle datasets</MenuItem>
@@ -54,13 +69,7 @@ export default class Navigation extends React.Component<{}> {
 
               <NavDropdown eventKey={3} title="About us" id="nav-about">
                 <LinkContainer to="/">
-                  <MenuItem eventKey={3.1}>About us</MenuItem>
+                  <MenuItem eventKey={3.1}>Who we are</MenuItem>
                 </LinkContainer>
               </NavDropdown>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      </div>
-    );
-  }
-}
+*/
