@@ -22,14 +22,13 @@ export default class Dashboard extends React.Component<{}> {
           <Row>
             <Col xs={12} md={12} mdOffset={0}>
               <Well className="jumboWell">
-                <h1>Who we are</h1>
-                <h3>Monitoring, Research, Intervention</h3>
+                <h1>North West Shelf Flatback Turtle Conservation Program</h1>
                 <p>
-                  The Northwest Shelf Flatback Turtle Conservation Program
+                  The North West Shelf Flatback Turtle Conservation Program
                   (North West Shelf Flatbacks) is a 30-year, $32.5 million
                   program that aims to conserve flatbacks in WA waters, at
                   nesting beaches and throughout their range, which can include
-                  Commonwealth, Northern Territory and Queensland jurisdictions.{" "}
+                  Commonwealth, Northern Territory and Queensland jurisdictions.
                 </p>
 
                 <p>
@@ -46,10 +45,13 @@ export default class Dashboard extends React.Component<{}> {
                   <li>establishing information and education programs.</li>
                 </ul>
                 <p>
-                  The Northwest Shelf Flatbacks program is one of two additional
-                  conservation programs delivered from the Gorgon Gas Project
-                  (via the 2009 Variation Agreement to the Barrow Island Act
-                  2003).
+                  The North West Shelf Flatbacks program is one of two
+                  additional conservation programs delivered from the Gorgon Gas
+                  Project (via the 2009 Variation Agreement to the Barrow Island
+                  Act 2003).
+                </p>
+                <p>
+                  <strong>More content to come soon.</strong>
                 </p>
               </Well>
             </Col>
