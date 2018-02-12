@@ -63,8 +63,27 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 44,
-            area_type: "Locality",
+            area_type: "NWS index site",
             name: "Cape Dommett",
+            monitored_since: "2006-07 by DBCA and Charles Darwin University",
+            monitoring_season: "June-October",
+            rookery_sizerange: "2500-3500",
+            rookery_size: 30,
+            volunteer_info: "NA",
+            contact_url: "mailto:turtles@dbca.wa.gov.au",
+            contact_label: "DBCA",
+            description:
+              "Cape Domett lies on the eastern side of the Cambridge gulf, about 112 km north of Kununurra in the Kimberley. The main nesting beach is about 1.9km long and is the site of the largest flatback rookery in Western Australia, and one of the largest in Australia. Flatback monitoring began in the area with a partnership between DBCA and Charles Darwin University.  These turtles have a peak nesting season between August and September.",
+            monitoring_activities: [
+              "Track counts to assess nesting abundance and refine population estimate",
+              "Aerial surveys",
+              "Observation of nesting behaviour to determine nesting success trends",
+              "Observation of predation of adult turtles and hatchlings",
+              "Recovery of hatched nests to determine breeding biology and threats to clutch success",
+              "Determine emergence to waterline success of hatchlings",
+              "Flipper tagging to assist in population estimate and biology",
+              "Satellite tracking"
+            ],
             northern_extent: -14.788824836033,
             centroid: {
               type: "Point",
@@ -95,38 +114,27 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 19,
-            area_type: "Locality",
+            area_type: "NWS index site",
             name: "Cable Beach Broome",
+            monitored_since:
+              "2006-07 by Conservation Volunteers Australia, now DBCA and Yawuru Rangers",
+            monitoring_season: "November - February",
+            rookery_sizerange: "100",
+            rookery_size: 1,
+            volunteer_info: "Local and international volunteers",
+            contact_url:
+              "https://bookings.conservationvolunteers.org/project/naturewise-eco-beach-turtle-conservation ",
+            contact_label: "DBCA and Yawuru Rangers",
+            description:
+              "Cable Beach, Broome is in the west Kimberley, 2240km north of Perth. Renowned as a spectacularly beautiful beach with white sand and azure water flatback turtles, and occasionally green turtles, nest here.  The beach is very popular with locals and tourists so the turtles face additional pressures here, of interaction with people and potential issues with 4-wheel drives using the beach.",
+            monitoring_activities: [
+              "Daily turtle track counts",
+              "Monitoring nesting and hatching success"
+            ],
             northern_extent: -17.8081873916719,
             centroid: {
               type: "Point",
               coordinates: [122.2068948164706, -17.90212892579326]
-            }
-          }
-        },
-        {
-          type: "Feature",
-          geometry: {
-            type: "Polygon",
-            coordinates: [
-              [
-                [122.2201538085937, -17.87943138654052],
-                [122.2544860839844, -17.96893606283576],
-                [122.2126007080078, -18.01465089622102],
-                [122.1700286865234, -17.97546747836867],
-                [122.2050476074219, -17.8866195622383],
-                [122.2201538085937, -17.87943138654052]
-              ]
-            ]
-          },
-          properties: {
-            pk: 15,
-            area_type: "Locality",
-            name: "Broome",
-            northern_extent: -17.8794313865405,
-            centroid: {
-              type: "Point",
-              coordinates: [122.2127226945699, -17.95185294404507]
             }
           }
         },
@@ -150,8 +158,24 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 43,
-            area_type: "Locality",
+            area_type: "NWS index site",
             name: "Eco Beach",
+            monitored_since: "2009 by Conservation Volunteers Australia",
+            monitoring_season: "November - December",
+            rookery_sizerange: "100",
+            rookery_size: 1,
+            volunteer_info: "International",
+            contact_url:
+              "https://bookings.conservationvolunteers.org/project/naturewise-eco-beach-turtle-conservation ",
+            contact_label: "Conservation Volunteers Australia",
+            description:
+              "Eco Beach is approximately 130km south of Broome on the Kimberley coast.  It is an isolated area with a luxury eco resort.  The flatback turtles that nest here have been found to be a different breeding stock from the North West Shelf, different again to the Eighty Mile Beach stock, which are about 260km to the south.  ",
+            monitoring_activities: [
+              "Patrolling at night, recording nesting turtles",
+              "Tagging, measuring and data entry for nesting turtles",
+              "Taking skin biopsies",
+              "Monitoring nesting and hatching success"
+            ],
             northern_extent: -18.3040103708094,
             centroid: {
               type: "Point",
@@ -159,43 +183,52 @@ export default class Locations extends React.Component<Props, State> {
             }
           }
         },
+        // {
+        //   type: "Feature",
+        //   geometry: {
+        //     type: "Polygon",
+        //     coordinates: [
+        //       [
+        //         [121.58569335937501, -19.041348796589013],
+        //         [121.32202148437501, -19.414792438099557],
+        //         [121.20666503906251, -19.53390722018251],
+        //         [121.14624023437501, -19.476950206488414],
+        //         [121.50604248046876, -18.981623204500757],
+        //         [121.58569335937501, -19.041348796589013]
+        //       ]
+        //     ]
+        //   },
+        //   properties: {
+        //     pk: 37,
+        //     area_type: "Locality",
+        //     name: "Anna Plains",
+        //     northern_extent: -18.9816232045008,
+        //     centroid: {
+        //       type: "Point",
+        //       coordinates: [121.36744197167313, -19.25828196805517]
+        //     }
+        //   }
+        // },
         {
           type: "Feature",
           geometry: {
             type: "Polygon",
             coordinates: [
               [
-                [121.58569335937501, -19.041348796589013],
-                [121.32202148437501, -19.414792438099557],
-                [121.20666503906251, -19.53390722018251],
-                [121.14624023437501, -19.476950206488414],
-                [121.50604248046876, -18.981623204500757],
-                [121.58569335937501, -19.041348796589013]
-              ]
-            ]
-          },
-          properties: {
-            pk: 37,
-            area_type: "Locality",
-            name: "Anna Plains",
-            northern_extent: -18.9816232045008,
-            centroid: {
-              type: "Point",
-              coordinates: [121.36744197167313, -19.25828196805517]
-            }
-          }
-        },
-        {
-          type: "Feature",
-          geometry: {
-            type: "Polygon",
-            coordinates: [
-              [
-                [120.47058105468751, -19.906218644480848],
-                [120.47058105468751, -19.678797982361385],
-                [120.83587646484376, -19.678797982361385],
-                [120.83587646484376, -19.906218644480848],
-                [120.47058105468751, -19.906218644480848]
+                [119.4526553638153, -20.03422025202665],
+                [119.4623352091951, -19.921288722596],
+                [120.5690641976155, -19.71155873936765],
+                [121.0046572397051, -19.49214891075954],
+                [121.4628365876809, -19.0210631022774],
+                [121.5531818112254, -19.04042279303694],
+                [121.497802734375, -19.21780295966795],
+                [121.3604736328125, -19.41997316110167],
+                [120.9539794921875, -19.68914232238882],
+                [120.6243896484375, -19.82355782477137],
+                [120.2508544921875, -19.94753287798935],
+                [119.8004150390625, -20.00948395533451],
+                [119.586181640625, -20.1333128972237],
+                [119.4526553638153, -20.03422025202665]
               ]
             ]
           },
@@ -203,6 +236,24 @@ export default class Locations extends React.Component<Props, State> {
             pk: 36,
             area_type: "Locality",
             name: "Eighty Mile Beach",
+            monitored_since:
+              "2004 by DBCA, BHP and Nyangumarta Traditional Owners",
+            monitoring_season: "October - January",
+            rookery_sizerange: "1000-2000",
+            rookery_size: 20,
+            volunteer_info: "International",
+            contact_url:
+              "https://bookings.conservationvolunteers.org/project/80-mile-beach-sea-turtle-monitoring-1",
+            contact_label: "Conservation Volunteers Australia",
+            description:
+              "Eighty Mile Beach is located between Port Hedland and Broome in the Kimberley.  It is the longest, uninterrupted beach in Western Australia, at 220km long.  Eighty Mile Beach Marine Park was gazetted in 2013, and is jointly managed with the traditional owners.  It supports a significant population of nesting flatbacks as well as a Wetland of International Importance, listed with under the Ramsar Convention of Wetlands, which is one of the world’s most important feeding grounds for migratory shore birds.  The flatback turtles here are not part of the North West Shelf stock, this was recently discovered from genetic analysis (read more here). ",
+            monitoring_activities: [
+              "Patrolling beaches counting turtle tracks weekly",
+              "Patrolling beaches counting turtle tracks daily during peak nesting season",
+              "Deploying satellite tags on rehabilitated juvenile turtles",
+              "Monitoring nesting and hatching success",
+              "Deploying remote camera traps to check for the presence of predators"
+            ],
             northern_extent: -19.6787979823614,
             centroid: {
               type: "Point",
@@ -233,8 +284,24 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 42,
-            area_type: "Locality",
+            area_type: "NWS reference site",
             name: "Mundabullangana",
+            monitored_since: "2005-06 by Pendoley Environmental",
+            monitoring_season: "November - January",
+            rookery_sizerange: "1500",
+            rookery_size: 15,
+            volunteer_info: "9 per week",
+            contact_url: "Pendoley Environmental",
+            contact_label: "Pendoley Environmental",
+            description:
+              "Mundabullangana station is located on the West Yule River, 62 km south of Port Hedland and was first settled in 1867 by Roderick and Donald MacKay.  The station is over 200,000 hectares encompassing Cowrie Beach, a significant flatback turtle rookery, with around 1500 turtles nesting each year.  Mundabullangana is an important reference site for the North West Shelf Flatbacks program.  Research is also occurring on the station looking at the impact of feral animal predation of turtle eggs.",
+            monitoring_activities: [
+              "Patrolling all beaches counting turtle tracks each day",
+              "Patrolling beaches at night recording nesting turtles",
+              "Tagging, measuring and data entry for nesting turtles",
+              "Taking skin biopsies, deploying satellite tags or data loggers on selected turtles",
+              "Monitoring nesting and hatching success"
+            ],
             northern_extent: -20.2725032501349,
             centroid: {
               type: "Point",
@@ -262,8 +329,24 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 13,
-            area_type: "Locality",
+            area_type: "NWS reference site",
             name: "Port Hedland",
+            monitored_since: "2004 by Care for Hedland, sponsored by BP",
+            monitoring_season: "November - December",
+            rookery_sizerange: "Unknown",
+            rookery_size: 0,
+            volunteer_info: "9 per night",
+            contact_url:
+              "www.careforhedland.org.au/programs/turtle-monitoring.aspx",
+            contact_label: "Care for Hedland",
+            description:
+              "Port Hedland is the second largest town in the Pilbara. It is 1765 km north of Perth, has a large working harbour servicing iron ore processing and export as well as manganese export and salt production. The monitoring program is community-based.",
+            monitoring_activities: [
+              "To educate and bring awareness of the local flatback turtle and encourage positive methods for human interaction with the species.",
+              "To collect data on flatback activity at Cemetery Beach and Pretty Pool Beach.",
+              "Morning track counts are conducted between the end of October and late February.",
+              "Morning hatchling monitoring occurs between late December and mid-February."
+            ],
             northern_extent: -20.2770119649241,
             centroid: {
               type: "Point",
@@ -288,8 +371,24 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 39,
-            area_type: "Locality",
+            area_type: "NWS reference site",
             name: "Delambre Island",
+            monitored_since: "2008 by Rio Tinto",
+            monitoring_season: "November - December",
+            rookery_sizerange: "Unknown",
+            rookery_size: 0,
+            volunteer_info: "3-7 per week",
+            contact_url: "turtles@dbca.wa.govo.au",
+            contact_label: "Sabrina Fossette-Halot, Joanne King, DBCA",
+            description:
+              "Delambre Island lies within the Dampier Archipelago, a chain of 42 coastal islands islets and rocks within a 45km radius of Dampier in the Pilbara. The Dampier Archipelago is the richest area of marine biodiversity known in Western Australia. The first recorded description of flatback turtles comes from Delambre Island. The island is used predominantly by flatback turtles for nesting. Volunteers are involved in all aspects of research on the island.",
+            monitoring_activities: [
+              "Patrolling beaches counting turtle tracks each day",
+              "Patrolling southern beaches at night recording nesting turtles",
+              "Tagging, measuring and data entry for nesting turtles",
+              "Taking skin biopsies, deploying satellite tags or data loggers on selected turtles",
+              "Monitoring nesting and hatching success"
+            ],
             northern_extent: -20.4276562804654,
             centroid: {
               type: "Point",
@@ -297,34 +396,43 @@ export default class Locations extends React.Component<Props, State> {
             }
           }
         },
-        {
-          type: "Feature",
-          geometry: {
-            type: "Polygon",
-            coordinates: [
-              [
-                [116.55944824218751, -20.483627529921847],
-                [116.60099029541017, -20.445672241294332],
-                [116.62090301513672, -20.460469486630767],
-                [116.61895036697389, -20.472832939335568],
-                [116.6203022003174, -20.476270405346042],
-                [116.6093158721924, -20.49512484300564],
-                [116.58845901489258, -20.504852665189066],
-                [116.55944824218751, -20.483627529921847]
-              ]
-            ]
-          },
-          properties: {
-            pk: 40,
-            area_type: "Locality",
-            name: "Rosemary Island",
-            northern_extent: -20.4456722412943,
-            centroid: {
-              type: "Point",
-              coordinates: [116.59438221358559, -20.47680248337636]
-            }
-          }
-        },
+        // {
+        //   type: "Feature",
+        //   geometry: {
+        //     type: "Polygon",
+        //     coordinates: [
+        //       [
+        //         [116.55944824218751, -20.483627529921847],
+        //         [116.60099029541017, -20.445672241294332],
+        //         [116.62090301513672, -20.460469486630767],
+        //         [116.61895036697389, -20.472832939335568],
+        //         [116.6203022003174, -20.476270405346042],
+        //         [116.6093158721924, -20.49512484300564],
+        //         [116.58845901489258, -20.504852665189066],
+        //         [116.55944824218751, -20.483627529921847]
+        //       ]
+        //     ]
+        //   },
+        //   properties: {
+        //     pk: 40,
+        //     area_type: "Locality",
+        //     name: "Rosemary Island",
+        //     monitored_since: "",
+        //     monitoring_season: "",
+        //     rookery_sizerange: "",
+        //     rookery_size: 0,
+        //     volunteer_info: "",
+        //     contact_url: "",
+        //     contact_label: "",
+        //     description: "",
+        //     monitoring_activities: "",
+        //     northern_extent: -20.4456722412943,
+        //     centroid: {
+        //       type: "Point",
+        //       coordinates: [116.59438221358559, -20.47680248337636]
+        //     }
+        //   }
+        // },
         {
           type: "Feature",
           geometry: {
@@ -343,8 +451,23 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 38,
-            area_type: "Locality",
-            name: "West Pilbara Turtle Program beaches Wickam",
+            area_type: "NWS reference site",
+            name: "West Pilbara Turtle Program",
+            monitored_since: "2005-06 by DBCA partnered by Rio Tinto",
+            monitoring_season: "November - March",
+            rookery_sizerange: "100",
+            rookery_size: 10,
+            volunteer_info: "Mostly local community members",
+            contact_url: "mailto:wptp@dbca.wa.gov.au ",
+            contact_label: "DBCA West Pilbara Turtle Program Coordinator",
+            description:
+              "Wickham is a historic town in the city of Karratha, in the Pilbara.  It has a long history of iron ore production.  The West Pilbara Turtle Program brings together industry, government and the local community. The volunteer groups monitor Bells Beach and Cooling Water Beach, near Cape Lambert Port.  The port operations include iron ore handling, processing and shipping.  Flatback turtles are the most common nesting turtle in the area, however green and hawksbill turtles occasionally nest here.",
+            monitoring_activities: [
+              "Increase awareness of marine turtles in the Wickham area",
+              "Patrol beaches daily to count tracks",
+              "Determine nesting success",
+              "Record evidence of impacts from human interference and feral animal predation on local beaches"
+            ],
             northern_extent: -20.5630458954444,
             centroid: {
               type: "Point",
@@ -371,8 +494,24 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 41,
-            area_type: "Locality",
+            area_type: "Impact monitoring site",
             name: "Barrow Island",
+            monitored_since: "2005-06 by Pendoley Environmental",
+            monitoring_season: "November - January",
+            rookery_sizerange: "1500",
+            rookery_size: 15,
+            volunteer_info: "9 per week",
+            contact_url: "Pendoley Environmental",
+            contact_label: "Pendoley Environmental",
+            description:
+              "Barrow Island is the largest island off the coast of the Pilbara.  It is 25km long and 10km wide, covering about 23,400 hectares. It sits approximately 56 km from the mainland, between Onslow and Karratha. The island was listed as a ‘Class A’ Nature Reserve in 1910.  Chevron Australia operate an oilfield, gas processing facility and LNG shipping facility on the island. There are up to 1500 flatback turtles nesting on the island each year, making this a significant rookery for flatbacks.",
+            monitoring_activities: [
+              "Patrolling all beaches counting turtle tracks each day",
+              "Patrolling beaches at night recording nesting turtles",
+              "Tagging, measuring and data entry for nesting turtles",
+              "Taking skin biopsies, deploying satellite tags or data loggers on selected turtles",
+              "Monitoring nesting and hatching success"
+            ],
             northern_extent: -20.640495287786,
             centroid: {
               type: "Point",
@@ -399,8 +538,25 @@ export default class Locations extends React.Component<Props, State> {
           },
           properties: {
             pk: 17,
-            area_type: "Locality",
+            area_type: "NWS reference site",
             name: "Thevenard Island",
+            monitored_since: "2016-17",
+            monitoring_season:
+              "November - December plus one week in January or February",
+            rookery_sizerange: "200-300",
+            rookery_size: 20,
+            volunteer_info: "3-7 per week",
+            contact_url: "turtles@dbca.wa.gov.au",
+            contact_label: "Sabrina Fossette-Halot, DBCA",
+            description:
+              "Thevenard Island is located approximately 22km off the coast from Onslow in the Pilbara region of Western Australia. The island is the largest of a group of ten islands called the Mackerel Islands.  The flatback turtle is the most common nesting turtle on the island; green and hawksbill turtles also nest on the island. Thevenard Island is a “Class C” Nature Reserve; it is approximately 6km in length and 550 hectares.  Limestone reefs and platforms surround the island, with diverse coral assemblages on the northern side. Volunteers are involved in all aspects of research on the island.",
+            monitoring_activities: [
+              "Patrolling all beaches counting turtle tracks each day",
+              "Patrolling southern beaches at night recording nesting turtles",
+              "Tagging, measuring and data entry for nesting turtles",
+              "Taking skin biopsies, deploying satellite tags or data loggers on selected turtles",
+              "Monitoring nesting and hatching success"
+            ],
             northern_extent: -21.4457191088098,
             centroid: {
               type: "Point",
@@ -412,22 +568,23 @@ export default class Locations extends React.Component<Props, State> {
     }
   };
   state = {
-    content: [],
-    name: ""
+    content: []
   };
 
   /* Actions taken on each feature: title, popup, info preview */
   oef = feature => {
-    console.log(
-      "feature: " + feature.layer.feature.properties.name + " clicked"
-    );
-    console.log(feature.layer.feature);
+    // console.log("feature: " + feature.layer.feature.properties.name + " clicked");
+    // console.log(feature.layer.feature);
     // window.feature = feature.layer.feature;
     this.setState({ content: feature.layer.feature.properties });
   };
 
   render() {
-    const { content, name } = this.state;
+    const { content } = this.state;
+    const ma_list =
+      content && content.monitoring_activities
+        ? content.monitoring_activities.map(ma => <li>{ma}</li>)
+        : "";
 
     // const gj = this.props.defaultGeom;
 
@@ -608,9 +765,27 @@ export default class Locations extends React.Component<Props, State> {
             <Col xs={12} lg={4}>
               <Well className="thumbnail">
                 {content && content.name ? (
-                  <h3>{content.name}</h3>
+                  <div>
+                    <h3>{content.name}</h3>
+                    <h4>{content.area_type}</h4>
+                    <strong>Monitored since</strong> {content.monitored_since}
+                    <br />
+                    <strong>Monitoring season</strong>{" "}
+                    {content.monitoring_season}
+                    <br />
+                    <strong>Rookery size</strong> {content.rookery_sizerange}
+                    <br />
+                    <strong>Volunteers</strong> {content.volunteer_info}
+                    <br />
+                    <strong>Contact</strong>{" "}
+                    <a href="{content.contact_url}">{content.contact_label}</a>
+                    <br />
+                    <p>{content.description}</p>
+                    <strong>Monitoring activities</strong>
+                    <ul>{ma_list}</ul>
+                  </div>
                 ) : (
-                  <h3>Click on a site to view details</h3>
+                  <h3>Click map to view details</h3>
                 )}
               </Well>
             </Col>
