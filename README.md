@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/parksandwildlife/wa-turtles-webpage.svg?branch=master)](https://travis-ci.org/parksandwildlife/wa-turtles-webpage)
-[![Coverage Status](https://coveralls.io/repos/github/parksandwildlife/wa-turtles-webpage/badge.svg)](https://coveralls.io/github/parksandwildlife/wa-turtles-webpage)
-[![To do](https://badge.waffle.io/parksandwildlife/wa-turtles-webpage.png?label=ready&title=Ready)](http://waffle.io/parksandwildlife/wa-turtles-webpage)
+[![Build Status](https://travis-ci.org/dbca-wa/wa-turtles-webpage.svg?branch=master)](https://travis-ci.org/dbca-wa/wa-turtles-webpage)
+[![Coverage Status](https://coveralls.io/repos/github/dbca-wa/wa-turtles-webpage/badge.svg)](https://coveralls.io/github/dbca-wa/wa-turtles-webpage)
+[![To do](https://badge.waffle.io/dbca-wa/wa-turtles-webpage.png?label=ready&title=Ready)](http://waffle.io/dbca-wa/wa-turtles-webpage)
 # WA Turtles web page
 Prototype of a web page for WA Turtles.
 

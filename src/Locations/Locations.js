@@ -236,7 +236,7 @@ export default class Locations extends React.Component<Props, State> {
                       />
                     </BaseLayer>
 
-                    <Overlay name="Survey sites">
+                    <Overlay name="Monitoring sites">
                       <LayerGroup>
                         <Circle
                           center={[-25, 120]}
@@ -261,10 +261,22 @@ export default class Locations extends React.Component<Props, State> {
                           <Tooltip>
                             <div>
                               <div>
-                                <h4>Eighty Mile Beach</h4>
-                                <div>Rookery</div>
-                                <div>Flatback, Green</div>
-                                <div>Population: 1000</div>
+                                <h3>Eighty Mile Beach</h3>
+                                <h4>NWS index site</h4>
+                                <div>
+                                  Monitoring since 2004 by DBCA, BHP and
+                                  Nyangumarta Traditional Owners
+                                </div>
+                                <div>Monitoring dates: Oct-Jan</div>
+                                <div>Population: 1000-2000 turtles</div>
+                                <div>
+                                  <a
+                                    href="https://bookings.conservationvolunteers.org/project/80-mile-beach-sea-turtle-monitoring-1"
+                                    target="_"
+                                  >
+                                    Conservation Volunteers Australia
+                                  </a>
+                                </div>
                               </div>
                             </div>
                           </Tooltip>
