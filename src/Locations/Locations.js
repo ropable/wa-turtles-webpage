@@ -606,7 +606,7 @@ export default class Locations extends React.Component<Props, State> {
             </Col>
 
             <Col xs={12} lg={4}>
-              <Well className="pseudoThumbnail">
+              <Well className="thumbnail">
                 {content && content.name ? (
                   <h3>{content.name}</h3>
                 ) : (

@@ -1,13 +1,13 @@
 // @flow
 import React from "react";
 import { Link } from "react-router-dom";
-import { LinkContainer } from "react-router-bootstrap";
+import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 import {
   Image,
   Navbar,
   Nav,
   // NavDropdown,
-  // NavItem,
+  NavItem,
   MenuItem
 } from "react-bootstrap";
 import logo from "../img/turtle_logo.png";
@@ -28,11 +28,11 @@ export default class Navigation extends React.Component<{}> {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav>
-              <LinkContainer to="/">
-                <MenuItem eventKey={4}>Who we are</MenuItem>
-              </LinkContainer>
+              <IndexLinkContainer to="/">
+                <MenuItem eventKey={1}>Who we are</MenuItem>
+              </IndexLinkContainer>
               <LinkContainer to="/locations">
-                <MenuItem eventKey={5}>Where we are</MenuItem>
+                <MenuItem eventKey={2}>Where we are</MenuItem>
               </LinkContainer>
             </Nav>
           </Navbar.Collapse>
