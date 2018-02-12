@@ -37,6 +37,11 @@ type State = {
 
 export default class Locations extends React.Component<Props, State> {
   static defaultProps = {
+    polyStyle: {
+      color: "#ff7800",
+      weight: 5,
+      opacity: 0.65
+    },
     attr:
       "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, " +
       "GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
@@ -752,6 +757,7 @@ export default class Locations extends React.Component<Props, State> {
                         <GeoJSON
                           ref="gjPoly"
                           key="sites-gj"
+                          style={this.props.polyStyle}
                           data={this.props.defaultGeom}
                           onClick={this.oef}
                         />
