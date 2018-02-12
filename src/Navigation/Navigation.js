@@ -6,8 +6,8 @@ import {
   Image,
   Navbar,
   Nav,
-  NavDropdown,
-  NavItem,
+  // NavDropdown,
+  // NavItem,
   MenuItem
 } from "react-bootstrap";
 import logo from "../img/turtle_logo.png";

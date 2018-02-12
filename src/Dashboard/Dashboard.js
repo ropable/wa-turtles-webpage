@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import { Grid, Well, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import TurtleYoutube from "../TurtleYoutube/TurtleYoutube";
 import "./Dashboard.css";
@@ -20,35 +20,37 @@ export default class Dashboard extends React.Component<{}> {
           </Row>
 
           <Row>
-            <Col xs={12} md={4} mdOffset={0}>
+            <Col xs={12} md={12} mdOffset={0}>
               <Well className="jumboWell">
-                <h1>Explore</h1>
+                <h1>Who we are</h1>
                 <h3>Monitoring, Research, Intervention</h3>
-                <Link to="/projects">What we do</Link>
-                <br />
-                <Link to="/education">Who we are</Link>
-              </Well>
-            </Col>
-
-            <Col xs={12} md={4}>
-              <Well className="jumboWell">
-                <h1>Learn</h1>
-                <h3>Information & Education</h3>
                 <p>
-                  From strategic documents to innteractive 3D models of turtles,
-                  access any information we have about turtles.
+                  The Northwest Shelf Flatback Turtle Conservation Program
+                  (North West Shelf Flatbacks) is a 30-year, $32.5 million
+                  program that aims to conserve flatbacks in WA waters, at
+                  nesting beaches and throughout their range, which can include
+                  Commonwealth, Northern Territory and Queensland jurisdictions.{" "}
                 </p>
-                <Link to="/education">Dive in</Link>
-              </Well>
-            </Col>
 
-            <Col xs={12} md={4}>
-              <Well className="jumboWell">
-                <h1>Interact</h1>
-                <h3>Contribute data</h3>
-                <Link to="/encounters">Report a sighting</Link>
-                <h3>Contribute time</h3>
-                <Link to="/education">Become a Volunteer</Link>
+                <p>
+                  Research is still needed to define the abundance and
+                  distribution of the flatback population of the Northwest Shelf
+                  and work being done includes:
+                </p>
+                <ul>
+                  <li>surveying, monitoring and research,</li>
+                  <li>
+                    reducing interference to key breeding and feeding locations,
+                    and
+                  </li>
+                  <li>establishing information and education programs.</li>
+                </ul>
+                <p>
+                  The Northwest Shelf Flatbacks program is one of two additional
+                  conservation programs delivered from the Gorgon Gas Project
+                  (via the 2009 Variation Agreement to the Barrow Island Act
+                  2003).
+                </p>
               </Well>
             </Col>
           </Row>
@@ -57,3 +59,25 @@ export default class Dashboard extends React.Component<{}> {
     );
   }
 }
+
+// <Col xs={12} md={4}>
+//   <Well className="jumboWell">
+//     <h1>Learn</h1>
+//     <h3>Information & Education</h3>
+//     <p>
+//       From strategic documents to innteractive 3D models of turtles,
+//       access any information we have about turtles.
+//     </p>
+//     <Link to="/education">Dive in</Link>
+//   </Well>
+// </Col>
+
+// <Col xs={12} md={4}>
+//   <Well className="jumboWell">
+//     <h1>Interact</h1>
+//     <h3>Contribute data</h3>
+//     <Link to="/encounters">Report a sighting</Link>
+//     <h3>Contribute time</h3>
+//     <Link to="/education">Become a Volunteer</Link>
+//   </Well>
+// </Col>

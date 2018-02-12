@@ -1,6 +1,13 @@
 // @flow
 import React from "react";
-import { Col, Button, Collapse, Image, Row, Navbar } from "react-bootstrap";
+import {
+  Col,
+  // Button,
+  Collapse,
+  Image,
+  Row,
+  Navbar
+} from "react-bootstrap";
 
 import "./Footer.css";
 import dbcalogo from "../img/dbca_logo.svg";
