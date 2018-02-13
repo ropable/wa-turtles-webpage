@@ -10,15 +10,19 @@ Internal project documentation is behind DBCA staff login at the
 
 Deploy to a new server:
 
-* Install node
+* [Install node](https://github.com/creationix/nvm)
 * `git clone git@github.com:dbca-wa/wa-turtles-webpage.git`
+* `cd wa-turtles-webpage` (obviously)
 * `npm run deploy`
+* `npm install -g serve`
 * `serve -C -p PORT -s build &`
 * reverse proxy PORT (nginx or other reverse proxy) to desired domain name
 
 Update existing install:
 
 * `npm run deploy`
+
+This command fetches the latest code via `git pull`, installs any new dependencies via `npm install` and builds the production version via `npm run build`.
 
 
 This is the end of DBCA specific documentation.

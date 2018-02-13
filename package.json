@@ -83,7 +83,12 @@
     "type": "git",
     "url": "git+https://github.com/dbca-wa/wa-turtles-webpage.git"
   },
-  "keywords": ["flatbacks", "north-west-shelf", "turtle", "conservation"],
+  "keywords": [
+    "flatbacks",
+    "north-west-shelf",
+    "turtle",
+    "conservation"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
