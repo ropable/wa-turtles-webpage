@@ -14,7 +14,7 @@ import {
   TileLayer
 } from "react-leaflet";
 // import st from "geojson-bounds";
-import { Col, Grid, Row, Well } from "react-bootstrap";
+import { Button, Col, Grid, Row, Well } from "react-bootstrap";
 
 import "./Locations.css";
 
@@ -296,7 +296,7 @@ export default class Locations extends React.Component<Props, State> {
             rookery_sizerange: "1500",
             rookery_size: 15,
             volunteer_info: "9 per week",
-            contact_url: "Pendoley Environmental",
+            contact_url: "https://www.penv.com.au/opportunities/",
             contact_label: "Pendoley Environmental",
             description:
               "Mundabullangana station is located on the West Yule River, 62 km south of Port Hedland and was first settled in 1867 by Roderick and Donald MacKay.  The station is over 200,000 hectares encompassing Cowrie Beach, a significant flatback turtle rookery, with around 1500 turtles nesting each year.  Mundabullangana is an important reference site for the North West Shelf Flatbacks program.  Research is also occurring on the station looking at the impact of feral animal predation of turtle eggs.",
@@ -506,7 +506,7 @@ export default class Locations extends React.Component<Props, State> {
             rookery_sizerange: "1500",
             rookery_size: 15,
             volunteer_info: "9 per week",
-            contact_url: "Pendoley Environmental",
+            contact_url: "https://www.penv.com.au/opportunities/",
             contact_label: "Pendoley Environmental",
             description:
               "Barrow Island is the largest island off the coast of the Pilbara.  It is 25km long and 10km wide, covering about 23,400 hectares. It sits approximately 56 km from the mainland, between Onslow and Karratha. The island was listed as a ‘Class A’ Nature Reserve in 1910.  Chevron Australia operate an oilfield, gas processing facility and LNG shipping facility on the island. There are up to 1500 flatback turtles nesting on the island each year, making this a significant rookery for flatbacks.",
@@ -779,12 +779,20 @@ export default class Locations extends React.Component<Props, State> {
                     <strong>Monitoring season</strong>{" "}
                     {content.monitoring_season}
                     <br />
-                    <strong>Rookery size</strong> {content.rookery_sizerange}
+                    <strong>Rookery size</strong> {content.rookery_sizerange}{" "}
+                    turtles
                     <br />
                     <strong>Volunteers</strong> {content.volunteer_info}
                     <br />
-                    <strong>Contact</strong>{" "}
-                    <a href="{content.contact_url}">{content.contact_label}</a>
+                    <Button
+                      bsStyle="primary"
+                      bsSize="xsmall"
+                      href={content.contact_url}
+                      target="_"
+                      title="Open in new browser tab"
+                    >
+                      Learn more at {content.contact_label}
+                    </Button>
                     <br />
                     <p>{content.description}</p>
                     <strong>Monitoring activities</strong>
