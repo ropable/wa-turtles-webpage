@@ -26,6 +26,11 @@ In your project root, e.g. `cd ~/projects/wa-turtles-webpage` run `npm run deplo
 This command fetches the latest code via `git pull`, installs any new dependencies via `npm install` and builds the production version via `npm run build`.
 
 
+## Toggle internal version
+If a file `.env` exists in the project root folder containing a variable `REACT_APP_PRIVATE = true`, then the internal version of the web page is shown.
+The internal version is aimed for the DBCA intranet, whereas the public version is for release to the general public.
+Both versions run off the "master" branch.
+
 # Developer tasks
 ## Testing
 [Jest](http://facebook.github.io/jest/)
