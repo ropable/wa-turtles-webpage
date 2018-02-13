@@ -8,11 +8,21 @@ Prototype of a web page for WA Turtles.
 Internal project documentation is behind DBCA staff login at the
 [DBCA wiki](https://confluence.dpaw.wa.gov.au/display/MSIM/DBCA+homepage+integration).
 
+Deploy to a new server:
 
-* clone repo
-* npm run deploy
-* serve -C -p PORT -s build &
-* reverse proxy PORT
+* Install node
+* `git clone git@github.com:dbca-wa/wa-turtles-webpage.git`
+* `npm run deploy`
+* `serve -C -p PORT -s build &`
+* reverse proxy PORT (nginx or other reverse proxy) to desired domain name
+
+Update existing install:
+
+* `npm run deploy`
+
+
+This is the end of DBCA specific documentation.
+
 
 # Developer tasks
 ## Testing
@@ -21,6 +31,8 @@ Internal project documentation is behind DBCA staff login at the
 
 [Tutorial](https://hackernoon.com/react-unit-test-example-tutorial-jest-enzyme-jsdom-mocha-chai-state-props-component-7ec850a98566).
 [What to test](https://medium.freecodecamp.org/the-right-way-to-test-react-components-548a4736ab22)
+
+* `npm run test`
 
 ## CI
 To enable automatic testing and code coverage reporting on every `git push`:
