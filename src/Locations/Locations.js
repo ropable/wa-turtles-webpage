@@ -9,9 +9,9 @@ import {
   // CircleMarker,
   GeoJSON,
   Map,
-  Popup,
-  TileLayer,
-  Tooltip
+  // Popup,
+  // Tooltip,
+  TileLayer
 } from "react-leaflet";
 // import st from "geojson-bounds";
 import { Col, Grid, Row, Well } from "react-bootstrap";
