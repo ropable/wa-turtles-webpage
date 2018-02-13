@@ -8,24 +8,22 @@ Prototype of a web page for WA Turtles.
 Internal project documentation is behind DBCA staff login at the
 [DBCA wiki](https://confluence.dpaw.wa.gov.au/display/MSIM/DBCA+homepage+integration).
 
-Deploy to a new server:
+## Deploy to a new server
 
-* [Install node](https://github.com/creationix/nvm)
-* `git clone git@github.com:dbca-wa/wa-turtles-webpage.git`
+* Tested on Ubuntu 16.04.3 LTS and Ubuntu 14.04.5 LTS, node 9.5 ([install node](https://github.com/creationix/nvm)).
+* In the project root of your choice, `git clone git@github.com:dbca-wa/wa-turtles-webpage.git`
 * `cd wa-turtles-webpage` (obviously)
 * `npm run deploy`
 * `npm install -g serve`
 * `serve -C -p PORT -s build &`
-* reverse proxy PORT (nginx or other reverse proxy) to desired domain name
+* See node running on PORT: `sudo netstat -plant | grep PORT`
+* Reverse proxy PORT (nginx or other reverse proxy) to desired domain name
 
-Update existing install:
+## Update existing install:
 
-* `npm run deploy`
+In your project root, e.g. `cd ~/projects/wa-turtles-webpage` run `npm run deploy`.
 
 This command fetches the latest code via `git pull`, installs any new dependencies via `npm install` and builds the production version via `npm run build`.
-
-
-This is the end of DBCA specific documentation.
 
 
 # Developer tasks
@@ -50,6 +48,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Below you will find some information on how to perform common tasks.<br>
 You can find the most recent version of this guide [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
+
+
+**This is the end of DBCA specific documentation.**
 
 ## Table of Contents
 
