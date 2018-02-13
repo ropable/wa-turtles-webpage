@@ -26,9 +26,9 @@ it("renders fully without crashing", () => {
   mount(<App />);
 });
 
-it("renders Datasets with parameters", () => {
+it("renders nine routes", () => {
   const wrapper = mount(<App />);
-  expect(wrapper.find(Route).length).toBe(14);
+  expect(wrapper.find(Route).length).toBe(9);
 });
 
 it("renders Navigation component", () => {
