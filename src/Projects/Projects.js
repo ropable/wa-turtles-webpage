@@ -69,7 +69,7 @@ export default class Projects extends React.Component<Props, State> {
   state = {
     projects: [],
     status: "loading",
-    filterText: "",
+    filterText: "turtle",
     tags: [
       { value: "adaptive", count: 25 },
       { value: "woylie", count: 18 },
