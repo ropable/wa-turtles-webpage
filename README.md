@@ -8,7 +8,20 @@ Prototype of a web page for WA Turtles.
 Internal project documentation is behind DBCA staff login at the
 [DBCA wiki](https://confluence.dpaw.wa.gov.au/display/MSIM/DBCA+homepage+integration).
 
-## Deploy to a new server
+## Build - portainer / sway.io
+Overall process:
+
+* `npm run build` to build production bundle in folder `./build`
+* `npm run s2ibuild` to build docker image from `./build`
+* `npm run portainer` (once per system) to run portainer
+* visit portainer on `localhost:9000`: dashboard > containers > find "turtleweb" > recreate (do not pull from registry)
+* visit running container locally to confirm that container build was successful
+* `npm run s2ipush` to upload to quay.io registry
+* TODO test registry image
+* TODO notify prod maintainer (OIM) to pull registry image URL on sway.io
+
+
+## Build - local build
 
 * Tested on Ubuntu 16.04.3 LTS and Ubuntu 14.04.5 LTS, node 9.5 ([install node](https://github.com/creationix/nvm)).
 * In the project root of your choice, `git clone git@github.com:dbca-wa/wa-turtles-webpage.git`
@@ -19,17 +32,12 @@ Internal project documentation is behind DBCA staff login at the
 * See node running on PORT: `sudo netstat -plant | grep PORT`
 * Reverse proxy PORT (nginx or other reverse proxy) to desired domain name
 
-## Update existing install:
+
+## Update existing install
 
 In your project root, e.g. `cd ~/projects/wa-turtles-webpage` run `npm run deploy`.
 
 This command fetches the latest code via `git pull`, installs any new dependencies via `npm install` and builds the production version via `npm run build`.
-
-
-## Toggle internal version
-If a file `.env` exists in the project root folder containing a variable `REACT_APP_PRIVATE = true`, then the internal version of the web page is shown.
-The internal version is aimed for the DBCA intranet, whereas the public version is for release to the general public.
-Both versions run off the "master" branch.
 
 # Developer tasks
 ## Testing
