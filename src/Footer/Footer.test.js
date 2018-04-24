@@ -27,9 +27,9 @@ it("has a Sitemap", () => {
   const wrapper = shallow(<Footer />);
 
   // Sitemap is always there, even if collapsed
-  const msg = <h3>Category 1</h3>; // The first Sitemap heading
+  const msg = <h3>The Science</h3>; // The first Sitemap heading
   expect(wrapper).toContainReact(msg);
-  expect(wrapper.find("h3").length).toBe(4); // 4 headings in sitemap
+  expect(wrapper.find("h3").length).toBe(2); // 2 headings in sitemap
 });
 
 /* Props */

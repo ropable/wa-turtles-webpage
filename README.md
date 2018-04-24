@@ -11,9 +11,10 @@ Internal project documentation is behind DBCA staff login at the
 ## Build - portainer / sway.io
 Overall process:
 
+* `npm run test` until all tests pass
 * `npm run build` to build production bundle in folder `./build`
 * `npm run s2ibuild` to build docker image from `./build`
-* `npm run portainer` (once per system) to run portainer
+* `npm run portainer` (once per system) to (auto re-)start portainer
 * visit portainer on `localhost:9000`: dashboard > containers > find "turtleweb" > recreate (do not pull from registry)
 * visit running container locally to confirm that container build was successful
 * `npm run s2ipush` to upload to quay.io registry
@@ -22,6 +23,7 @@ Overall process:
 
 
 ## Build - local build
+This build process is superseded by the containerised process using portainer.
 
 * Tested on Ubuntu 16.04.3 LTS and Ubuntu 14.04.5 LTS, node 9.5 ([install node](https://github.com/creationix/nvm)).
 * In the project root of your choice, `git clone git@github.com:dbca-wa/wa-turtles-webpage.git`

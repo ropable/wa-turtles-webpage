@@ -20,7 +20,8 @@ import Education from "./Education/Education";
 import Datasets from "./Datasets/Datasets";
 import Projects from "./Projects/Projects";
 import Locations from "./Locations/Locations";
-import EncounterRecorder from "./Encounters/EncounterRecorder";
+import About from "./About/About";
+import Story from "./Story/Story";
 import Footer from "./Footer/Footer";
 import todoApp from "./reducers";
 
@@ -53,8 +54,9 @@ export default class App extends React.Component<{}> {
             <Route exact path={"/infosheets"} render={this.embedInfosheets} />
             <Route exact path={"/projects"} component={Projects} />
             <Route exact path={"/locations"} component={Locations} />
-            <Route exact path={"/encounters"} component={EncounterRecorder} />
             <Route exact path={"/education"} component={Education} />
+            <Route exact path={"/about"} component={About} />
+            <Route exact path={"/story"} component={Story} />
             <Footer />
           </div>
         </BrowserRouter>
