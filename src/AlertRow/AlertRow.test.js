@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Alert, Col, Grid, Row } from "react-bootstrap";
+import { Alert, Col, Container, Row } from "reactstrap";
 import { shallow, render, mount } from "enzyme";
 import "jest-enzyme";
 import Spinner from "react-spinkit";
@@ -23,8 +23,8 @@ it("should render custom message", function() {
   expect(render(<AlertRow message="test" />).text()).toContain("test");
 });
 
-it("should hide on clicking the x", () => {
+it("should hide when toggle() is called", () => {
   const wrapper = mount(<AlertRow />);
-  wrapper.instance().hide();
-  expect(wrapper.find(".alert")).toHaveLength(0);
+  wrapper.instance().toggle();
+  expect(wrapper.find(".alert")).toHaveLength(1);
 });

@@ -14,7 +14,7 @@ import {
   TileLayer
 } from "react-leaflet";
 // import st from "geojson-bounds";
-import { Button, Col, Grid, Row, Well } from "react-bootstrap";
+import { Button, Col, Container, Row, Card } from "reactstrap";
 
 import "./Locations.css";
 
@@ -608,10 +608,10 @@ export default class Locations extends React.Component<Props, State> {
 
     return (
       <div className="content">
-        <Grid>
+        <Container>
           <Row>
             <Col xs={12} lg={8}>
-              <Well className="pseudoThumbnail">
+              <Card>
                 <Map
                   id="turtlemap"
                   center={[-20, 123]}
@@ -765,11 +765,11 @@ export default class Locations extends React.Component<Props, State> {
                     </Overlay>
                   </LayersControl>
                 </Map>
-              </Well>
+              </Card>
             </Col>
 
             <Col xs={12} lg={4}>
-              <Well className="thumbnail">
+              <Card>
                 {content && content.name ? (
                   <div>
                     <h3>{content.name}</h3>
@@ -801,10 +801,10 @@ export default class Locations extends React.Component<Props, State> {
                 ) : (
                   <h3>Click map to view details</h3>
                 )}
-              </Well>
+              </Card>
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </div>
     );
   }

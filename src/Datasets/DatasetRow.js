@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 import Leaflet from "leaflet";
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import st from "geojson-bounds";
-import { Col, Glyphicon, Row, Well } from "react-bootstrap";
+import { Col, Row, Card } from "reactstrap";
 import TimeAgo from "react-timeago";
 
 import ResourceRow from "./ResourceRow";
@@ -14,37 +14,7 @@ import "./DatasetRow.css";
 Leaflet.Icon.Default.imagePath =
   "//cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/images/";
 
-type Props = {
-  dataset: PropTypes.array,
-  attr: string,
-  mapurl: string,
-  doubleClickZoom: boolean,
-  defaultGeom: PropTypes.array
-};
-
-export default class DatasetRow extends React.Component<Props> {
-  static defaultProps = {
-    attr: "Tiles &copy; Esri &mdash; Source: Esri et al.",
-    mapurl:
-      "http://server.arcgisonline.com/ArcGIS/rest/services/" +
-      "World_Imagery/MapServer/tile/{z}/{y}/{x}",
-    doubleClickZoom: true,
-    defaultGeom: {
-      type: "MultiPolygon",
-      coordinates: [
-        [
-          [
-            [128.84765625000003, -11.523087506868514],
-            [128.67187500000003, -34.88593094075316],
-            [114.43359375000001, -37.020098201368114],
-            [110.91796875000001, -19.973348786110602],
-            [128.84765625000003, -11.523087506868514]
-          ]
-        ]
-      ]
-    }
-  };
-
+export default class DatasetRow extends React.Component {
   /* Return Dataset's GeoJSON Multipolygon geometry or fallback */
   getGeom = (ds, fallback) => {
     return ds.spatial ? JSON.parse(ds.spatial) : fallback;
@@ -74,7 +44,7 @@ export default class DatasetRow extends React.Component<Props> {
 
       return (
         <Col xs={12} md={6} lg={4}>
-          <Well className="pseudoThumbnail">
+          <Card>
             <Map
               id="map"
               center={this.getCenter(gj)}
@@ -96,7 +66,7 @@ export default class DatasetRow extends React.Component<Props> {
 
               <Row>
                 <Col xs={12}>
-                  <Glyphicon
+                  <span
                     glyph="home"
                     title="The dataset belongs to this organisation"
                   />{" "}
@@ -106,7 +76,7 @@ export default class DatasetRow extends React.Component<Props> {
 
               <Row>
                 <Col xs={12}>
-                  <Glyphicon
+                  <span
                     glyph="edit"
                     title="The dataset author is the intellectual owner of the main dataset resource"
                   />{" "}
@@ -116,20 +86,20 @@ export default class DatasetRow extends React.Component<Props> {
 
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="pencil" title="Citation" /> {ds.citation}
+                  <span glyph="pencil" title="Citation" /> {ds.citation}
                 </Col>
               </Row>
 
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="copyright-mark" title="License" />{" "}
+                  <span glyph="copyright-mark" title="License" />{" "}
                   {ds.license_id}
                 </Col>
               </Row>
 
               <Row>
                 <Col xs={12}>
-                  <Glyphicon
+                  <span
                     glyph="wrench"
                     title="The dataset maintainer wrote and updates this metadata entry"
                   />{" "}
@@ -139,7 +109,7 @@ export default class DatasetRow extends React.Component<Props> {
 
               <Row>
                 <Col xs={12}>
-                  <Glyphicon
+                  <span
                     glyph="repeat"
                     title="Update frequency of main dataset resource"
                   />{" "}
@@ -149,10 +119,7 @@ export default class DatasetRow extends React.Component<Props> {
 
               <Row>
                 <Col xs={12}>
-                  <Glyphicon
-                    glyph="refresh"
-                    title="Metadata last updated"
-                  />{" "}
+                  <span glyph="refresh" title="Metadata last updated" />{" "}
                   <TimeAgo date={ds.metadata_modified} />
                 </Col>
               </Row>
@@ -160,7 +127,7 @@ export default class DatasetRow extends React.Component<Props> {
               {ds.tags.map(tag => (
                 <Row key={tag.id}>
                   <Col xs={12}>
-                    <Glyphicon glyph="tag" title="Tagged with keyword" />{" "}
+                    <span glyph="tag" title="Tagged with keyword" />{" "}
                     {tag.display_name}
                   </Col>
                 </Row>
@@ -169,10 +136,7 @@ export default class DatasetRow extends React.Component<Props> {
               {ds.groups.map(group => (
                 <Row key={group.id}>
                   <Col xs={12}>
-                    <Glyphicon
-                      glyph="folder-open"
-                      title="Thematic group"
-                    />{" "}
+                    <span glyph="folder-open" title="Thematic group" />{" "}
                     {group.title}
                   </Col>
                 </Row>
@@ -180,7 +144,7 @@ export default class DatasetRow extends React.Component<Props> {
 
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="comment" title="Dataset description" />
+                  <span glyph="comment" title="Dataset description" />
                   <ReactMarkdown
                     source={ds.notes || "No description provided"}
                     containerTagName="span"
@@ -197,17 +161,47 @@ export default class DatasetRow extends React.Component<Props> {
                 </Col>
               </Row>
             </div>
-          </Well>
+          </Card>
         </Col>
       );
     } else {
       return (
         <Col xs={12} md={6} lg={4}>
-          <Well className="whitebg">
+          <Card>
             <h4>No dataset</h4>
-          </Well>
+          </Card>
         </Col>
       );
     }
   }
 }
+
+DatasetRow.propTypes = {
+  dataset: PropTypes.object,
+  attr: PropTypes.string,
+  mapurl: PropTypes.string,
+  doubleClickZoom: PropTypes.bool,
+  defaultGeom: PropTypes.object
+};
+
+DatasetRow.defaultProps = {
+  attr: "Tiles &copy; Esri &mdash; Source: Esri et al.",
+  mapurl:
+    "http://server.arcgisonline.com/ArcGIS/rest/services/" +
+    "World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  doubleClickZoom: true,
+  defaultGeom: {
+    type: "MultiPolygon",
+    coordinates: [
+      [
+        [
+          [128.84765625000003, -11.523087506868514],
+          [128.67187500000003, -34.88593094075316],
+          [114.43359375000001, -37.020098201368114],
+          [110.91796875000001, -19.973348786110602],
+          [128.84765625000003, -11.523087506868514]
+        ]
+      ]
+    ]
+  }
+};

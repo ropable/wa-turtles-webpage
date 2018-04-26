@@ -1,6 +1,6 @@
 // @flow
 import React from "react";
-import { Col, Button, Collapse, Image, Row, Navbar } from "react-bootstrap";
+import { Col, Button, Collapse, Media, Row, Navbar } from "reactstrap";
 
 import "./Footer.css";
 import dbcalogo from "../img/dbca_logo.svg";
@@ -39,9 +39,10 @@ export default class Footer extends React.Component<State> {
 
           <span className="text-muted credit">
             <a href="https://github.com/dbca-wa/wa-turtles-webpage" target="_">
-              <Image
+              <Media
+                object
+                data-src={dbcalogo}
                 className="footer-logo"
-                src={dbcalogo}
                 alt="Department of Biodiversity, Conservation and Attractions"
               />
             </a>

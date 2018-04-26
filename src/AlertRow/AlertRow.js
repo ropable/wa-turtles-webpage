@@ -1,36 +1,29 @@
 // @flow
-import * as React from "react";
-import { Alert, Col, Grid, Row } from "react-bootstrap";
+import React from "react";
+import PropTypes from "prop-types";
+import { Alert, Col, Container, Row } from "reactstrap";
 import Spinner from "react-spinkit";
 
-type Props = {
-  bsStyle: string,
-  message: string,
-  showSpinner: boolean
-};
+export default class AlertRow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      alertVisible: true
+    };
+    this.toggle = this.toggle.bind(this);
+  }
 
-type State = {
-  alertVisible: boolean
-};
-
-export default class AlertRow extends React.Component<Props, State> {
-  static defaultProps = {
-    bsStyle: "info",
-    message: "Loading data, hang tight...",
-    showSpinner: false
-  };
-
-  state = { alertVisible: true };
-
-  hide = () => {
-    this.setState({ alertVisible: false });
-  };
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
 
   render() {
     const alert = this.state.alertVisible ? (
       <Row>
         <Col xs={12} md={12}>
-          <Alert bsStyle={this.props.bsStyle} onDismiss={this.hide}>
+          <Alert color={this.props.color} toggle={this.toggle}>
             {this.props.message}
           </Alert>
         </Col>
@@ -41,7 +34,7 @@ export default class AlertRow extends React.Component<Props, State> {
 
     const spinner = this.props.showSpinner ? (
       <Row>
-        <Col xs={4} md={3} mdOffset={3}>
+        <Col xs={4} sm={3}>
           <Spinner name="pacman" color="orange" fadeIn="half" />
         </Col>
       </Row>
@@ -51,11 +44,23 @@ export default class AlertRow extends React.Component<Props, State> {
 
     return (
       <div className="content">
-        <Grid>
+        <Container>
           {alert}
           {spinner}
-        </Grid>
+        </Container>
       </div>
     );
   }
 }
+
+AlertRow.propTypes = {
+  bsStyle: PropTypes.string,
+  message: PropTypes.string,
+  showSpinner: PropTypes.bool
+};
+
+AlertRow.defaultProps = {
+  color: "info",
+  message: "Loading data, hang tight...",
+  showSpinner: false
+};

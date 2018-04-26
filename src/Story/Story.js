@@ -1,23 +1,23 @@
 // @flow
 import React from "react";
-import { Grid, Well, Row, Col } from "react-bootstrap";
+import { Container, Card, Row, Col } from "reactstrap";
 // import { Link } from "react-router-dom";
 
 import "./Story.css";
 
-export default class Story extends React.Component<{}> {
+export default class Story extends React.Component {
   render() {
     return (
       <div className="content">
-        <Grid>
+        <Container>
           <Row>
             <Col xs={12} md={12} mdOffset={0}>
-              <Well>
+              <Card>
                 <h1>The Flatback Story</h1>
-              </Well>
+              </Card>
             </Col>
           </Row>
-        </Grid>
+        </Container>
       </div>
     );
   }

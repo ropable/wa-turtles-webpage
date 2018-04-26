@@ -1,38 +1,26 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
-import { Grid } from "react-bootstrap";
+import { Container } from "reactstrap";
 import axios from "axios";
 import wrapper from "axios-cache-plugin";
 
 import DatasetRow from "./DatasetRow";
 import AlertRow from "../AlertRow/AlertRow";
 
-type Props = {
-  webUrl: string,
-  apiParams: string
-};
-
-type State = {
-  datasets: PropTypes.array,
-  status: string
-};
-
 let http = wrapper(axios, {
   maxCacheSize: 15
 });
 http.__addFilter(/datasets/);
 
-export default class Datasets extends React.Component<Props, State> {
-  static defaultProps = {
-    webUrl: process.env.REACT_APP_CKAN_URL || "https://data.dpaw.wa.gov.au",
-    apiParams: "tags:asset_turtles"
-  };
-
-  state = {
-    datasets: [],
-    status: "loading"
-  };
+export default class Datasets extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      datasets: [],
+      status: "loading"
+    };
+  }
 
   setStateLoaded = datasets => {
     this.setState({
@@ -72,18 +60,28 @@ export default class Datasets extends React.Component<Props, State> {
     if (status === "loaded") {
       return (
         <div className="content">
-          <Grid>
+          <Container>
             {datasets.map(function(ds) {
               return <DatasetRow dataset={ds} key={ds.id} />;
             })}
-          </Grid>
+          </Container>
         </div>
       );
     } else if (status === "loading") {
       return <AlertRow showSpinner={true} />;
     } else if (status === "error") {
       const msg = `Error loading data from ${this.props.webUrl}`;
-      return <AlertRow bsStyle="danger" message={msg} />;
+      return <AlertRow color="danger" message={msg} />;
     }
   }
 }
+
+AlertRow.propTypes = {
+  webUrl: PropTypes.string,
+  apiParams: PropTypes.string
+};
+
+AlertRow.defaultProps = {
+  webUrl: process.env.REACT_APP_CKAN_URL || "https://data.dpaw.wa.gov.au",
+  apiParams: "tags:asset_turtles"
+};

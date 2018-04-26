@@ -1,6 +1,6 @@
 {
   "name": "wa-turtles-webpage",
-  "version": "0.4.1",
+  "version": "0.4.3",
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
@@ -22,9 +22,9 @@
     "postcss": "^6.0.11",
     "prettier": "^1.6.1",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
+    "react": "^15.6.2",
     "react-bootstrap": "^0.31.5",
-    "react-dom": "^15.6.1",
+    "react-dom": "^15.6.2",
     "react-expand-text": "^1.0.0",
     "react-leaflet": "^1.6.5",
     "react-loading-bar": "0.0.4",
@@ -41,11 +41,12 @@
     "react-text-collapse": "^0.4.3",
     "react-timeago": "^3.4.3",
     "react-youtube": "^7.4.0",
+    "reactstrap": "^5.0.0-beta.3",
     "redux": "^3.7.2",
     "redux-offline": "^2.0.0",
     "redux-persist": "^4.9.1",
     "redux-search": "^2.4.0",
-    "stylelint": "^8.1.1",
+    "stylelint": "^8.4.0",
     "wordfreq": "0.1.0-dev"
   },
   "lint-staged": {

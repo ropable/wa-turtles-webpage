@@ -1,17 +1,7 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  Button,
-  Col,
-  Collapse,
-  Glyphicon,
-  Image,
-  Label,
-  Panel,
-  Row,
-  Well
-} from "react-bootstrap";
+import { Button, Col, Collapse, Label, Card, Row, Media } from "reactstrap";
 
 import logo from "../img/green_hatchling.jpg";
 
@@ -48,9 +38,9 @@ export default class ProjectRow extends React.Component<Props, State> {
           Read more...
         </Button>
         <Collapse in={main.state.showComment}>
-          <Panel className="no-margin">
+          <Card className="no-margin">
             <span dangerouslySetInnerHTML={main.wrapHTML(comments)} />
-          </Panel>
+          </Card>
         </Collapse>
       </span>
     ) : (
@@ -67,10 +57,15 @@ export default class ProjectRow extends React.Component<Props, State> {
     if (pro) {
       return (
         <Row>
-          <Panel className="thumbnail">
+          <Card className="thumbnail">
             <Col xs={12} md={4} lg={3} className="no-padding">
-              <Image
-                src={this.preventEmptyImage(this.props.webUrl, pro.image, logo)}
+              <Media
+                object
+                data-src={this.preventEmptyImage(
+                  this.props.webUrl,
+                  pro.image,
+                  logo
+                )}
                 alt={pro.project_type_year_number_plain}
                 responsive
               />
@@ -83,7 +78,7 @@ export default class ProjectRow extends React.Component<Props, State> {
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="link" title="Project ID" />{" "}
+                  <span glyph="link" title="Project ID" />{" "}
                   <Button
                     bsStyle="primary"
                     bsSize="xsmall"
@@ -95,50 +90,49 @@ export default class ProjectRow extends React.Component<Props, State> {
                     {pro.project_type_year_number_plain}
                   </Button>{" "}
                   <Label bsStyle="default" bsSize="xsmall">
-                    <Glyphicon glyph="calendar" title="Project Duration" />{" "}
+                    <span glyph="calendar" title="Project Duration" />{" "}
                     {start_date} - {end_date}
                   </Label>{" "}
                   <Label bsStyle="success" bsSize="xsmall">
-                    <Glyphicon glyph="wrench" title="Project Status" />{" "}
+                    <span glyph="wrench" title="Project Status" />{" "}
                     {pro.status_display}
                   </Label>
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="home" title="Divisional Program" />{" "}
-                  {pro.program}
+                  <span glyph="home" title="Divisional Program" /> {pro.program}
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="user" title="Project Team" />{" "}
+                  <span glyph="user" title="Project Team" />{" "}
                   {pro.team_list_plain}
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="tag" title="Tagged with keyword" />{" "}
+                  <span glyph="tag" title="Tagged with keyword" />{" "}
                   {pro.keywords_plain ? pro.keywords_plain : "No keywords"}
                 </Col>
               </Row>
               <Row>
                 <Col xs={12}>
-                  <Glyphicon glyph="comment" title="Project description" />{" "}
+                  <span glyph="comment" title="Project description" />{" "}
                   {pro.tagline_plain ? pro.tagline_plain : "No tagline"}{" "}
                   {this.renderComments(this, pro.comments)}
                 </Col>
               </Row>
             </Col>
-          </Panel>
+          </Card>
         </Row>
       );
     } else {
       return (
         <Col xs={12}>
-          <Well className="whitebg">
+          <Card>
             <h4>No project</h4>
-          </Well>
+          </Card>
         </Col>
       );
     }

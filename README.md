@@ -9,17 +9,26 @@ Internal project documentation is behind DBCA staff login at the
 [DBCA wiki](https://confluence.dpaw.wa.gov.au/display/MSIM/DBCA+homepage+integration).
 
 ## Build - portainer / sway.io
-Overall process:
+Overall process: test / build prod bundle / build Docker image / test image locally / push image / test published image / notify PROD maintainer.
 
 * `npm run test` until all tests pass
 * `npm run build` to build production bundle in folder `./build`
 * `npm run s2ibuild` to build docker image from `./build`
-* `npm run portainer` (once per system) to (auto re-)start portainer
-* visit portainer on `localhost:9000`: dashboard > containers > find "turtleweb" > recreate (do not pull from registry)
-* visit running container locally to confirm that container build was successful
-* `npm run s2ipush` to upload to quay.io registry
-* TODO test registry image
-* TODO notify prod maintainer (OIM) to pull registry image URL on sway.io
+* `npm run portainer` run only once per system to (auto re-)start portainer
+* To run a new image (when app version has changed):
+  * Visit portainer on `localhost:9000`: dashboard > containers > "add container" >
+  * find your container (e.g. `quay.io/dbca_wa/turtlesweb:0.4.2`)
+  * keep registry `DockerHub` -- `quay.io` will fail (bug?)
+  * turn **off** "always pull image" to be able to preview local images
+  * turn **on** "publish all exposed ports"
+  * Deploy the container
+* Subsequent container instances of same image:
+  * Visit portainer on `localhost:9000`: dashboard > containers > find "turtleweb" > recreate (do not pull from registry)
+* Visit running container locally to confirm that container build was successful:
+  * `localhost:9000` > Containers > find IP and port
+* Once local builds are satisfactory, `npm run s2ipush` to upload to quay.io registry
+* To test registry image, "recreate" container and "pull latest image" when asked
+* to deploy to UAT and PROD, notify prod maintainer (OIM) to pull registry image URL (find URL to image on sway.io)
 
 
 ## Build - local build
@@ -35,7 +44,7 @@ This build process is superseded by the containerised process using portainer.
 * Reverse proxy PORT (nginx or other reverse proxy) to desired domain name
 
 
-## Update existing install
+## Update existing install - local build
 
 In your project root, e.g. `cd ~/projects/wa-turtles-webpage` run `npm run deploy`.
 

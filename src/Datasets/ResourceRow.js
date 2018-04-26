@@ -2,19 +2,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ReactMarkdown from "react-markdown";
-import { Button, Glyphicon, Row, Col, Well } from "react-bootstrap";
+import { Button, Row, Col, Card } from "reactstrap";
 import TimeAgo from "react-timeago";
 
-type Props = { resource: PropTypes.object };
-
-export default class ResourceRow extends React.Component<Props> {
+export default class ResourceRow extends React.Component {
   render() {
     const r = this.props.resource;
     const disallowedTypes = ["p"];
 
     if (r) {
       return (
-        <Well>
+        <Card>
           <Row>
             <Col xs={12}>
               <h5>{r.name}</h5>
@@ -23,7 +21,7 @@ export default class ResourceRow extends React.Component<Props> {
 
           <Row>
             <Col xs={12}>
-              <Glyphicon glyph="link" title="Open resource file" />{" "}
+              <span glyph="link" title="Open resource file" />{" "}
               <Button
                 bsStyle="primary"
                 bsSize="xsmall"
@@ -39,28 +37,32 @@ export default class ResourceRow extends React.Component<Props> {
 
           <Row>
             <Col xs={12}>
-              <Glyphicon glyph="refresh" title="Resource last updated" />{" "}
+              <span glyph="refresh" title="Resource last updated" />{" "}
               <TimeAgo date={r.last_modified} />
             </Col>
           </Row>
 
           <Row>
             <Col xs={12}>
-              <Glyphicon glyph="comment" title="Resource description" />{" "}
+              <span glyph="comment" title="Resource description" />{" "}
               <ReactMarkdown
                 source={r.description}
                 disallowedTypes={disallowedTypes}
               />
             </Col>
           </Row>
-        </Well>
+        </Card>
       );
     } else {
       return (
-        <Well>
+        <Card>
           <h5>No resource</h5>
-        </Well>
+        </Card>
       );
     }
   }
 }
+
+ResourceRow.propTypes = {
+  resource: PropTypes.object
+};

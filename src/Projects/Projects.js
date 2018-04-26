@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
-import { Col, Grid, Panel, Row } from "react-bootstrap";
+import { Col, Container, Card, Row } from "reactstrap";
 import axios from "axios";
 import { TagCloud } from "react-tagcloud";
 // import { WordFreq } from "wordfreq";
@@ -220,9 +220,9 @@ export default class Projects extends React.Component<Props, State> {
     if (status === "loaded") {
       return (
         <div className="content">
-          <Grid>
+          <Container>
             <Row>
-              <Panel className="blackbg thumbnail">
+              <Card>
                 <Col xs={12}>
                   <SearchBar
                     filterText={filterText}
@@ -236,21 +236,21 @@ export default class Projects extends React.Component<Props, State> {
                     onClick={this.handleClickTag}
                   />
                 </Col>
-              </Panel>
+              </Card>
             </Row>
             {this.makeFilteredProjectRows(
               projects,
               filterText,
               this.props.webUrl
             )}
-          </Grid>
+          </Container>
         </div>
       );
     } else if (status === "loading") {
       return <AlertRow showSpinner={true} />;
     } else if (status === "error") {
       const msg = `Error loading data from ${this.props.webUrl}`;
-      return <AlertRow bsStyle="danger" message={msg} />;
+      return <AlertRow color="danger" message={msg} />;
     }
   }
 }
