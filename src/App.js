@@ -21,7 +21,7 @@ import Projects from "./Projects/Projects";
 import Locations from "./Locations/Locations";
 import About from "./About/About";
 import Story from "./Story/Story";
-import Footer from "./Footer/Footer";
+// import Footer from "./Footer/Footer";
 import todoApp from "./reducers";
 
 const store = createStore(
@@ -54,7 +54,6 @@ export default class App extends React.Component<{}> {
             <Route exact path={"/locations"} component={Locations} />
             <Route exact path={"/about"} component={About} />
             <Route exact path={"/story"} component={Story} />
-            <Footer />
           </div>
         </BrowserRouter>
       </Provider>

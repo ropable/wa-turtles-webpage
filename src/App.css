@@ -27,11 +27,6 @@ body {
   margin-bottom: -70px;
 }
 
-/* A Well with min height to v-fill a page evenly */
-.jumboWell {
-  min-height: 300px;
-}
-
 .videoWell {
   min-height: 500px;
 }
@@ -41,16 +36,8 @@ body {
   margin-top: 20%;
 }
 
-/* Transparent Well */
-.well {
-  background-color: #fff;
-  opacity: 0.85;
-  box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 0.75);
-}
-
-.thumbnail {
-  box-shadow: 5px 5px 2px 0px rgba(0, 0, 0, 0.75);
-  border: none;
+.mb10 {
+  margin-bottom: 10px;
 }
 
 .nav.navbar-nav li a:hover,

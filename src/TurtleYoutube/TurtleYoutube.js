@@ -11,10 +11,6 @@ export default class TurtleYoutube extends React.Component {
         autoplay: 0
       }
     };
-    return (
-      <div>
-        <YouTube videoId="XbCWIZ3wlQA" opts={opts} />
-      </div>
-    );
+    return <YouTube videoId="XbCWIZ3wlQA" opts={opts} />;
   }
 }

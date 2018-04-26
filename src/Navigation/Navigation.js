@@ -42,7 +42,7 @@ export default class Navigation extends React.Component {
                 alt="Department of Biodiversity, Conservation and Attractions"
               />
             </a>
-            <a href="https://github.com/dbca-wa/wa-turtles-webpage" target="_">
+            <a href="/">
               <img
                 src={turtlelogo}
                 class="logo"
@@ -50,9 +50,13 @@ export default class Navigation extends React.Component {
               />
             </a>
           </NavbarBrand>
+
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/">Home</NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink href="/story">The Flatback Story</NavLink>
               </NavItem>
