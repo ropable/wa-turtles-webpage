@@ -8,10 +8,10 @@ import {
   compose
 } from "redux";
 
-import {
-  // persistStore,
-  autoRehydrate
-} from "redux-persist";
+// import {
+//   // persistStore,
+//   autoRehydrate
+// } from "redux-persist";
 
 import "./App.css";
 import Navigation from "./Navigation/Navigation";
@@ -27,10 +27,9 @@ import todoApp from "./reducers";
 const store = createStore(
   todoApp,
   undefined,
-  compose(
-    // applyMiddleware(middleware),
-    autoRehydrate()
-  )
+  compose()
+  // applyMiddleware(middleware),
+  // autoRehydrate()
 );
 
 export default class App extends React.Component<{}> {

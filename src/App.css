@@ -21,8 +21,8 @@ body {
   min-height: 100%;
 }
 
-.content {
-  padding-top: 70px;
+.container {
+  padding-top: 80px;
   padding-bottom: 70px;
   margin-bottom: -70px;
 }

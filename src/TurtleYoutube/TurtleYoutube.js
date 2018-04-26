@@ -2,7 +2,7 @@
 import * as React from "react";
 import YouTube from "react-youtube";
 
-export default class TurtleYoutube extends React.Component<{}> {
+export default class TurtleYoutube extends React.Component {
   render() {
     const opts = {
       height: "500px",

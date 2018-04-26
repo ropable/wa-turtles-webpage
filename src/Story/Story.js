@@ -11,7 +11,7 @@ export default class Story extends React.Component {
       <div className="content">
         <Container>
           <Row>
-            <Col xs={12} md={12} mdOffset={0}>
+            <Col>
               <Card>
                 <h1>The Flatback Story</h1>
               </Card>
