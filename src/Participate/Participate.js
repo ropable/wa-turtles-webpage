@@ -1,17 +1,6 @@
 // @flow
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText
-  // CardImg
-} from "reactstrap";
+import { Container, Row, Card, CardBody } from "reactstrap";
 
 export default class Participate extends React.Component {
   render() {

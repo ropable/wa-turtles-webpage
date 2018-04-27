@@ -9,11 +9,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
+  NavLink
 } from "reactstrap";
 import turtlelogo from "../img/turtle_logo.png";
 import dbcalogo from "../img/dbca_logo.svg";
@@ -46,7 +42,7 @@ export default class Navigation extends React.Component {
             />
             <img
               src={turtlelogo}
-              className="logo"
+              className="logo d-sm-none d-md-none d-lg-block"
               alt="North West Shelf Flatbacks"
             />
           </NavbarBrand>
@@ -64,7 +60,7 @@ export default class Navigation extends React.Component {
                 <NavLink href="/projects">Projects</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/locations">Places</NavLink>
+                <NavLink href="/places">Places</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/program">Program</NavLink>

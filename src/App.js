@@ -50,14 +50,14 @@ export default class App extends React.Component<{}> {
           <div>
             <Navigation />
             <Route exact path={"/"} component={Dashboard} />
+            <Route exact path={"/story"} component={Story} />
             <Route exact path={"/datasets"} render={this.embedTurtleData} />
             <Route exact path={"/infosheets"} render={this.embedInfosheets} />
             <Route exact path={"/projects"} component={Projects} />
-            <Route exact path={"/locations"} component={Locations} />
+            <Route exact path={"/places"} component={Locations} />
             <Route exact path={"/program"} component={About} />
             <Route exact path={"/people"} component={People} />
             <Route exact path={"/participate"} component={Participate} />
-            <Route exact path={"/story"} component={Story} />
           </div>
         </BrowserRouter>
       </Provider>
