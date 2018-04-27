@@ -14,17 +14,7 @@ import {
   TileLayer
 } from "react-leaflet";
 // import st from "geojson-bounds";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText
-} from "reactstrap";
+import { Container, Row, Col, Button, Card, CardBody } from "reactstrap";
 
 import "./Locations.css";
 

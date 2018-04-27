@@ -25,3 +25,7 @@
   border-color: transparent;
   box-shadow: none;
 }*/
+
+li.nav-item > a:active {
+  border-top: solid 7px #d14210;
+}
