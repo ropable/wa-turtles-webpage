@@ -14,7 +14,17 @@ import {
   TileLayer
 } from "react-leaflet";
 // import st from "geojson-bounds";
-import { Button, Col, Container, Row, Card } from "reactstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText
+} from "reactstrap";
 
 import "./Locations.css";
 
@@ -607,173 +617,171 @@ export default class Locations extends React.Component<Props, State> {
     // const getZoom = gjs => -1 * Math.log(getSpatialExtent(gjs)) + 6.5;
 
     return (
-      <div className="content">
-        <Container>
-          <Row>
-            <Col xs={12} lg={8}>
+      <Container>
+        <Row>
+          <Col xs={12} sm={6} md={8}>
+            <Map
+              id="turtlemap"
+              center={[-20, 123]}
+              zoom={5}
+              doubleClickZoom={true}
+            >
+              <LayersControl position="topright">
+                <BaseLayer checked name="Aerial View">
+                  <TileLayer
+                    attribution={
+                      "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, " +
+                      "USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, " +
+                      "IGN, IGP, UPR-EGP, and the GIS User Community"
+                    }
+                    url={
+                      "//server.arcgisonline.com/ArcGIS/rest/services/" +
+                      "World_Imagery/MapServer/tile/{z}/{y}/{x}"
+                    }
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Place names">
+                  <TileLayer
+                    attribution={
+                      '&copy; <a href="//www.openstreetmap.org/' +
+                      'copyright">OpenStreetMap</a>'
+                    }
+                    url={"//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Bathymetry">
+                  <TileLayer
+                    attribution={
+                      "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, " +
+                      "USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, " +
+                      "IGN, IGP, UPR-EGP, and the GIS User Community"
+                    }
+                    url={
+                      "//server.arcgisonline.com/ArcGIS/rest/services/" +
+                      "Ocean_Basemap/MapServer/tile/{z}/{y}/{x}"
+                    }
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Dirk Hartog mode">
+                  <TileLayer
+                    attribution={
+                      'Map tiles by <a href="//stamen.com">Stamen Design</a>,' +
+                      ' <a href="//creativecommons.org/licenses/by/3.0">' +
+                      "CC BY 3.0</a> &mdash; Map data &copy; " +
+                      '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    }
+                    url={
+                      "//stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}"
+                    }
+                    subdomains={"abcd"}
+                    minZoom={1}
+                    maxZoom={16}
+                    ext={"png"}
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Real time true colour">
+                  <TileLayer
+                    attribution={
+                      "Imagery provided by services from the Global Imagery" +
+                      " Browse Services (GIBS), operated by the NASA/GSFC/Earth" +
+                      " Science Data and Information System " +
+                      ' (<a href="https://earthdata.nasa.gov">ESDIS</a>)' +
+                      " with funding provided by NASA/HQ."
+                    }
+                    url={
+                      "//map1.vis.earthdata.nasa.gov/wmts-webmerc/" +
+                      "MODIS_Terra_CorrectedReflectance_TrueColor/default" +
+                      "/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}"
+                    }
+                    bounds={[
+                      [-85.0511287776, -179.999999975],
+                      [85.0511287776, 179.999999975]
+                    ]}
+                    minZoom={1}
+                    maxZoom={9}
+                    format={"jpg"}
+                    time={""}
+                    tilematrixset={"GoogleMapsCompatible_Level"}
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Real time false colour">
+                  <TileLayer
+                    attribution={
+                      "Imagery provided by services from the Global Imagery" +
+                      " Browse Services (GIBS), operated by the NASA/GSFC/Earth" +
+                      " Science Data and Information System " +
+                      ' (<a href="https://earthdata.nasa.gov">ESDIS</a>)' +
+                      " with funding provided by NASA/HQ."
+                    }
+                    url={
+                      "//map1.vis.earthdata.nasa.gov/wmts-webmerc/" +
+                      "MODIS_Terra_CorrectedReflectance_Bands367/default/" +
+                      "{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}"
+                    }
+                    bounds={[
+                      [-85.0511287776, -179.999999975],
+                      [85.0511287776, 179.999999975]
+                    ]}
+                    minZoom={1}
+                    maxZoom={9}
+                    format={"jpg"}
+                    time={""}
+                    tilematrixset={"GoogleMapsCompatible_Level"}
+                  />
+                </BaseLayer>
+
+                <BaseLayer name="Light pollution">
+                  <TileLayer
+                    attribution={
+                      "Imagery provided by services from the Global Imagery" +
+                      " Browse Services (GIBS), operated by the NASA/GSFC/Earth" +
+                      " Science Data and Information System " +
+                      ' (<a href="https://earthdata.nasa.gov">ESDIS</a>)' +
+                      " with funding provided by NASA/HQ."
+                    }
+                    url={
+                      "//map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/" +
+                      "default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}"
+                    }
+                    bounds={[
+                      [-85.0511287776, -179.999999975],
+                      [85.0511287776, 179.999999975]
+                    ]}
+                    minZoom={1}
+                    maxZoom={8}
+                    format={"jpg"}
+                    time={""}
+                    tilematrixset={"GoogleMapsCompatible_Level"}
+                  />
+                </BaseLayer>
+
+                <Overlay checked name="Reference sites">
+                  <LayerGroup>
+                    <GeoJSON
+                      ref="gjPoly"
+                      key="sites-gj"
+                      style={this.props.polyStyle}
+                      data={this.props.defaultGeom}
+                      onClick={this.oef}
+                    />
+                  </LayerGroup>
+                </Overlay>
+              </LayersControl>
+            </Map>
+          </Col>
+
+          <Col xs={12} sm={6} md={4}>
+            {content && content.name ? (
               <Card>
-                <Map
-                  id="turtlemap"
-                  center={[-20, 123]}
-                  zoom={5}
-                  doubleClickZoom={true}
-                >
-                  <LayersControl position="topright">
-                    <BaseLayer checked name="Aerial View">
-                      <TileLayer
-                        attribution={
-                          "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, " +
-                          "USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, " +
-                          "IGN, IGP, UPR-EGP, and the GIS User Community"
-                        }
-                        url={
-                          "//server.arcgisonline.com/ArcGIS/rest/services/" +
-                          "World_Imagery/MapServer/tile/{z}/{y}/{x}"
-                        }
-                      />
-                    </BaseLayer>
-
-                    <BaseLayer name="Place names">
-                      <TileLayer
-                        attribution={
-                          '&copy; <a href="//www.openstreetmap.org/' +
-                          'copyright">OpenStreetMap</a>'
-                        }
-                        url={"//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"}
-                      />
-                    </BaseLayer>
-
-                    <BaseLayer name="Bathymetry">
-                      <TileLayer
-                        attribution={
-                          "Tiles &copy; Esri &mdash; Source: Esri, i-cubed, " +
-                          "USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, " +
-                          "IGN, IGP, UPR-EGP, and the GIS User Community"
-                        }
-                        url={
-                          "//server.arcgisonline.com/ArcGIS/rest/services/" +
-                          "Ocean_Basemap/MapServer/tile/{z}/{y}/{x}"
-                        }
-                      />
-                    </BaseLayer>
-
-                    <BaseLayer name="Dirk Hartog mode">
-                      <TileLayer
-                        attribution={
-                          'Map tiles by <a href="//stamen.com">Stamen Design</a>,' +
-                          ' <a href="//creativecommons.org/licenses/by/3.0">' +
-                          "CC BY 3.0</a> &mdash; Map data &copy; " +
-                          '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                        }
-                        url={
-                          "//stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}"
-                        }
-                        subdomains={"abcd"}
-                        minZoom={1}
-                        maxZoom={16}
-                        ext={"png"}
-                      />
-                    </BaseLayer>
-
-                    <BaseLayer name="Real time true colour">
-                      <TileLayer
-                        attribution={
-                          "Imagery provided by services from the Global Imagery" +
-                          " Browse Services (GIBS), operated by the NASA/GSFC/Earth" +
-                          " Science Data and Information System " +
-                          ' (<a href="https://earthdata.nasa.gov">ESDIS</a>)' +
-                          " with funding provided by NASA/HQ."
-                        }
-                        url={
-                          "//map1.vis.earthdata.nasa.gov/wmts-webmerc/" +
-                          "MODIS_Terra_CorrectedReflectance_TrueColor/default" +
-                          "/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}"
-                        }
-                        bounds={[
-                          [-85.0511287776, -179.999999975],
-                          [85.0511287776, 179.999999975]
-                        ]}
-                        minZoom={1}
-                        maxZoom={9}
-                        format={"jpg"}
-                        time={""}
-                        tilematrixset={"GoogleMapsCompatible_Level"}
-                      />
-                    </BaseLayer>
-
-                    <BaseLayer name="Real time false colour">
-                      <TileLayer
-                        attribution={
-                          "Imagery provided by services from the Global Imagery" +
-                          " Browse Services (GIBS), operated by the NASA/GSFC/Earth" +
-                          " Science Data and Information System " +
-                          ' (<a href="https://earthdata.nasa.gov">ESDIS</a>)' +
-                          " with funding provided by NASA/HQ."
-                        }
-                        url={
-                          "//map1.vis.earthdata.nasa.gov/wmts-webmerc/" +
-                          "MODIS_Terra_CorrectedReflectance_Bands367/default/" +
-                          "{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}"
-                        }
-                        bounds={[
-                          [-85.0511287776, -179.999999975],
-                          [85.0511287776, 179.999999975]
-                        ]}
-                        minZoom={1}
-                        maxZoom={9}
-                        format={"jpg"}
-                        time={""}
-                        tilematrixset={"GoogleMapsCompatible_Level"}
-                      />
-                    </BaseLayer>
-
-                    <BaseLayer name="Light pollution">
-                      <TileLayer
-                        attribution={
-                          "Imagery provided by services from the Global Imagery" +
-                          " Browse Services (GIBS), operated by the NASA/GSFC/Earth" +
-                          " Science Data and Information System " +
-                          ' (<a href="https://earthdata.nasa.gov">ESDIS</a>)' +
-                          " with funding provided by NASA/HQ."
-                        }
-                        url={
-                          "//map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/" +
-                          "default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}"
-                        }
-                        bounds={[
-                          [-85.0511287776, -179.999999975],
-                          [85.0511287776, 179.999999975]
-                        ]}
-                        minZoom={1}
-                        maxZoom={8}
-                        format={"jpg"}
-                        time={""}
-                        tilematrixset={"GoogleMapsCompatible_Level"}
-                      />
-                    </BaseLayer>
-
-                    <Overlay checked name="Reference sites">
-                      <LayerGroup>
-                        <GeoJSON
-                          ref="gjPoly"
-                          key="sites-gj"
-                          style={this.props.polyStyle}
-                          data={this.props.defaultGeom}
-                          onClick={this.oef}
-                        />
-                      </LayerGroup>
-                    </Overlay>
-                  </LayersControl>
-                </Map>
-              </Card>
-            </Col>
-
-            <Col xs={12} lg={4}>
-              <Card>
-                {content && content.name ? (
-                  <div>
-                    <h3>{content.name}</h3>
-                    <h4>{content.area_type}</h4>
+                <CardBody>
+                  <CardTitle>{content.name}</CardTitle>
+                  <CardSubtitle>{content.area_type}</CardSubtitle>
+                  <CardText>
                     <strong>Monitored since</strong> {content.monitored_since}
                     <br />
                     <strong>Monitoring season</strong>{" "}
@@ -785,27 +793,42 @@ export default class Locations extends React.Component<Props, State> {
                     <strong>Volunteers</strong> {content.volunteer_info}
                     <br />
                     <Button
-                      bsStyle="primary"
-                      bsSize="xsmall"
+                      color="primary"
+                      size="small"
                       href={content.contact_url}
                       target="_"
-                      title="Open in new browser tab"
+                      title={content.contact_label}
                     >
-                      Learn more at {content.contact_label}
+                      Learn more
                     </Button>
-                    <br />
                     <p>{content.description}</p>
                     <strong>Monitoring activities</strong>
                     <ul>{ma_list}</ul>
-                  </div>
-                ) : (
-                  <h3>Click map to view details</h3>
-                )}
+                  </CardText>
+                </CardBody>
               </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+            ) : (
+              <Card>
+                <CardBody>
+                  <CardTitle>Select location</CardTitle>
+                  <CardSubtitle>Click or tap a location</CardSubtitle>
+                  <CardText>
+                    <p>
+                      On mobile devices: Pinch to zoom, swipe to pan, and tap
+                      locations marked in orange to view details.
+                    </p>
+                    <p>
+                      On desktops: Hover and scroll mouse-wheel to zoom, click
+                      and drag to pan, and click locations marked in orange to
+                      view details.
+                    </p>
+                  </CardText>
+                </CardBody>
+              </Card>
+            )}
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

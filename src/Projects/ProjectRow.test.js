@@ -67,11 +67,11 @@ it("renders project title", () => {
 });
 
 /* Functions */
-it("toggles sitemap visibility", () => {
+it("toggles comments visibility", () => {
   const wrapper = shallow(<ProjectRow />);
-  expect(wrapper.state().showComment).toBe(false);
-  wrapper.instance().toggleComment();
-  expect(wrapper.state().showComment).toBe(true);
+  expect(wrapper.state().collapse).toBe(false);
+  wrapper.instance().toggle();
+  expect(wrapper.state().collapse).toBe(true);
 });
 
 it("renders htmlString", () => {

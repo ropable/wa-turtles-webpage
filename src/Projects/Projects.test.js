@@ -145,12 +145,11 @@ it("render loading message initially", () => {
   const msg = (
     <AlertRow
       showSpinner={true}
-      bsStyle="info"
+      color="info"
       message="Loading data, hang tight..."
     />
   );
-
-  expect(wrapper).toContainReact(msg);
+  expect(wrapper.contains(msg)).toBe(true);
 });
 
 it("renders error message on loading error", () => {
@@ -158,11 +157,11 @@ it("renders error message on loading error", () => {
   wrapper.setState({ status: "error" });
   const msg = (
     <AlertRow
-      bsStyle="danger"
+      color="danger"
       message="Error loading data from https://sdis.dpaw.wa.gov.au"
     />
   );
-  expect(wrapper).toContainReact(msg);
+  expect(wrapper.contains(msg)).toBe(true);
 });
 
 /* State */

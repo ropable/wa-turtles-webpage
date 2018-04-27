@@ -1,27 +1,21 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
-import { Button, Col, Collapse, Label, Card, Row, Media } from "reactstrap";
+import { Button, Col, Collapse, Label, Card, Row } from "reactstrap";
+import FontAwesome from "react-fontawesome";
 
 import logo from "../img/green_hatchling.jpg";
 
-type Props = {
-  project: PropTypes.array,
-  webUrl: string
-};
+export default class ProjectRow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggle = this.toggle.bind(this);
+    this.state = { collapse: false };
+  }
 
-type State = {
-  showComment: boolean
-};
-
-export default class ProjectRow extends React.Component<Props, State> {
-  state = {
-    showComment: false
-  };
-
-  toggleComment = () => {
-    this.setState({ showComment: !this.state.showComment });
-  };
+  toggle() {
+    this.setState({ collapse: !this.state.collapse });
+  }
 
   wrapHTML = htmlString => {
     return { __html: htmlString || "Not provided" };
@@ -33,16 +27,14 @@ export default class ProjectRow extends React.Component<Props, State> {
 
   renderComments = (main, comments) => {
     return comments ? (
-      <span>
-        <Button bsStyle="link" bsSize="xsmall" onClick={main.toggleComment}>
+      <Row>
+        <Button color="primary" onClick={this.toggle} size="sm">
           Read more...
         </Button>
-        <Collapse in={main.state.showComment}>
-          <Card className="no-margin">
-            <span dangerouslySetInnerHTML={main.wrapHTML(comments)} />
-          </Card>
+        <Collapse isOpen={this.state.collapse}>
+          <span dangerouslySetInnerHTML={main.wrapHTML(comments)} />
         </Collapse>
-      </span>
+      </Row>
     ) : (
       <span />
     );
@@ -56,74 +48,89 @@ export default class ProjectRow extends React.Component<Props, State> {
       pro && pro.end_date ? new Date(pro.end_date).getFullYear() : "";
     if (pro) {
       return (
-        <Row>
-          <Card className="thumbnail">
-            <Col xs={12} md={4} lg={3} className="no-padding">
-              <Media
-                object
-                data-src={this.preventEmptyImage(
-                  this.props.webUrl,
-                  pro.image,
-                  logo
-                )}
-                alt={pro.project_type_year_number_plain}
-                responsive
-              />
-            </Col>
-            <Col xs={12} md={8} lg={9}>
-              <Row>
-                <Col xs={12}>
-                  <h4>{pro.title_plain}</h4>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <span glyph="link" title="Project ID" />{" "}
-                  <Button
-                    bsStyle="primary"
-                    bsSize="xsmall"
-                    href={this.props.webUrl + pro.absolute_url}
-                    target="_"
-                    title="Open project in SDIS"
-                  >
-                    {" "}
-                    {pro.project_type_year_number_plain}
-                  </Button>{" "}
-                  <Label bsStyle="default" bsSize="xsmall">
-                    <span glyph="calendar" title="Project Duration" />{" "}
-                    {start_date} - {end_date}
-                  </Label>{" "}
-                  <Label bsStyle="success" bsSize="xsmall">
-                    <span glyph="wrench" title="Project Status" />{" "}
-                    {pro.status_display}
-                  </Label>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <span glyph="home" title="Divisional Program" /> {pro.program}
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <span glyph="user" title="Project Team" />{" "}
-                  {pro.team_list_plain}
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <span glyph="tag" title="Tagged with keyword" />{" "}
-                  {pro.keywords_plain ? pro.keywords_plain : "No keywords"}
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12}>
-                  <span glyph="comment" title="Project description" />{" "}
-                  {pro.tagline_plain ? pro.tagline_plain : "No tagline"}{" "}
-                  {this.renderComments(this, pro.comments)}
-                </Col>
-              </Row>
-            </Col>
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
+                  src={this.preventEmptyImage(
+                    this.props.webUrl,
+                    pro.image,
+                    logo
+                  )}
+                  className="img-responsive"
+                  alt={pro.project_type_year_number_plain}
+                />
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>
+                    <h4>{pro.title_plain}</h4>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12}>
+                    <FontAwesome name="link" ariaLabel="Project ID" />{" "}
+                    <a
+                      href={this.props.webUrl + pro.absolute_url}
+                      target="_"
+                      title="Open project in SDIS"
+                    >
+                      {" "}
+                      {pro.project_type_year_number_plain}
+                    </a>{" "}
+                    <Label color="default" size="small">
+                      <FontAwesome
+                        name="calendar"
+                        ariaLabel="Project Duration"
+                      />{" "}
+                      {start_date} - {end_date}
+                    </Label>{" "}
+                    <Label color="success" size="small">
+                      <FontAwesome
+                        name="wrench"
+                        ariaLabel="Project Status"
+                      />{" "}
+                      {pro.status_display}
+                    </Label>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12}>
+                    <FontAwesome
+                      name="home"
+                      ariaLabel="Divisional Program"
+                    />{" "}
+                    {pro.program}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12}>
+                    <FontAwesome name="user" ariaLabel="Project Team" />{" "}
+                    {pro.team_list_plain}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12}>
+                    <FontAwesome
+                      name="tag"
+                      ariaLabel="Tagged with keyword"
+                    />{" "}
+                    {pro.keywords_plain ? pro.keywords_plain : "No keywords"}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col xs={12}>
+                    <FontAwesome
+                      name="comment"
+                      ariaLabel="Project description"
+                    />{" "}
+                    {pro.tagline_plain ? pro.tagline_plain : "No tagline"}{" "}
+                    {this.renderComments(this, pro.comments)}
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
           </Card>
         </Row>
       );
@@ -138,3 +145,8 @@ export default class ProjectRow extends React.Component<Props, State> {
     }
   }
 }
+
+ProjectRow.propTypes = {
+  project: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  webUrl: PropTypes.string
+};

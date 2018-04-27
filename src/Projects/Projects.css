@@ -26,4 +26,5 @@ span.tag-cloud-tag:hover {
 
 .img-responsive {
   width: 100%;
+  max-height: 100%;
 }

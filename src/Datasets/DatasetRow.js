@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import ReactMarkdown from "react-markdown";
 import Leaflet from "leaflet";
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
+import FontAwesome from "react-fontawesome";
 import st from "geojson-bounds";
 import { Col, Row, Card } from "reactstrap";
 import TimeAgo from "react-timeago";
@@ -38,12 +39,12 @@ export default class DatasetRow extends React.Component {
 
   render() {
     const ds = this.props.dataset;
-    const disallowedTypes = ["p"];
+    const disallowedTypes = ["blockquote"];
     if (ds) {
       const gj = this.getGeom(ds, this.props.defaultGeom);
 
       return (
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} sm={6} md={4} lg={3}>
           <Card>
             <Map
               id="map"
@@ -66,32 +67,31 @@ export default class DatasetRow extends React.Component {
 
               <Row>
                 <Col xs={12}>
-                  <span
-                    glyph="home"
-                    title="The dataset belongs to this organisation"
-                  />{" "}
-                  {ds.organization.title}
+                  <FontAwesome name="home" /> {ds.organization.title}
                 </Col>
               </Row>
 
               <Row>
                 <Col xs={12}>
-                  <span
-                    glyph="edit"
+                  <FontAwesome name="edit" />{" "}
+                  <a
+                    href={"mailto:" + ds.author_email}
                     title="The dataset author is the intellectual owner of the main dataset resource"
-                  />{" "}
-                  <a href={"mailto:" + ds.author_email}>{ds.author}</a>
+                  >
+                    {ds.author}
+                  </a>
                 </Col>
               </Row>
 
               <Row>
                 <Col xs={12}>
-                  <span glyph="pencil" title="Citation" /> {ds.citation}
+                  <FontAwesome name="quote-right" /> {ds.citation}
                 </Col>
               </Row>
 
               <Row>
                 <Col xs={12}>
+                  <FontAwesome name="copyright" />{" "}
                   <span glyph="copyright-mark" title="License" />{" "}
                   {ds.license_id}
                 </Col>
@@ -99,19 +99,21 @@ export default class DatasetRow extends React.Component {
 
               <Row>
                 <Col xs={12}>
-                  <span
-                    glyph="wrench"
+                  <FontAwesome name="wrench" />{" "}
+                  <a
+                    href={"mailto:" + ds.maintainer_email}
                     title="The dataset maintainer wrote and updates this metadata entry"
-                  />{" "}
-                  <a href={"mailto:" + ds.maintainer_email}>{ds.maintainer}</a>
+                  >
+                    {ds.maintainer}
+                  </a>
                 </Col>
               </Row>
 
               <Row>
                 <Col xs={12}>
-                  <span
-                    glyph="repeat"
-                    title="Update frequency of main dataset resource"
+                  <FontAwesome
+                    name="refresh"
+                    ariaLabel="Update frequency of main dataset resource"
                   />{" "}
                   {ds.update_frequency}
                 </Col>
@@ -119,7 +121,10 @@ export default class DatasetRow extends React.Component {
 
               <Row>
                 <Col xs={12}>
-                  <span glyph="refresh" title="Metadata last updated" />{" "}
+                  <FontAwesome
+                    name="calendar"
+                    ariaLabel="Metadata last updated"
+                  />{" "}
                   <TimeAgo date={ds.metadata_modified} />
                 </Col>
               </Row>
@@ -127,7 +132,10 @@ export default class DatasetRow extends React.Component {
               {ds.tags.map(tag => (
                 <Row key={tag.id}>
                   <Col xs={12}>
-                    <span glyph="tag" title="Tagged with keyword" />{" "}
+                    <FontAwesome
+                      name="tag"
+                      ariaLabel="Tagged with keyword"
+                    />{" "}
                     {tag.display_name}
                   </Col>
                 </Row>
@@ -136,7 +144,10 @@ export default class DatasetRow extends React.Component {
               {ds.groups.map(group => (
                 <Row key={group.id}>
                   <Col xs={12}>
-                    <span glyph="folder-open" title="Thematic group" />{" "}
+                    <FontAwesome
+                      name="folder-open"
+                      ariaLabel="Thematic group"
+                    />{" "}
                     {group.title}
                   </Col>
                 </Row>
@@ -144,7 +155,10 @@ export default class DatasetRow extends React.Component {
 
               <Row>
                 <Col xs={12}>
-                  <span glyph="comment" title="Dataset description" />
+                  <FontAwesome
+                    name="comment"
+                    ariaLabel="Dataset description"
+                  />{" "}
                   <ReactMarkdown
                     source={ds.notes || "No description provided"}
                     containerTagName="span"
@@ -166,7 +180,7 @@ export default class DatasetRow extends React.Component {
       );
     } else {
       return (
-        <Col xs={12} md={6} lg={4}>
+        <Col xs={12} sm={6} md={4} lg={3}>
           <Card>
             <h4>No dataset</h4>
           </Card>
@@ -177,7 +191,7 @@ export default class DatasetRow extends React.Component {
 }
 
 DatasetRow.propTypes = {
-  dataset: PropTypes.object,
+  dataset: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   attr: PropTypes.string,
   mapurl: PropTypes.string,
   doubleClickZoom: PropTypes.bool,

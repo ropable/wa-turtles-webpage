@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
-import { Container } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import axios from "axios";
 import wrapper from "axios-cache-plugin";
 
@@ -31,7 +31,6 @@ export default class Datasets extends React.Component {
 
   setStateError = error => {
     this.setState({ status: "error" });
-    console.log(error);
   };
 
   buildUrl = () =>
@@ -59,13 +58,13 @@ export default class Datasets extends React.Component {
 
     if (status === "loaded") {
       return (
-        <div className="content">
-          <Container>
+        <Container>
+          <Row>
             {datasets.map(function(ds) {
               return <DatasetRow dataset={ds} key={ds.id} />;
             })}
-          </Container>
-        </div>
+          </Row>
+        </Container>
       );
     } else if (status === "loading") {
       return <AlertRow showSpinner={true} />;
@@ -76,12 +75,12 @@ export default class Datasets extends React.Component {
   }
 }
 
-AlertRow.propTypes = {
+Datasets.propTypes = {
   webUrl: PropTypes.string,
   apiParams: PropTypes.string
 };
 
-AlertRow.defaultProps = {
+Datasets.defaultProps = {
   webUrl: process.env.REACT_APP_CKAN_URL || "https://data.dpaw.wa.gov.au",
   apiParams: "tags:asset_turtles"
 };

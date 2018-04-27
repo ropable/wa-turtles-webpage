@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { shallow } from "enzyme";
 import "jest-enzyme";
 import { Button, Glyphicon, ListGroupItem } from "react-bootstrap";
+import FontAwesome from "react-fontawesome";
 import TimeAgo from "react-timeago";
 import ResourceRow from "./ResourceRow";
 
@@ -54,6 +55,6 @@ it("renders last_modified", () => {
 
 it("renders download button", () => {
   const wrapper = shallow(<ResourceRow resource={res} key="test" />);
-  const msg = <Glyphicon glyph="link" title="Open resource file" />;
+  const msg = <FontAwesome name="file" ariaLabel="Open resource file" />;
   expect(wrapper).toContainReact(msg);
 });

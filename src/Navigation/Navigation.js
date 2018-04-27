@@ -35,20 +35,16 @@ export default class Navigation extends React.Component {
       <div>
         <Navbar color="dark" dark fixed="top" expand="md">
           <NavbarBrand href="/">
-            <a href="https://dbca.wa.gov.au" target="_">
-              <img
-                src={dbcalogo}
-                class="logo"
-                alt="Department of Biodiversity, Conservation and Attractions"
-              />
-            </a>
-            <a href="/">
-              <img
-                src={turtlelogo}
-                class="logo"
-                alt="North West Shelf Flatbacks"
-              />
-            </a>
+            <img
+              src={dbcalogo}
+              className="logo"
+              alt="Department of Biodiversity, Conservation and Attractions"
+            />
+            <img
+              src={turtlelogo}
+              className="logo"
+              alt="North West Shelf Flatbacks"
+            />
           </NavbarBrand>
 
           <NavbarToggler onClick={this.toggle} />
@@ -61,13 +57,13 @@ export default class Navigation extends React.Component {
                 <NavLink href="/story">The Flatback Story</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/about">About us</NavLink>
-              </NavItem>
-              <NavItem>
                 <NavLink href="/projects">Projects</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/locations">Places</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/about">About us</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

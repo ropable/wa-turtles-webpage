@@ -14,10 +14,6 @@ export default class Footer extends React.Component<State> {
     showSitemap: false
   };
 
-  toggleSitemap = () => {
-    this.setState({ showSitemap: !this.state.showSitemap });
-  };
-
   render() {
     return (
       <div>
@@ -25,7 +21,7 @@ export default class Footer extends React.Component<State> {
           <a href="https://github.com/dbca-wa/wa-turtles-webpage" target="_">
             <img
               src={dbcalogo}
-              class="footer-logo"
+              className="footer-logo"
               alt="Department of Biodiversity, Conservation and Attractions"
             />
           </a>

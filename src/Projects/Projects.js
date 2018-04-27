@@ -197,7 +197,6 @@ export default class Projects extends React.Component<Props, State> {
    */
   setStateError = error => {
     this.setState({ status: "error" });
-    console.log(error);
   };
 
   loadData = () => {
@@ -221,13 +220,15 @@ export default class Projects extends React.Component<Props, State> {
       return (
         <div className="content">
           <Container>
-            <Row>
-              <Card>
+            <Row className="mb10">
+              <Card className="blackbg">
                 <Col xs={12}>
-                  <SearchBar
-                    filterText={filterText}
-                    onFilterTextInput={this.handleFilterTextInput}
-                  />
+                  <h3>
+                    <SearchBar
+                      filterText={filterText}
+                      onFilterTextInput={this.handleFilterTextInput}
+                    />
+                  </h3>
                   <TagCloud
                     minSize={16}
                     maxSize={40}
