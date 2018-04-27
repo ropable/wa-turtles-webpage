@@ -9,7 +9,11 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
 } from "reactstrap";
 import turtlelogo from "../img/turtle_logo.png";
 import dbcalogo from "../img/dbca_logo.svg";
@@ -63,7 +67,13 @@ export default class Navigation extends React.Component {
                 <NavLink href="/locations">Places</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/about">About us</NavLink>
+                <NavLink href="/program">Program</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/people">People</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/participate">Participate</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

@@ -114,7 +114,7 @@ export default class Dashboard extends React.Component {
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </CardText>
-                    <Button>Button</Button>
+                    <Button href="/participate">Get involved</Button>
                   </CardBody>
                 </Card>
               </Col>
@@ -171,15 +171,19 @@ export default class Dashboard extends React.Component {
                       <a href="/story">The Flatback Story</a> Educational and
                       entertaining information about flatback turtles.
                       <br />
-                      <a href="/about">About us</a> Information about the
-                      program, the people, this web page, and how to
-                      participate.
-                      <br />
                       <a href="/projects">Projects</a> A list of all
                       turtle-related projects.
                       <br />
                       <a href="/locations">Places</a> An interactive map of
                       turtle rookeries.
+                      <br />
+                      <a href="/program">Program</a> Information about the
+                      flatback turtle conservation program.
+                      <br />
+                      <a href="/people">People</a> Information about the staff.
+                      <br />
+                      <a href="/program">Participate</a> How to get involved in
+                      our turtle conservation work.
                     </CardText>
                   </CardBody>
                 </Card>
