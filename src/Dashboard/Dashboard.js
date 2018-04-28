@@ -13,7 +13,7 @@ import {
   CardSubtitle,
   Button
 } from "reactstrap";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import TurtleYoutube from "../TurtleYoutube/TurtleYoutube";
 import hatchling from "../img/green_hatchling.jpg";
@@ -114,7 +114,9 @@ export default class Dashboard extends React.Component {
                       Some quick example text to build on the card title and
                       make up the bulk of the card's content.
                     </CardText>
-                    <Button href="/participate">Get involved</Button>
+                    <Link to="/participate">
+                      <Button>Participate</Button>
+                    </Link>
                   </CardBody>
                 </Card>
               </Col>
@@ -166,24 +168,25 @@ export default class Dashboard extends React.Component {
                       <a href="https://dbca.wa.gov.au">DBCA home</a> The DBCA
                       webpage.
                       <br />
-                      <a href="/">Home</a> This page.
+                      <Link to="/">Home</Link> This page.
                       <br />
-                      <a href="/story">The Flatback Story</a> Educational and
-                      entertaining information about flatback turtles.
+                      <Link to="/story">The Flatback Story</Link> Educational
+                      and entertaining information about flatback turtles.
                       <br />
-                      <a href="/projects">Projects</a> A list of all
+                      <Link to="/projects">Projects</Link> A list of all
                       turtle-related projects.
                       <br />
-                      <a href="/locations">Places</a> An interactive map of
+                      <Link to="/locations">Places</Link> An interactive map of
                       turtle rookeries.
                       <br />
-                      <a href="/program">Program</a> Information about the
+                      <Link to="/program">Program</Link> Information about the
                       flatback turtle conservation program.
                       <br />
-                      <a href="/people">People</a> Information about the staff.
+                      <Link to="/people">People</Link> Information about the
+                      staff.
                       <br />
-                      <a href="/program">Participate</a> How to get involved in
-                      our turtle conservation work.
+                      <Link to="/participate">Participate</Link> How to get
+                      involved in our turtle conservation work.
                     </CardText>
                   </CardBody>
                 </Card>

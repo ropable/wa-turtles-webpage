@@ -26,6 +26,8 @@
   box-shadow: none;
 }*/
 
-li.nav-item > a:active {
+li.nav-item > a.active,
+li.nav-item > a:focus {
   border-top: solid 7px #d14210;
+  margin-top: -7px;
 }
