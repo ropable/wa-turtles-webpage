@@ -14,7 +14,15 @@ import {
   TileLayer
 } from "react-leaflet";
 // import st from "geojson-bounds";
-import { Container, Row, Col, Button, Card, CardBody } from "reactstrap";
+import {
+  Container,
+  Jumbotron,
+  Row,
+  Col,
+  Button,
+  Card,
+  CardBody
+} from "reactstrap";
 
 import "./Locations.css";
 
@@ -63,6 +71,14 @@ export default class Locations extends React.Component {
 
     return (
       <Container>
+        <Jumbotron>
+          <h1>Location, Location, Location</h1>
+          <p>
+            Explore an interactive map of turtle rookeries and major sites of
+            field work on this page.
+          </p>
+        </Jumbotron>
+
         <Row>
           <Col xs={12} sm={6} md={8}>
             <Map

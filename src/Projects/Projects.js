@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
 import PropTypes from "prop-types";
-import { Col, Container, Card, Row } from "reactstrap";
+import { Container, Jumbotron, Col, Card, Row } from "reactstrap";
 import axios from "axios";
 import { TagCloud } from "react-tagcloud";
 // import { WordFreq } from "wordfreq";
@@ -94,13 +94,13 @@ export default class Projects extends React.Component<Props, State> {
   };
 
   /**
-  * Tokenize SDIS project title_plain and tagline_plain
-  *
-  * Join SDIS project title, tagline, keywords into one string,
-  * strip punctuation,
-  * split into an array of individual words (incl duplicates),
-  * drop stopwords (props.stopWords).
-  */
+   * Tokenize SDIS project title_plain and tagline_plain
+   *
+   * Join SDIS project title, tagline, keywords into one string,
+   * strip punctuation,
+   * split into an array of individual words (incl duplicates),
+   * drop stopwords (props.stopWords).
+   */
   sdisTokenizer = (projectArray: PropTypes.array) => {
     return projectArray
       .reduce((acc, curr) => {
@@ -164,11 +164,13 @@ export default class Projects extends React.Component<Props, State> {
       .filter(
         project =>
           filterText
-            ? (project.title_plain +
+            ? (
+                project.title_plain +
                 " " +
                 project.tagline_plain +
                 " " +
-                project.keywords_plain)
+                project.keywords_plain
+              )
                 .toLowerCase()
                 .includes(filterText.toLowerCase())
             : project
@@ -218,34 +220,39 @@ export default class Projects extends React.Component<Props, State> {
 
     if (status === "loaded") {
       return (
-        <div className="content">
-          <Container>
-            <Row className="mb10">
-              <Card className="blackbg">
-                <Col xs={12}>
-                  <h3>
-                    <SearchBar
-                      filterText={filterText}
-                      onFilterTextInput={this.handleFilterTextInput}
-                    />
-                  </h3>
-                  <TagCloud
-                    minSize={16}
-                    maxSize={40}
-                    tags={this.state.tags}
-                    className="simple-cloud"
-                    onClick={this.handleClickTag}
+        <Container>
+          <Jumbotron>
+            <h1>Projects</h1>
+            <p>
+              Browse our turtle-related projects. Search by title, or select a
+              tag from the tag cloud to refine your selection.
+            </p>
+          </Jumbotron>
+          <Row className="mb10">
+            <Card className="blackbg">
+              <Col xs={12}>
+                <h3>
+                  <SearchBar
+                    filterText={filterText}
+                    onFilterTextInput={this.handleFilterTextInput}
                   />
-                </Col>
-              </Card>
-            </Row>
-            {this.makeFilteredProjectRows(
-              projects,
-              filterText,
-              this.props.webUrl
-            )}
-          </Container>
-        </div>
+                </h3>
+                <TagCloud
+                  minSize={16}
+                  maxSize={40}
+                  tags={this.state.tags}
+                  className="simple-cloud"
+                  onClick={this.handleClickTag}
+                />
+              </Col>
+            </Card>
+          </Row>
+          {this.makeFilteredProjectRows(
+            projects,
+            filterText,
+            this.props.webUrl
+          )}
+        </Container>
       );
     } else if (status === "loading") {
       return <AlertRow showSpinner={true} />;

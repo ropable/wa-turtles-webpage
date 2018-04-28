@@ -15,7 +15,6 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-import TurtleYoutube from "../TurtleYoutube/TurtleYoutube";
 import hatchling from "../img/green_hatchling.jpg";
 import "./Dashboard.css";
 
@@ -124,52 +123,12 @@ export default class Dashboard extends React.Component {
 
             <Row className="mb10">
               <Col xs={12}>
-                <TurtleYoutube />
-              </Col>
-            </Row>
-
-            <Row className="mb10">
-              <Col xs={12}>
                 <Card>
                   <CardBody>
                     <CardTitle>News</CardTitle>
                     <CardSubtitle>News placeholder</CardSubtitle>
                     <CardText>News carousel goes here.</CardText>
                     <Button>Button</Button>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
-
-            <Row>
-              <Col xs={12}>
-                <Card>
-                  <CardBody>
-                    <CardTitle>Site Map</CardTitle>
-                    <CardText>
-                      <a href="https://dbca.wa.gov.au">DBCA home</a> The DBCA
-                      webpage.
-                      <br />
-                      <Link to="/">Home</Link> This page.
-                      <br />
-                      <Link to="/story">The Flatback Story</Link> Educational
-                      and entertaining information about flatback turtles.
-                      <br />
-                      <Link to="/projects">Projects</Link> A list of all
-                      turtle-related projects.
-                      <br />
-                      <Link to="/locations">Places</Link> An interactive map of
-                      turtle rookeries.
-                      <br />
-                      <Link to="/program">Program</Link> Information about the
-                      flatback turtle conservation program.
-                      <br />
-                      <Link to="/people">People</Link> Information about the
-                      staff.
-                      <br />
-                      <Link to="/participate">Participate</Link> How to get
-                      involved in our turtle conservation work.
-                    </CardText>
                   </CardBody>
                 </Card>
               </Col>

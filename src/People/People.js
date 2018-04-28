@@ -2,6 +2,7 @@
 import React from "react";
 import {
   Container,
+  Jumbotron,
   Row,
   Col,
   Card,
@@ -16,60 +17,69 @@ import {
 export default class People extends React.Component {
   render() {
     return (
-      <div className="content">
-        <Container>
-          <Row className="mb10">
-            <Card>
-              <Row>
-                <Col xs={12} sm={6} md={4} lg={3}>
-                  <img
-                    src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                    className="img-responsive"
-                    alt="Name"
-                  />
-                  <h4>Scott Whiting</h4>
-                  <h5>Principal Research Scientist</h5>
-                </Col>
-                <Col xs={12} sm={6} md={8} lg={9}>
-                  <Row>
-                    <Col xs={12}>
-                      Dr. Scott Whiting is a Principal Research Scientist with
-                      the Western Australian Department of Biodiversity,
-                      Conservation and Attractions. He coordinates the long-term
-                      North West Shelf Flatback Turtle Conservation Program and
-                      the Kimberley Turtle Project (Western Australia Marine
-                      Science Institution). Scott has worked for university,
-                      non-government and government sectors across Queensland,
-                      Northern Territory, Western Australian and Australian
-                      Indian Ocean Territories (Ashmore Reef and Cocos Keeling
-                      Islands). Research and management roles have included
-                      marine turtles, sea snakes, birds, dugongs and marine
-                      debris. He is currently focused on delivering marine
-                      conservation outcomes through good science, knowledge
-                      uptake to decision makers, partnerships, capacity building
-                      and Indigenous collaborations. He is a member of the IUCN
-                      Marine Turtle Specialist Group and has been involved in
-                      the Australian marine turtle recovery process since the
-                      early 2000s.
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </Card>
-          </Row>
+      <Container>
+        <Jumbotron>
+          <h1>Putting faces to names</h1>
+          <p>
+            This page introduces the team beind the flatback conservation
+            program.
+          </p>
+        </Jumbotron>
 
-          <Row className="mb10">
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Scott Whiting"
                 />
-                <CardBody>
-                  <CardTitle>Tony Tucker</CardTitle>
-                  <CardSubtitle>Senior Research Scientist</CardSubtitle>
-                  <CardText>
+                <h4>Scott Whiting</h4>
+                <h5>Principal Research Scientist</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>
+                    Dr. Scott Whiting is a Principal Research Scientist with the
+                    Western Australian Department of Biodiversity, Conservation
+                    and Attractions. He coordinates the long-term North West
+                    Shelf Flatback Turtle Conservation Program and the Kimberley
+                    Turtle Project (Western Australia Marine Science
+                    Institution). Scott has worked for university,
+                    non-government and government sectors across Queensland,
+                    Northern Territory, Western Australian and Australian Indian
+                    Ocean Territories (Ashmore Reef and Cocos Keeling Islands).
+                    Research and management roles have included marine turtles,
+                    sea snakes, birds, dugongs and marine debris. He is
+                    currently focused on delivering marine conservation outcomes
+                    through good science, knowledge uptake to decision makers,
+                    partnerships, capacity building and Indigenous
+                    collaborations. Scott is a member of the IUCN Marine Turtle
+                    Specialist Group and has been involved in the Australian
+                    marine turtle recovery process since the early 2000s.
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
+                  src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                  className="img-responsive"
+                  alt="Tony Tucker"
+                />
+                <h4>Tony Tucker</h4>
+                <h5>Senior Research Scientist</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>
                     Tony’s research interests are centred in life history
                     evolution and conservation biology of vertebrates, with
                     specific interests in how fluctuating environments can
@@ -89,21 +99,28 @@ export default class People extends React.Component {
                     long-term population dynamics, integrated catchment
                     management, invasive species, stable isotope analysis,
                     satellite telemetry, and adaptive management.
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Sabrina Fossette-Halot"
                 />
-                <CardBody>
-                  <CardTitle>Sabrina Fossette-Halot</CardTitle>
-                  <CardSubtitle>Research Scientist</CardSubtitle>
-                  <CardText>
+                <h4>Sabrina Fossette-Halot</h4>
+                <h5>Research Scientist</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>
                     Sabrina started working for the Department of Biodiversity,
                     Conservation and Attractions in November 2015. Her career as
                     a sea turtle biologist gave her the opportunity to live in
@@ -121,42 +138,56 @@ export default class People extends React.Component {
                     interest is to investigate the impact of environmental
                     conditions and human activities on marine species movements
                     and behaviour.
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Florian Mayer"
                 />
-                <CardBody>
-                  <CardTitle>Florian Mayer</CardTitle>
-                  <CardSubtitle>Research Scientist Ecoinformatics</CardSubtitle>
-                  <CardText>
+                <h4>Florian Mayer</h4>
+                <h5>Research Scientist Ecoinformatics</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>
                     Florian designs and builds the information systems
-                    supporting and informing turtle conservation management from
-                    digital data capture, on through data warehousing and
-                    cataloguing to data analysis and visualisation. Florian has
-                    a degree in Ecology and Computer Science from the University
-                    of Munich.
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+                    supporting and informing turtle and other divisional
+                    conservation management from digital data capture, on
+                    through data warehousing and cataloguing to data analysis
+                    and visualisation. Florian has a degree in Ecology and
+                    Computer Science from the University of Munich.
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Corrine Douglas"
                 />
-                <CardBody>
-                  <CardTitle>Corrine Douglas</CardTitle>
-                  <CardSubtitle>Technical Officer</CardSubtitle>
-                  <CardText>
+                <h4>Corrine Douglas</h4>
+                <h5>Technical Officer</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>
                     Corrine Douglas received her Bachelor of Science (Coastal
                     Zone Management) with honours in 2011 from Curtin University
                     in Western Australia. She began her marine science career in
@@ -169,21 +200,28 @@ export default class People extends React.Component {
                     turtles and dolphins under the Gorgon and Wheatstone offset
                     programs within the department. She now continues to enhance
                     her skills and experience with these species.
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Ryan Douglas"
                 />
-                <CardBody>
-                  <CardTitle>Ryan Douglas</CardTitle>
-                  <CardSubtitle>Technical Officer</CardSubtitle>
-                  <CardText>
+                <h4>Ryan Douglas</h4>
+                <h5>Technical Officer</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>
                     Ryan Douglas spend his childhood growing up on a wheat and
                     sheep farm in the Great Southern where he gained an
                     appreciation for nature as well as the secrets that it
@@ -197,39 +235,50 @@ export default class People extends React.Component {
                     the Department of Biodiversity, Conservation and Attractions
                     and its predecessors on various projects. These have ranged
                     from coral and fish identification, monitoring and tracking
-                    of dolphins and marine turtles to running a computer lab and
-                    maintaining collected data.
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+                    of dolphins and marine turtles to running a computer lab.
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Joanne King"
                 />
-                <CardBody>
-                  <CardTitle>Joanne King</CardTitle>
-                  <CardSubtitle>Role</CardSubtitle>
-                  <CardText>Info</CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+                <h4>Joanne King</h4>
+                <h5>Role</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>Description</Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Hannah Hampson"
                 />
-                <CardBody>
-                  <CardTitle>Hannah Hampson</CardTitle>
-                  <CardSubtitle>
-                    Education and Communication Officer
-                  </CardSubtitle>
-                  <CardText>
+                <h4>Hannah Hampson</h4>
+                <h5>Education and Communication Officer</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>
                     Hannah completed a bachelor’s degree with honours in
                     biological sciences at The University of Bristol, UK and a
                     master’s degree in science communication and education at
@@ -250,41 +299,55 @@ export default class People extends React.Component {
                     burning, fauna monitoring and ranger activities. Hannah
                     assists with communication and education resources for North
                     West Shelf Flatbacks.
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Liz Grant"
                 />
-                <CardBody>
-                  <CardTitle>Liz Grant</CardTitle>
-                  <CardSubtitle>Media and Communication Officer</CardSubtitle>
-                  <CardText>Info</CardText>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
+                <h4>Liz Grant</h4>
+                <h5>Media and Communication Officer</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>Description</Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+
+        <Row className="mb10">
+          <Card>
+            <Row>
+              <Col xs={12} sm={6} md={4} lg={3}>
+                <img
                   src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
+                  className="img-responsive"
+                  alt="Natasha Samuelraj"
                 />
-                <CardBody>
-                  <CardTitle>Natasha Samuelraj</CardTitle>
-                  <CardSubtitle>Clerical Officer</CardSubtitle>
-                  <CardText>Info</CardText>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </div>
+                <h4>Natasha Samuelraj</h4>
+                <h5>Clerical Officer</h5>
+              </Col>
+              <Col xs={12} sm={6} md={8} lg={9}>
+                <Row>
+                  <Col xs={12}>Description</Col>
+                </Row>
+              </Col>
+            </Row>
+          </Card>
+        </Row>
+      </Container>
     );
   }
 }

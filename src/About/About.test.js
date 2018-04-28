@@ -19,13 +19,13 @@ describe("About test suite", function() {
     mount(<About />);
   });
 
-  it("renders first h1 to read 'Program'", () => {
+  it("renders first h1 to read 'About the program'", () => {
     // const wrapper = shallow(<About />);
     expect(
       shallow(<About />)
         .find("h1")
         .first()
         .text()
-    ).toEqual("Program");
+    ).toEqual("About the program");
   });
 });
