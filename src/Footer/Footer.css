@@ -6,4 +6,11 @@
 
 .footer-logo {
   height: 50px;
+  margin-right: 20px;
+}
+
+.above-footer {
+  max-width: 100% auto;
+  min-height: 100px;
+  margin-bottom: 50px;
 }

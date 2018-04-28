@@ -141,24 +141,6 @@ export default class Dashboard extends React.Component {
               </Col>
             </Row>
 
-            <Row className="mb10">
-              <Col xs={12}>
-                <Card>
-                  <CardBody>
-                    <CardTitle>Acknowledgement of Country</CardTitle>
-                    <CardText>
-                      The Government of Western Australia acknowledges the
-                      traditional custodians throughout Western Australia and
-                      their continuing connection to the land, waters and
-                      community. We pay our respects to all members of the
-                      Aboriginal communities and their cultures; and to Elders
-                      both past and present.
-                    </CardText>
-                  </CardBody>
-                </Card>
-              </Col>
-            </Row>
-
             <Row>
               <Col xs={12}>
                 <Card>

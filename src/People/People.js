@@ -19,38 +19,46 @@ export default class People extends React.Component {
       <div className="content">
         <Container>
           <Row className="mb10">
-            <Col xs={12} sm={6} md={4} lg={3}>
-              <Card>
-                <CardImg
-                  top
-                  src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                  alt="Name"
-                />
-                <CardBody>
-                  <CardTitle>Scott Whiting</CardTitle>
-                  <CardSubtitle>Principal Research Scientist</CardSubtitle>
-                  <CardText>
-                    Dr. Scott Whiting is a Principal Research Scientist with the
-                    Western Australian Department of Biodiversity, Conservation
-                    and Attractions. He coordinates the long-term North West
-                    Shelf Flatback Turtle Conservation Program and the Kimberley
-                    Turtle Project (Western Australia Marine Science
-                    Institution). Scott has worked for university,
-                    non-government and government sectors across Queensland,
-                    Northern Territory, Western Australian and Australian Indian
-                    Ocean Territories (Ashmore Reef and Cocos Keeling Islands).
-                    Research and management roles have included marine turtles,
-                    sea snakes, birds, dugongs and marine debris. He is
-                    currently focused on delivering marine conservation outcomes
-                    through good science, knowledge uptake to decision makers,
-                    partnerships, capacity building and Indigenous
-                    collaborations. He is a member of the IUCN Marine Turtle
-                    Specialist Group and has been involved in the Australian
-                    marine turtle recovery process since the early 2000s.
-                  </CardText>
-                </CardBody>
-              </Card>
-            </Col>
+            <Card>
+              <Row>
+                <Col xs={12} sm={6} md={4} lg={3}>
+                  <img
+                    src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                    className="img-responsive"
+                    alt="Name"
+                  />
+                  <h4>Scott Whiting</h4>
+                  <h5>Principal Research Scientist</h5>
+                </Col>
+                <Col xs={12} sm={6} md={8} lg={9}>
+                  <Row>
+                    <Col xs={12}>
+                      Dr. Scott Whiting is a Principal Research Scientist with
+                      the Western Australian Department of Biodiversity,
+                      Conservation and Attractions. He coordinates the long-term
+                      North West Shelf Flatback Turtle Conservation Program and
+                      the Kimberley Turtle Project (Western Australia Marine
+                      Science Institution). Scott has worked for university,
+                      non-government and government sectors across Queensland,
+                      Northern Territory, Western Australian and Australian
+                      Indian Ocean Territories (Ashmore Reef and Cocos Keeling
+                      Islands). Research and management roles have included
+                      marine turtles, sea snakes, birds, dugongs and marine
+                      debris. He is currently focused on delivering marine
+                      conservation outcomes through good science, knowledge
+                      uptake to decision makers, partnerships, capacity building
+                      and Indigenous collaborations. He is a member of the IUCN
+                      Marine Turtle Specialist Group and has been involved in
+                      the Australian marine turtle recovery process since the
+                      early 2000s.
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            </Card>
+          </Row>
+
+          <Row className="mb10">
             <Col xs={12} sm={6} md={4} lg={3}>
               <Card>
                 <CardImg

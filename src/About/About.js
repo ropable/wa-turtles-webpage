@@ -11,7 +11,6 @@ import {
 } from "reactstrap";
 
 import "./About.css";
-import ghlogo from "../img/gh32.png";
 
 export default class About extends React.Component {
   render() {
@@ -164,70 +163,6 @@ export default class About extends React.Component {
                   <li>Dr Kellie Pendoley</li>
                   <li>Dr Colin Limpus</li>
                 </ul>
-              </CardBody>
-            </Card>
-          </Row>
-
-          <Row className="mb10">
-            <Card>
-              <CardBody>
-                <h1>Page</h1>
-                <CardSubtitle />
-                <CardText>
-                  This page aims to incorporate the{" "}
-                  <a
-                    href="http://gcio.wa.gov.au/wp-content/uploads/2016/05/FINAL-Website-Visual-Design-and-Functional-Standard-April-2018-1.pdf"
-                    target="_"
-                    title="Design guidelines (PDF)"
-                  >
-                    design guidelines
-                  </a>{" "}
-                  published by the GCIO in April 2018. Since no functioning
-                  template is available as yet, the implementation of the
-                  guidelines is a work in progress. This page works offline and
-                  can be installed as an app on mobile devices.
-                  <span className="text-muted credit">
-                    <a
-                      href="https://github.com/dbca-wa/wa-turtles-webpage"
-                      target="_"
-                    >
-                      <img src={ghlogo} alt="GitHub" />
-                    </a>
-                  </span>
-                  <span className="text-muted credit">
-                    <a
-                      href="https://travis-ci.org/dbca-wa/wa-turtles-webpage"
-                      target="_"
-                    >
-                      <img
-                        src="https://travis-ci.org/dbca-wa/wa-turtles-webpage.svg?branch=master"
-                        alt="Build Status"
-                      />
-                    </a>
-                  </span>
-                  <span className="text-muted credit">
-                    <a
-                      href="https://coveralls.io/github/dbca-wa/wa-turtles-webpage"
-                      target="_"
-                    >
-                      <img
-                        src="https://coveralls.io/repos/github/dbca-wa/wa-turtles-webpage/badge.svg"
-                        alt="Test Coverage"
-                      />
-                    </a>
-                  </span>
-                  <span className="text-muted credit">
-                    <a
-                      href="http://waffle.io/dbca-wa/wa-turtles-webpage"
-                      target="_"
-                    >
-                      <img
-                        src="https://badge.waffle.io/dbca-wa/wa-turtles-webpage.svg?columns=all"
-                        alt="To do"
-                      />
-                    </a>
-                  </span>
-                </CardText>
               </CardBody>
             </Card>
           </Row>

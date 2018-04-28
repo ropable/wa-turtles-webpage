@@ -23,7 +23,7 @@ import About from "./About/About";
 import People from "./People/People";
 import Participate from "./Participate/Participate";
 import Story from "./Story/Story";
-// import Footer from "./Footer/Footer";
+import Footer from "./Footer/Footer";
 import todoApp from "./reducers";
 
 const store = createStore(
@@ -58,6 +58,7 @@ export default class App extends React.Component<{}> {
             <Route exact path={"/program"} component={About} />
             <Route exact path={"/people"} component={People} />
             <Route exact path={"/participate"} component={Participate} />
+            <Footer />
           </div>
         </BrowserRouter>
       </Provider>

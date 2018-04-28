@@ -11,12 +11,6 @@
   box-shadow: none;
 }*/
 
-/* Logo */
-.logo {
-  height: 50px;
-  float: left !important;
-}
-
 /*.navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .hover > a {
@@ -27,7 +21,20 @@
 }*/
 
 li.nav-item > a.active,
-li.nav-item > a:focus {
+li.nav-item > a:focus,
+li.nav-item > a:hover {
   border-top: solid 7px #d14210;
   margin-top: -7px;
+}
+
+/* GCIO Masthead: logos; */
+.masthead {
+  max-height: 120px;
+  /*max-width:100%;*/
+}
+
+/* GCIO Logo */
+.logo {
+  height: 120px;
+  float: left !important;
 }

@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
-@import url('https://rsms.me/interface/interface.css');
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+@import url("https://rsms.me/interface/interface.css");
 
 /* Fullscreen bg image */
 html {
@@ -43,4 +43,12 @@ body {
 .nav.navbar-nav li a:hover,
 .nav.navbar-nav li.active a {
   font-weight: bold;
+}
+
+.gcio-grey {
+  background-color: #2d2f32;
+}
+
+.gcio-ochre {
+  background-color: #d14210;
 }

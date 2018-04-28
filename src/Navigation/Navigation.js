@@ -12,7 +12,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  Row
 } from "reactstrap";
 import turtlelogo from "../img/turtle_logo.png";
 import dbcalogo from "../img/dbca_logo.svg";
@@ -36,92 +37,67 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="dark" dark fixed="top" expand="md">
-          <NavbarToggler onClick={this.toggle} />
-          <IndexLinkContainer to="/">
+        <Row className="masthead gcio-grey d-none d-sm-none d-md-block">
+          <IndexLinkContainer to="/" exact>
             <NavbarBrand>
               <img
                 src={dbcalogo}
-                className="logo d-sm-block"
+                className="logo"
                 alt="Department of Biodiversity, Conservation and Attractions"
               />
               <img
                 src={turtlelogo}
-                className="logo d-none d-sm-none d-md-none d-lg-block"
+                className="logo d-md-none d-lg-block"
                 alt="North West Shelf Flatbacks"
               />
             </NavbarBrand>
           </IndexLinkContainer>
-
+        </Row>
+        <Navbar color="light" light expand="md">
+          <NavbarToggler onClick={this.toggle} />
+          <IndexLinkContainer to="/" exact>
+            <NavbarBrand>
+              <img
+                src={dbcalogo}
+                className="logo d-md-none"
+                alt="Department of Biodiversity, Conservation and Attractions"
+              />
+            </NavbarBrand>
+          </IndexLinkContainer>
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
+            <Nav navbar>
               <NavItem>
-                <NavLink
-                  tag={Link}
-                  to="/"
-                  exact="true"
-                  activeclassname="active"
-                >
+                <NavLink tag={Link} to="/" exact="true">
                   Home
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  tag={Link}
-                  to="/story"
-                  exact="true"
-                  activeclassname="active"
-                >
+                <NavLink tag={Link} to="/story" exact="true">
                   The Flatback Story
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  tag={Link}
-                  to="/projects"
-                  exact="true"
-                  activeclassname="active"
-                >
+                <NavLink tag={Link} to="/projects" exact="true">
                   Projects
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  tag={Link}
-                  to="/places"
-                  exact="true"
-                  activeclassname="active"
-                >
+                <NavLink tag={Link} to="/places" exact="true">
                   Places
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  tag={Link}
-                  to="/program"
-                  exact="true"
-                  activeclassname="active"
-                >
+                <NavLink tag={Link} to="/program" exact="true">
                   Program
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  tag={Link}
-                  to="/people"
-                  exact="true"
-                  activeclassname="active"
-                >
+                <NavLink tag={Link} to="/people" exact="true">
                   People
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink
-                  tag={Link}
-                  to="/participate"
-                  exact="true"
-                  activeclassname="active"
-                >
+                <NavLink tag={Link} to="/participate" exact="true">
                   Participate
                 </NavLink>
               </NavItem>
