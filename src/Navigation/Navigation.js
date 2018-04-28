@@ -1,7 +1,7 @@
 // @flow
 import React from "react";
-// import { Link } from "react-router-dom";
-// import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
+import { IndexLinkContainer, LinkContainer } from "react-router-bootstrap";
 import {
   Collapse,
   Navbar,
@@ -51,25 +51,39 @@ export default class Navigation extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/">Home</NavLink>
+                <NavLink tag={Link} to="/">
+                  Home
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/story">The Flatback Story</NavLink>
+                <NavLink tag={Link} to="/story">
+                  The Flatback Story
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/projects">Projects</NavLink>
+                <NavLink tag={Link} to="/projects">
+                  Projects
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/places">Places</NavLink>
+                <NavLink tag={Link} to="/places">
+                  Places
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/program">Program</NavLink>
+                <NavLink tag={Link} to="/program">
+                  Program
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/people">People</NavLink>
+                <NavLink tag={Link} to="/people">
+                  People
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/participate">Participate</NavLink>
+                <NavLink tag={Link} to="/participate">
+                  Participate
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
