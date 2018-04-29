@@ -5,9 +5,9 @@ import {
   Jumbotron,
   Row,
   Card,
-  CardBody,
-  CardSubtitle,
-  CardText
+  CardBody
+  // CardSubtitle,
+  // CardText
   // CardImg
 } from "reactstrap";
 

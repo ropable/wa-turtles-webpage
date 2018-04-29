@@ -18,7 +18,7 @@ import {
 import turtlelogo from "../img/turtle_logo.png";
 import dbcalogo from "../img/dbca_logo.svg";
 import dbcalogoblack from "../img/dbca_logo_black.svg";
-import coa from "../img/coa.jpg";
+// import coa from "../img/coa.jpg";
 import "./Navigation.css";
 
 export default class Navigation extends React.Component {
@@ -60,7 +60,7 @@ export default class Navigation extends React.Component {
           <IndexLinkContainer to="/" exact>
             <NavbarBrand>
               <img
-                src={coa}
+                src={dbcalogoblack}
                 className="logo d-md-none d-sm-block d-block"
                 alt="Department of Biodiversity, Conservation and Attractions"
               />

@@ -1,12 +1,12 @@
 // @flow
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import {
-  Nav,
+  // Nav,
   Navbar,
-  NavItem,
-  NavLink,
-  Container,
+  // NavItem,
+  // NavLink,
+  // Container,
   Collapse,
   Col,
   Row,
@@ -95,6 +95,7 @@ export default class Footer extends React.Component {
               </p>
 
               <h2>Changelog</h2>
+              <p>v0.5.5 Patch build errors.</p>
               <p>
                 v0.5.4 Layout changes to conform to GCIO guidelines as closely
                 as possible.

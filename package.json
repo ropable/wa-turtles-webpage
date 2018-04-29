@@ -1,6 +1,6 @@
 {
   "name": "wa-turtles-webpage",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "private": true,
   "dependencies": {
     "ajv": "^6.4.0",

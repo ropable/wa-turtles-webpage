@@ -5,12 +5,12 @@ import {
   Jumbotron,
   Row,
   Col,
-  Card,
-  CardImg,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardText
+  Card
+  // CardImg,
+  // CardBody,
+  // CardTitle,
+  // CardSubtitle,
+  // CardText
   // CardImg
 } from "reactstrap";
 
