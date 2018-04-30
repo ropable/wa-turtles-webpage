@@ -75,6 +75,7 @@
     "eject": "react-scripts eject",
     "s2ibuild": "s2i build -c ./build centos/httpd-24-centos7 quay.io/dbca_wa/turtlesweb:$npm_package_version",
     "s2ipush": "docker push quay.io/dbca_wa/turtlesweb",
+    "popo": "npm run build && npm run s2ibuild && npm run s2ipush",
     "portainer": "docker run -d -p 9000:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /opt/portainer:/data portainer/portainer"
   },
   "devDependencies": {

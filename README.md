@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/dbca-wa/wa-turtles-webpage.svg?branch=master)](https://travis-ci.org/dbca-wa/wa-turtles-webpage)
 [![Coverage Status](https://coveralls.io/repos/github/dbca-wa/wa-turtles-webpage/badge.svg)](https://coveralls.io/github/dbca-wa/wa-turtles-webpage)
-[![To do](https://badge.waffle.io/dbca-wa/wa-turtles-webpage.png?label=ready&title=Ready)](http://waffle.io/dbca-wa/wa-turtles-webpage)
+[![Up next](https://badge.waffle.io/dbca-wa/wa-turtles-webpage.svg?columns=all)](https://waffle.io/dbca-wa/wa-turtles-webpage)
+
 # WA Turtles web page
 Prototype of a web page for WA Turtles.
 
@@ -18,7 +19,7 @@ Overall process: test / build prod bundle / build Docker image / test image loca
 * To run a new image (when app version has changed):
   * Visit portainer on `localhost:9000`: dashboard > containers > "add container" >
   * find your container (e.g. `quay.io/dbca_wa/turtlesweb:0.4.2`)
-  * keep registry `DockerHub` -- `quay.io` will fail (bug?)
+  * keep registry default `DockerHub`, as `quay.io` will fail (portainer bug?)
   * turn **off** "always pull image" to be able to preview local images
   * turn **on** "publish all exposed ports"
   * Deploy the container

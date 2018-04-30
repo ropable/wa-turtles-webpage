@@ -136,7 +136,7 @@ export default class Footer extends React.Component {
                 </span>
                 <span className="text-muted credit">
                   <a
-                    href="http://waffle.io/dbca-wa/wa-turtles-webpage"
+                    href="https://waffle.io/dbca-wa/wa-turtles-webpage"
                     target="_"
                   >
                     <img
