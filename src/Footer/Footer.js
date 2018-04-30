@@ -95,6 +95,7 @@ export default class Footer extends React.Component {
               </p>
 
               <h2>Changelog</h2>
+              <p>v0.5.6 Footer style: fix gap.</p>
               <p>v0.5.5 Patch build errors.</p>
               <p>
                 v0.5.4 Layout changes to conform to GCIO guidelines as closely

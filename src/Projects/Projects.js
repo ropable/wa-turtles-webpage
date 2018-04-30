@@ -255,10 +255,18 @@ export default class Projects extends React.Component<Props, State> {
         </Container>
       );
     } else if (status === "loading") {
-      return <AlertRow showSpinner={true} />;
+      return (
+        <Container>
+          <AlertRow showSpinner={true} />
+        </Container>
+      );
     } else if (status === "error") {
       const msg = `Error loading data from ${this.props.webUrl}`;
-      return <AlertRow color="danger" message={msg} />;
+      return (
+        <Container>
+          <AlertRow color="danger" message={msg} />
+        </Container>
+      );
     }
   }
 }

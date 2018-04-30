@@ -34,7 +34,7 @@ const store = createStore(
   // autoRehydrate()
 );
 
-export default class App extends React.Component<{}> {
+export default class App extends React.Component {
   embedInfosheets = () => {
     return <Datasets apiParams={"groups:science-information-sheets"} />;
   };
@@ -47,7 +47,7 @@ export default class App extends React.Component<{}> {
     return (
       <Provider store={store}>
         <BrowserRouter>
-          <div>
+          <div className="app">
             <Navigation />
             <Route exact path={"/"} component={Dashboard} />
             <Route exact path={"/story"} component={Story} />

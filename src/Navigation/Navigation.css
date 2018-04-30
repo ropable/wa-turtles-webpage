@@ -20,17 +20,20 @@
   box-shadow: none;
 }*/
 
+.nav.navbar-nav li a:hover,
+.nav.navbar-nav li.active a,
 li.nav-item > a.active,
 li.nav-item > a:focus,
 li.nav-item > a:hover {
+  font-weight: bold;
   border-top: solid 7px #d14210;
   margin-top: -7px;
 }
 
 /* GCIO Masthead: logos; */
 .masthead {
-  max-height: 120px;
-  /*max-width:100%;*/
+  height: 120px;
+  margin: 0px;
 }
 
 /* GCIO Logo */
