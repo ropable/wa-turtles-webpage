@@ -52,7 +52,8 @@
     "redux-persist": "^5.9.1",
     "redux-search": "^2.4.0",
     "stylelint": "^9.2.0",
-    "wordfreq": "0.1.0-dev"
+    "wordfreq": "0.1.0-dev",
+    "snyk": "^1.83.0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
@@ -76,7 +77,9 @@
     "s2ibuild": "s2i build -c ./build centos/httpd-24-centos7 quay.io/dbca_wa/turtlesweb:$npm_package_version",
     "s2ipush": "docker push quay.io/dbca_wa/turtlesweb",
     "popo": "npm run build && npm run s2ibuild && npm run s2ipush",
-    "portainer": "docker run -d -p 9000:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /opt/portainer:/data portainer/portainer"
+    "portainer": "docker run -d -p 9000:9000 --restart always -v /var/run/docker.sock:/var/run/docker.sock -v /opt/portainer:/data portainer/portainer",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "axios-mock-adapter": "^1.15.0",
@@ -106,5 +109,6 @@
   "bugs": {
     "url": "https://github.com/dbca-wa/wa-turtles-webpage/issues"
   },
-  "homepage": "https://flatbacks.dbca.wa.gov.au"
+  "homepage": "https://flatbacks.dbca.wa.gov.au",
+  "snyk": true
 }
