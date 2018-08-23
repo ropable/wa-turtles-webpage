@@ -18,7 +18,7 @@ Overall process: test / build prod bundle / build Docker image / test image loca
 * `npm run portainer` run only once per system to (auto re-)start portainer
 * To run a new image (when app version has changed):
   * Visit portainer on `localhost:9000`: dashboard > containers > "add container" >
-  * find your container (e.g. `quay.io/dbca_wa/turtlesweb:0.4.2`)
+  * find your container (e.g. `dbcawa/wa-turtles-web:0.5.7`)
   * keep registry default `DockerHub`, as `quay.io` will fail (portainer bug?)
   * turn **off** "always pull image" to be able to preview local images
   * turn **on** "publish all exposed ports"
